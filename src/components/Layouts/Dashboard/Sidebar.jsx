@@ -1,5 +1,5 @@
-import ButtonDropdownSidebar from "../Fragments/Button-Dropdown-Sidebar";
-import ButtonSidebar from "../Fragments/Button-Sidebar";
+import ButtonDropdownSidebar from "../../Fragments/Dashboard/Button-Dropdown-Sidebar";
+import ButtonSidebar from "../../Fragments/Dashboard/Button-Sidebar";
 
 const Sidebar = () => {
   return (
@@ -11,7 +11,7 @@ const Sidebar = () => {
             className="d-flex justify-content-center align-items-center"
           >
             <img
-              src="../src/assets/img/usahaoptima.jpg"
+              src="../src/assets/img/dashboard/usahaoptima.jpg"
               alt="logo"
               className="logo"
             />
@@ -81,7 +81,6 @@ const Sidebar = () => {
           </ul>
         </div>
       </aside>
-      ;
     </>
   );
 };

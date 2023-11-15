@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "../src/assets/css/global.css";
+import "../src/assets/css/dashboard.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
@@ -14,6 +14,7 @@ import BiayaOperasional from "./pages/biaya-operasional";
 import Laporan from "./pages/laporan";
 import Pengaturan from "./pages/pengaturan";
 import LandingPage from "./pages/landing-page";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>

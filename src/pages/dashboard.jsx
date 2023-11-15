@@ -1,6 +1,7 @@
-import Sidebar from "../components/Layouts/Sidebar";
-import Footer from "../components/Layouts/Footer";
-import DashboardContent from "../components/Layouts/DashboardContent";
+import Header from "../components/Layouts/Dashboard/Header";
+import Sidebar from "../components/Layouts/Dashboard/Sidebar";
+import DashboardContent from "../components/Layouts/Dashboard/Dashboard-Content";
+import Footer from "../components/Layouts/Dashboard/Footer";
 
 const dashboard = () => {
   return (
@@ -8,6 +9,7 @@ const dashboard = () => {
       <main>
         <Sidebar />
         <section id="dashboard">
+          <Header />
           <DashboardContent />
           <hr className="mt-5" />
           <Footer />
