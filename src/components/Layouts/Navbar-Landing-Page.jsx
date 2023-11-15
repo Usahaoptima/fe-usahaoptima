@@ -22,7 +22,7 @@ function NavbarLandingPage() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className="collapse navbar-collapse bg-light col-9"
+            className="collapse navbar-collapse bg-light mt-sm-3 mt-md-0"
             id="navbarNav"
           >
             <ul className="navbar-nav col-12 ml-5">
