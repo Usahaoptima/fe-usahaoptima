@@ -1,4 +1,4 @@
-import NavbarLandingPage from "../components/Layouts/Navbar-Landing-Page";
+import NavbarLandingPage from "../components/Layouts/Landing-Page/Navbar-Landing-Page";
 import "../assets/css/LandingPage.css";
 
 function landingpage() {
