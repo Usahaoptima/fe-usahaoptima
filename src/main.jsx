@@ -1,9 +1,11 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
-import React from "react";
-import ReactDOM from "react-dom/client";
 import "../src/assets/css/dashboard.css";
+import "../src/assets/css/produkpage.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
