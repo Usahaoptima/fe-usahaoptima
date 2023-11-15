@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Urbanist", sans-serif;
+}
+
+:root {
+  --primary: #19a7ce;
+  --secondary: #146c94;
+  --bg: #fff;
+  --alternatif: #afd3e2;
+}
+
+main {
+  display: flex;
+  height: auto;
+}
+
+/* Aside Start */
+aside {
+  background-color: var(--bg);
+  width: 20%;
+  height: auto;
+  border-right: 2px solid var(--alternatif);
+}
+
+main aside img.logo {
+  width: 100px;
+}
+
+main aside ul li a {
+  color: var(--primary) !important;
+  font-weight: 500 !important;
+}
+
+main aside ul li a:hover {
+  color: var(--bg) !important;
+  background-color: var(--secondary) !important;
+}
+
+main aside ul div.aside-dropdown {
+  color: var(--primary);
+  font-weight: 500 !important;
+  cursor: pointer;
+}
+
+main aside ul div.aside-dropdown .aside-list:hover {
+  font-weight: bolder !important;
+}
+
+main aside ul li .link-dashboard {
+  background-color: var(--secondary) !important;
+  color: var(--bg) !important;
+}
+
+/* Aside End */
+
+/* Dashboard Start */
+main section#dashboard {
+  margin-inline: auto;
+}
+
+main section#dashboard header div.dashboard-search {
+  background-color: #f6f1f1;
+  padding: 8px;
+  border-radius: 99px;
+}
+
+main section#dashboard .dashboard-title,
+.dashboard-description {
+  font-size: 32px;
+  color: var(--primary);
+}
+
+main section#dashboard .dashboard-title h2,
+.dashboard-description h2 {
+  font-weight: bolder;
+}
+
+main section#dashboard .dashboard-card .card-body {
+  box-shadow: 3px 3px 3px 3px var(--alternatif);
+  border-radius: 12px;
+}
+
+main section#dashboard .dashboard-card h5,
+h6,
+p {
+  color: var(--secondary) !important;
+}
+
+/* Dashboard End */
+
+/* Calender Start */
+.calendar {
+  width: 500px;
+  height: 310px;
+  font-size: 18px;
+  background-color: #f6f1f1;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.fc-col-header-cell-cushion,
+.fc-daygrid-day-number {
+  color: var(--secondary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+  min-height: 0;
+  position: relative;
+}
+
+.fc .fc-button-primary {
+  background-color: var(--secondary);
+  border: none;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: var(--primary);
+  border: none;
+}
+
+.fc .fc-scrollgrid-liquid {
+  height: 210px !important;
+  overflow-y: scroll;
+}
+
+.fc .fc-scroller-liquid-absolute {
+  height: 310px !important;
+  overflow-y: scroll;
+}
+
+/* Calender End */
+
+/* Footer Start */
+main section#dashboard footer .footer-title {
+  color: var(--secondary);
+}
+
+main section#dashboard footer div.icons i {
+  font-size: 24px;
+  margin-right: 18px;
+  color: var(--primary);
+}
+
+/* Media Query */
+
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .calendar {
+    width: 95% !important;
+    height: 380px !important;
+  }
+
+  .fc-today-button {
+    margin-bottom: 12px !important;
+    margin-left: 16px !important;
+  }
+
+  main section#dashboard section.dashboard-title h2,
+  main section#dashboard section.dashboard-title h3 {
+    font-size: 24px !important;
+  }
+
+  main section#dashboard section.dashboard-description {
+    text-align: start !important;
+  }
+
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  main section#dashboard footer .footer-title {
+    margin-inline: auto !important;
+  }
+
+  main section#dashboard footer div.icons {
+    margin: 0 auto !important;
+  }
+
+  .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+    margin: 0 !important;
+  }
+
+  .fc .fc-button-primary {
+    padding-inline: 8px;
+  }
+}
+
+/*`md` applies to small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  main aside img.logo {
+    width: 50px !important;
+  }
+
+  main aside ul li a span {
+    display: none !important;
+  }
+
+  main section#dashboard header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-list span {
+    display: none !important;
+  }
+
+  main section#dashboard header div.dashboard-search {
+    margin: 12px;
+  }
+}
+
+/* `lg` applies to medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .calendar {
+    width: 100%;
+    height: 350px;
+  }
+  .fc-toolbar-title {
+    padding: 18px;
+  }
+  .fc .fc-scrollgrid-liquid {
+    height: 210px !important;
+    overflow-y: scroll !important;
+  }
+}
+
+/* `xl` applies to large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+  main section#dashboard section.dashboard-description {
+    text-align: center;
+  }
+}
+
+/* `xxl` applies to x-large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
+  aside {
+    width: 20%;
+  }
+
+  main aside ul li a svg {
+    display: none;
+  }
+  main aside img.logo {
+    width: 80px;
+  }
+
+  main aside ul li {
+    margin-top: 8px;
+  }
+
+  main aside ul li a span {
+    display: block;
+    text-align: start;
+    margin-top: 6px;
+  }
+
+  .dropdown-list span {
+    display: block;
+    text-align: start;
+    margin-top: 6px;
+  }
+
+  main section#dashboard {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  main section#dashboard section.hero img {
+    width: 100%;
+  }
+
+  .calendar {
+    margin-top: 32px;
+  }
+
+  main section#dashboard .dashboard-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px !important;
+  }
+
+  main section#dashboard section.dashboard-description {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center !important;
+  }
+}
