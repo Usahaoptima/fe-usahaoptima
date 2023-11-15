@@ -13,7 +13,7 @@ import Edukasi from "./pages/edukasi";
 import BiayaOperasional from "./pages/biaya-operasional";
 import Laporan from "./pages/laporan";
 import Pengaturan from "./pages/pengaturan";
-import LandingPage from "./pages/landing_page";
+import LandingPage from "./pages/landing-page";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
