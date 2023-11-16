@@ -1,6 +1,6 @@
 import Header from "../components/Layouts/Dashboard/Header";
 import Sidebar from "../components/Layouts/Dashboard/Sidebar";
-import ProdukContent from "../components/Layouts/Dashboard/Produk-Content";
+import ProdukContent from "../components/Layouts/Dashboard/Product-Content";
 import Footer from "../components/Layouts/Dashboard/Footer";
 
 const produk = () => {
