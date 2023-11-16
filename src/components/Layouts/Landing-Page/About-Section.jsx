@@ -4,7 +4,7 @@ function AboutSection() {
       <div className="row">
         <div className="col-md-7 col-sm-6 px-0">
           <img
-            src="../../public/assets/img/landing-page/image-content2.svg"
+            src="assets/img/landing-page/image-content2.svg"
             alt="image"
             className="img-fluid"
           />

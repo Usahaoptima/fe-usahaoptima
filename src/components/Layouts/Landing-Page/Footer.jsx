@@ -6,7 +6,7 @@ function Footer() {
           <div className="p-2 flex-grow-1 bd-highlight">
             <div className="footer-logo">
               <img
-                src="../../public/assets/img/landing-page/Group.svg"
+                src="assets/img/landing-page/Group.svg"
                 alt="logo"
                 height="30"
               />

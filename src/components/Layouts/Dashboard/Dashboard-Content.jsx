@@ -6,7 +6,7 @@ const DashboardContent = () => {
     <>
       <div>
         <section className="m-3 hero">
-          <img src="../../public/assets/img/dashboard/hero.png" alt="" />
+          <img src="assets/img/dashboard/hero.png" alt="" />
         </section>
 
         <section className="ms-3 mt-5 dashboard-description d-flex justify-content-between">
@@ -29,21 +29,21 @@ const DashboardContent = () => {
           />
 
           <CardDashboard
-            image="../../public/assets/img/icons/stok.png"
+            image="assets/img/icons/stok.png"
             title="Sisa Stok Hari Ini"
             description="Jumat 8 September 2023"
             quantity="Pcs. 30"
           />
 
           <CardDashboard
-            image="../../public/assets/img/icons/jumlah-penjualan.png"
+            image="assets/img/icons/jumlah-penjualan.png"
             title="Jumlah Penjualan Hari Ini"
             description="Jumat 8 September 2023"
             quantity="Pcs. 30"
           />
 
           <CardDashboard
-            image="../../public/assets/img/icons/jumlah-pelanggan.png"
+            image="assets/img/icons/jumlah-pelanggan.png"
             title="Jumlah Pelanggan Hari Ini"
             description="Jumat 8 September 2023"
             quantity="Orang. 2"
