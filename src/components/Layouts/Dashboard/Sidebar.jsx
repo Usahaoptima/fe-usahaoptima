@@ -11,7 +11,7 @@ const Sidebar = () => {
             className="d-flex justify-content-center align-items-center"
           >
             <img
-              src="../src/assets/img/dashboard/usahaoptima.jpg"
+              src="../../public/assets/img/dashboard/usahaoptima.jpg"
               alt="logo"
               className="logo"
             />
@@ -28,7 +28,7 @@ const Sidebar = () => {
                 aria-controls="collapseTwo"
               >
                 <img
-                  src="../src/assets/img/icons/dashboard.png"
+                  src="../../public/assets/img/icons/dashboard.png"
                   className="me-1"
                 />
                 <span>Dashboard</span>
@@ -36,22 +36,22 @@ const Sidebar = () => {
             </li>
 
             <ButtonSidebar
-              image="../src/assets/img/icons/produk.png"
+              image="../../public/assets/img/icons/produk.png"
               title="Produk"
             />
 
             <ButtonSidebar
-              image="../src/assets/img/icons/penjualan.png"
+              image="../../public/assets/img/icons/penjualan.png"
               title="Penjualan"
             />
 
             <ButtonSidebar
-              image="../src/assets/img/icons/edukasi.png"
+              image="../../public/assets/img/icons/edukasi.png"
               title="Edukasi"
             />
 
             <ButtonSidebar
-              image="../src/assets/img/icons/biaya.png"
+              image="../../public/assets/img/icons/biaya.png"
               title="Biaya Operasional"
             />
 
@@ -59,11 +59,11 @@ const Sidebar = () => {
               id1="#collapseExample1"
               id2="collapseExample1"
               controls="collapseExample1"
-              image="../src/assets/img/icons/laporan.png"
+              image="../../public/assets/img/icons/laporan.png"
               title="Laporan"
-              dropdownImage1="../src/assets/img/icons/keuangan.png"
+              dropdownImage1="../../public/assets/img/icons/keuangan.png"
               dropdownTitle1="Keuangan"
-              dropdownImage2="../src/assets/img/icons/stock.png"
+              dropdownImage2="../../public/assets/img/icons/stock.png"
               dropdownTitle2="Stok"
             />
 
@@ -71,11 +71,11 @@ const Sidebar = () => {
               id1="#collapseExample2"
               id2="collapseExample2"
               controls="collapseExample2"
-              image="../src/assets/img/icons/pengaturan.png"
+              image="../../public/assets/img/icons/pengaturan.png"
               title="Pengaturan"
-              dropdownImage1="../src/assets/img/icons/user-role.png"
+              dropdownImage1="../../public/assets/img/icons/user-role.png"
               dropdownTitle1="User Role"
-              dropdownImage2="../src/assets/img/icons/add-article.png"
+              dropdownImage2="../../public/assets/img/icons/add-article.png"
               dropdownTitle2="Tambah Artikel"
             />
           </ul>

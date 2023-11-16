@@ -25,7 +25,7 @@ function HomePage() {
       <div className="row my-3 py-5">
         <div className="col-md-6 col-sm-6 order-sm-1 order-md-2 ">
           <img
-            src="../src/assets/img/landing-page/left.svg"
+            src="../../public/assets/img/landing-page/left.svg"
             alt="image"
             className="img-fluid"
           />

@@ -5,7 +5,7 @@ function NavbarLandingPage() {
         <div className="container">
           <a className="navbar-brand" href="#">
             <img
-              src="../src/assets/img/landing-page/Group.svg"
+              src="../../public/assets/img/landing-page/Group.svg"
               alt="logo"
               height="30"
             />

@@ -4,8 +4,8 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
-import "../src/assets/css/dashboard.css";
-import "../src/assets/css/produkpage.css";
+import "../public/assets/css/Dashboard.css";
+import "../public/assets/css/ProdukPage.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
