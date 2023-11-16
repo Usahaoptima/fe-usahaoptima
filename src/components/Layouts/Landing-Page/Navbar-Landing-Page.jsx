@@ -25,7 +25,7 @@ function NavbarLandingPage() {
             className="collapse navbar-collapse bg-light mt-sm-3 mt-md-0"
             id="navbarNav"
           >
-            <ul className="navbar-nav col-12 ml-5">
+            <ul className="navbar-nav col-12 mx-5">
               <li className="nav-item">
                 <a className="nav-link" href="#home">
                   Home

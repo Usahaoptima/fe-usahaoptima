@@ -21,30 +21,30 @@ function HomePage() {
   }, []);
 
   return (
-    <div class="container" id="home">
-      <div class="row my-3 py-5">
-        <div class="col-md-6 col-sm-6 order-sm-1 order-md-2 ">
+    <div className="container" id="home">
+      <div className="row my-3 py-5">
+        <div className="col-md-6 col-sm-6 order-sm-1 order-md-2 ">
           <img
             src="../src/assets/img/landing-page/left.svg"
             alt="image"
-            class="img-fluid"
+            className="img-fluid"
           />
         </div>
-        <div class="col-md-6 col-sm-6 d-flex align-content-center flex-wrap order-sm-2 order-md-1">
-          <div class="upper">
-            <div class="titles">
-              <p class="hai" id="animated-text"></p>
-              <p class="subhai">
+        <div className="col-md-6 col-sm-6 d-flex align-content-center flex-wrap order-sm-2 order-md-1">
+          <div className="upper">
+            <div className="titles">
+              <p className="hai" id="animated-text"></p>
+              <p className="subhai">
                 {text}
                 <br></br>
                 Kelola Keuangan Anda dengan Mudah Temukan Solusi Terbaik di
                 Sini!{" "}
               </p>
             </div>
-            <a href="#" class="btn btn-primary my-3">
+            <a href="#" className="btn btn-primary my-3">
               See More!
             </a>
-            <div class="cta-logo my-5">
+            <div className="cta-logo my-5">
               <a href="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
