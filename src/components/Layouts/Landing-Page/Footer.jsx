@@ -1,22 +1,22 @@
 function Footer() {
   return (
     <footer>
-      <div class="container mt-5">
-        <div class="row">
-          <div class="p-2 flex-grow-1 bd-highlight">
-            <div class="footer-logo">
+      <div className="container mt-5">
+        <div className="row">
+          <div className="p-2 flex-grow-1 bd-highlight">
+            <div className="footer-logo">
               <img
-                src="../src/assets/img/landing-page/Group.svg"
+                src="assets/img/landing-page/Group.svg"
                 alt="logo"
                 height="30"
               />
             </div>
-            <div class="footer-text mt-2">
+            <div className="footer-text mt-2">
               <p>Designed and built by the USAHAOPTIMA team.</p>
             </div>
           </div>
-          <div class="p-2 bd-highlight">
-            <div class="footer-social">
+          <div className="p-2 bd-highlight">
+            <div className="footer-social">
               <a href="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -76,8 +76,8 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div class="row mt-5 text-center r">
-          <div class="col-12 footer-copyright">
+        <div className="row mt-5 text-center r">
+          <div className="col-12 footer-copyright">
             &copy; 2023 Usaha Optima. All rights reserved.
           </div>
         </div>
