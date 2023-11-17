@@ -1,27 +1,16 @@
 import { useEffect, useState } from "react";
+import { Register } from "../../../services/Auth-Services";
 
 function FormContent() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const [passwordValidation, setPasswordValidation] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmedVisible, setConfirmedVisible] = useState(false);
   const [isValidate, setIsValidate] = useState(false);
 
-  const validateHandler = (e) => {
-    const uppercase = /[A-Z]/;
-    const digit = /\d/;
-    const symbol = /[^A-Za-z0-9]/;
-
-    if (uppercase.test(pass) && digit.test(pass) && symbol.test(pass)) {
-      return setPassword(pass);
-    } else {
-      return setPassword(false);
-    }
-  };
-
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
     const uppercase = /[A-Z]/;
     const digit = /\d/;
@@ -48,7 +37,16 @@ function FormContent() {
       return;
     }
 
-    console.log("yey valid");
+    const data = {
+      username: username,
+      password: password,
+      email: email,
+    };
+
+    const resRegister = await Register(data);
+    if (resRegister) {
+      console.log("dapat");
+    }
   };
 
   const handlePasswordVisible = (field) => {
@@ -140,7 +138,7 @@ function FormContent() {
                 >
                   <i
                     className={
-                      passwordVisible ? "fa fa-eye-slash" : "fa fa-eye"
+                      confirmedVisible ? "fa fa-eye-slash" : "fa fa-eye"
                     }
                     id="toggle-icon-confirm"
                   ></i>
