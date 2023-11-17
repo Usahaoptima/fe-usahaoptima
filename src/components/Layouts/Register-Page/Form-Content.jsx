@@ -150,7 +150,7 @@ function FormContent() {
           </div>
           <button
             type="submit"
-            className="btn btn-primary btn-lg btn-block mt-5 col-12"
+            className="btn btn-primary btn-lg btn-block mt-5 col-12 button-auth"
           >
             Daftar
           </button>

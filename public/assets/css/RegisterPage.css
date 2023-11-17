@@ -5,8 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: "Urbanist", sans-serif;
-    color: var(--primary);
+    font-family: "Urbanist", sans-serif;   
   }
   
   :root {
@@ -26,19 +25,19 @@
     cursor: pointer;
 }
 
-a {
+.link-text {
     text-decoration: none;
     color: var(--secondary);
 }
 
-button {
+.button-auth {
     border-radius: 9px !important;
     background-color: var(--primary) !important;
     border: none !important;
     box-shadow: 0px 4px 61px 0px rgba(77, 71, 195, 0.40); 
 }
 
-button:hover {
+.button-auth:hover {
     background-color: var(--secondary) !important;
     
 }
@@ -90,7 +89,7 @@ input {
     line-height: normal;
 }
 
-body::before {
+.image-pseudo::before {
     content: "";
     background: url('/assets/img/register/image.png') no-repeat center center;
     background-size: contain;
