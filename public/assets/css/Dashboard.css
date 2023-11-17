@@ -201,7 +201,7 @@ main section#dashboard footer div.icons i {
     width: 50px !important;
   }
 
-  main aside ul li a span {
+  main aside ul li div span {
     display: none !important;
   }
 
@@ -247,7 +247,7 @@ main section#dashboard footer div.icons i {
     width: 20%;
   }
 
-  main aside ul li a svg {
+  main aside ul li div svg {
     display: none;
   }
   main aside img.logo {
@@ -258,7 +258,7 @@ main section#dashboard footer div.icons i {
     margin-top: 8px;
   }
 
-  main aside ul li a span {
+  main aside ul li div span {
     display: block;
     text-align: start;
     margin-top: 6px;

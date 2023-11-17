@@ -20,7 +20,18 @@ const ProdukContent = () => {
                 <TableProduct tableName="Action" />
               </tr>
             </thead>
-            <tbody id="product"></tbody>
+            <tbody>
+              <tr>
+                <td className="td">Test</td>
+                <td className="td">Test</td>
+                <td className="td">Test</td>
+                <td className="td">Test</td>
+                <td>
+                  <i className="fa-regular fa-pen-to-square edit"></i>
+                  <i className="fa-regular fa-trash-can delete"></i>
+                </td>
+              </tr>
+            </tbody>
           </table>
 
           <nav aria-label="Page navigation example">
