@@ -1,82 +1,161 @@
+import { useEffect, useState } from "react";
+
 function FormContent() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState();
+  const [passwordValidation, setPasswordValidation] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmedVisible, setConfirmedVisible] = useState(false);
+  const [isValidate, setIsValidate] = useState(false);
+
+  const validateHandler = (e) => {
+    const uppercase = /[A-Z]/;
+    const digit = /\d/;
+    const symbol = /[^A-Za-z0-9]/;
+
+    if (uppercase.test(pass) && digit.test(pass) && symbol.test(pass)) {
+      return setPassword(pass);
+    } else {
+      return setPassword(false);
+    }
+  };
+
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+    const uppercase = /[A-Z]/;
+    const digit = /\d/;
+    const symbol = /[^A-Za-z0-9]/;
+    const lowercasePassword = password.toLowerCase();
+    const lowercaseConfirmed = passwordValidation.toLowerCase();
+
+    if (!username && !email && !password && !passwordValidation) {
+      console.log("hadeuh isi dulu");
+      return;
+    }
+
+    if (
+      !uppercase.test(password) &&
+      !digit.test(password) &&
+      !symbol.test(password)
+    ) {
+      console.log("hadeuh validasin yang bener napa");
+      return;
+    }
+
+    if (lowercasePassword !== lowercaseConfirmed) {
+      console.log("password gassama");
+      return;
+    }
+
+    console.log("yey valid");
+  };
+
+  const handlePasswordVisible = (field) => {
+    if (field === "password") {
+      setPasswordVisible(!passwordVisible);
+    } else if (field === "confirmed") {
+      setConfirmedVisible(!confirmedVisible);
+    }
+  };
   return (
     <>
-      <div class="col-md-6 mt-md">
-        <form id="form" class="form">
+      <div className="col-md-6 mt-md">
+        <form onSubmit={handlerSubmit} className="form">
           <h2>Daftar</h2>
-          <div class="form-group mt-5">
+          <div className="form-group mt-5">
             <input
               type="text"
-              name="username"
-              class="form-control"
-              id="username"
+              className="form-control"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
               required
             />
           </div>
 
-          <div class="form-group mt-5">
+          <div className="form-group mt-5">
             <input
               type="email"
-              name="email"
-              class="form-control"
-              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="form-control"
               placeholder="Email"
               required
             />
           </div>
 
-          <div class="form-group mt-5">
-            <div class="input-group">
+          <div className="form-group mt-5">
+            <div className="input-group">
               <input
-                type="password"
-                name="password"
-                class="form-control"
+                type={passwordVisible ? "text" : "password"}
+                className="form-control"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 minlength="8"
                 maxlength="16"
                 required
               />
-              <div class="input-group-append">
-                <span class="input-group-text bg-light" id="toggle-password">
-                  <i class="fa fa-eye" id="toggle-icon"></i>
+              <div className="input-group-append">
+                <span
+                  className="input-group-text bg-light"
+                  id="toggle-password"
+                  onClick={() => handlePasswordVisible("password")}
+                >
+                  <i
+                    className={
+                      passwordVisible ? "fa fa-eye-slash" : "fa fa-eye"
+                    }
+                    id="toggle-icon"
+                  ></i>
                 </span>
               </div>
             </div>
           </div>
 
-          <div class="form-group mt-5">
-            <div class="input-group">
+          <div className="form-group mt-5">
+            <div className="input-group">
               <input
-                type="password"
-                class="form-control"
-                name="confirmed"
+                type={confirmedVisible ? "text" : "password"}
                 id="confirmed"
+                className="form-control"
+                value={passwordValidation}
+                onChange={(e) => setPasswordValidation(e.target.value)}
                 placeholder="Konfirmasi Password"
                 minlength="8"
                 maxlength="16"
                 required
               />
-              <div class="input-group-append">
+              <div className="input-group-append">
                 <span
-                  class="input-group-text bg-light"
+                  className="input-group-text bg-light"
                   id="toggle-password-confirm"
+                  onClick={() => handlePasswordVisible("confirmed")}
                 >
-                  <i class="fa fa-eye" id="toggle-icon-confirm"></i>
+                  <i
+                    className={
+                      passwordVisible ? "fa fa-eye-slash" : "fa fa-eye"
+                    }
+                    id="toggle-icon-confirm"
+                  ></i>
                 </span>
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block mt-5">
+          <button
+            type="submit"
+            className="btn btn-primary btn-lg btn-block mt-5 col-12"
+          >
             Daftar
           </button>
         </form>
-        <div class="icon-wrapper mt-5 text-center">
-          <p class="mt-2 text-center">lanjutkan menggunakan</p>
+        <div className="icon-wrapper mt-5 text-center">
+          <p className="mt-2 text-center">lanjutkan menggunakan</p>
           <a href="#">
             <svg
-              class="mb-5"
+              className="mb-5"
               xmlns="http://www.w3.org/2000/svg"
               width="42"
               height="42"
@@ -111,7 +190,7 @@ function FormContent() {
           </a>
           <a href="#">
             <svg
-              class="mb-5"
+              className="mb-5"
               xmlns="http://www.w3.org/2000/svg"
               width="42"
               height="42"
