@@ -1,120 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: "Urbanist", sans-serif;   
-  }
-  
-  :root {
-    --primary: #19a7ce;
-    --secondary: #146c94;
-    --bg: ##F6F1F1;
-    --alternatif: #afd3e2;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Urbanist", sans-serif;
+}
 
-  body {
-    background-color: var(--bg);
-  }
+:root {
+  --primary: #19a7ce;
+  --secondary: #146c94;
+  --bg: #f6f1f1;
+  --alternatif: #afd3e2;
+}
 
+body {
+  background-color: var(--bg);
+}
 
 #toggle-icon,
 #toggle-icon-confirm {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .link-text {
-    text-decoration: none;
-    color: var(--secondary);
+  text-decoration: none;
+  color: var(--secondary);
 }
 
 .button-auth {
-    border-radius: 9px !important;
-    background-color: var(--primary) !important;
-    border: none !important;
-    box-shadow: 0px 4px 61px 0px rgba(77, 71, 195, 0.40); 
+  border-radius: 9px !important;
+  background-color: var(--primary) !important;
+  border: none !important;
+  box-shadow: 0px 4px 61px 0px rgba(77, 71, 195, 0.4);
 }
 
 .button-auth:hover {
-    background-color: var(--secondary) !important;
-    
+  background-color: var(--secondary) !important;
 }
 
-
 input {
-    border-radius: 8px !important;
-    background: #F0EFFF !important;
-    border: none !important;
+  border-radius: 8px !important;
+  background: #f0efff !important;
+  border: none !important;
 }
 
 #password,
 #confirmed {
-    border-radius: 8px 0px 0px 8px !important;
+  border-radius: 8px 0px 0px 8px !important;
 }
 
 #toggle-password,
-#toggle-password-confirm{
-    background: #F0EFFF !important;
-    border: none !important;
-    border-radius: 0px 8px 8px 0px !important;
-    height: 2.3rem;
+#toggle-password-confirm {
+  background: #f0efff !important;
+  border: none !important;
+  border-radius: 0px 8px 8px 0px !important;
+  height: 2.3rem;
 }
 
+@media (max-width: 1024px) {
+  body::before {
+    display: none;
+  }
 
-@media (max-width:1024px) {
-    body::before {
-        display: none;
-    }
-
-    form {
-        margin-top: 20%;
-    }
-} 
+  form {
+    margin-top: 20%;
+  }
+}
 
 .text-wrapper h2 {
-    color: var(--Primary);
-    font-size: 50px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  color: var(--Primary);
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .text-wrapper p {
-    color: var(--Primary);
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  color: var(--Primary);
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .image-pseudo::before {
-    content: "";
-    background: url('/assets/img/register/image.png') no-repeat center center;
-    background-size: contain;
-    width: 40%;
-    height: 40%;
-    position: absolute;
-    bottom: 0;
-    left: 40%;
-    transform: translateX(-50%);
+  content: "";
+  background: url("/assets/img/register/image.png") no-repeat center center;
+  background-size: contain;
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  transform: translateX(-50%);
 }
 
 input::placeholder {
-    color: rgba(25, 167, 206, 0.40) !important;
+  color: rgba(25, 167, 206, 0.4) !important;
 }
 
 .icon-wrapper a:hover svg {
-    transform: scale(1.1); /* Mengubah skala ikon saat dihover */
-    animation: bounce 0.5s ease infinite alternate; /* Animasi memantul */
-  }
+  transform: scale(1.1); /* Mengubah skala ikon saat dihover */
+  animation: bounce 0.5s ease infinite alternate; /* Animasi memantul */
+}
 
-  @keyframes bounce {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-10px);
-    }
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
   }
+  100% {
+    transform: translateY(-10px);
+  }
+}

@@ -15,7 +15,7 @@ const ButtonDropdownSidebar = (props) => {
   return (
     <>
       <li className="nav-item">
-        <a
+        <div
           className="nav-link mb-3 d-flex justify-content-between align-items-center"
           data-bs-toggle="collapse"
           href={id1}
@@ -23,10 +23,10 @@ const ButtonDropdownSidebar = (props) => {
           aria-expanded="false"
           aria-controls={controls}
         >
-          <div>
+          <section>
             <img src={image} className="me-1" />
             <span>{title}</span>
-          </div>
+          </section>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -37,7 +37,7 @@ const ButtonDropdownSidebar = (props) => {
           >
             <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
           </svg>
-        </a>
+        </div>
       </li>
       <div className="collapse aside-dropdown" id={id2}>
         <ul className="dropdown-list">
