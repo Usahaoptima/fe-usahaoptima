@@ -7,7 +7,7 @@ import "../../public/assets/css/RegisterPage.css";
 function registerpage() {
   return (
     <>
-      <div className="image-pseudo">
+      <div className="image-pseudo mt-0">
         <HeaderRegisterPage />
         <div className="container mt-5 pt-5">
           <div className="row">
