@@ -16,12 +16,14 @@ import BiayaOperasional from "./pages/biaya-operasional";
 import Laporan from "./pages/laporan";
 import Pengaturan from "./pages/pengaturan";
 import LandingPage from "./pages/landing-page";
+import RegisterPage from "./pages/register-page";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/produk" element={<Produk />} />
         <Route path="/penjualan" element={<Penjualan />} />

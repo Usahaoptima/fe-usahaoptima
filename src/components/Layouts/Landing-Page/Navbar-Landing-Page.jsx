@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function NavbarLandingPage() {
   return (
     <>
@@ -50,13 +52,14 @@ function NavbarLandingPage() {
                 </a>
               </li>
               <li className="nav-item">
-                <a
+                <Link
+                  Link
+                  to="/register"
                   className="nav-link btn btn-primary"
-                  href="/login-register-page/register.html"
                   role="button"
                 >
                   Sign Up
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
