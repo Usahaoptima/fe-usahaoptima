@@ -70,6 +70,7 @@ function FormContent() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
+              autoComplete="username"
               required
             />
           </div>
@@ -81,6 +82,7 @@ function FormContent() {
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
               placeholder="Email"
+              autoComplete="email@auto.complete"
               required
             />
           </div>
@@ -94,8 +96,9 @@ function FormContent() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
-                minlength="8"
-                maxlength="16"
+                minLength="8"
+                maxLength="16"
+                autoComplete="new-password"
                 required
               />
               <div className="input-group-append">
@@ -124,8 +127,9 @@ function FormContent() {
                 value={passwordValidation}
                 onChange={(e) => setPasswordValidation(e.target.value)}
                 placeholder="Konfirmasi Password"
-                minlength="8"
-                maxlength="16"
+                minLength="8"
+                autoComplete="new-password"
+                maxLength="16"
                 required
               />
               <div className="input-group-append">
@@ -182,8 +186,8 @@ function FormContent() {
                   y2="37.1003"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#18ACFE" />
-                  <stop offset="1" stop-color="#0163E0" />
+                  <stop stopColor="#18ACFE" />
+                  <stop offset="1" stopColor="#0163E0" />
                 </linearGradient>
               </defs>
             </svg>
