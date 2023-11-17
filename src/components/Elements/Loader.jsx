@@ -1,4 +1,9 @@
-const Loader = () => {
+/* eslint-disable react/prop-types */
+const Loader = ({ isShow }) => {
+  if (!isShow) {
+    return null;
+  }
+
   return (
     <>
       <div className="d-flex justify-content-center">
