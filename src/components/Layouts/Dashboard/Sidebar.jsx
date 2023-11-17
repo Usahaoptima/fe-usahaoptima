@@ -1,5 +1,6 @@
 import ButtonDropdownSidebar from "../../Fragments/Dashboard/Button-Dropdown-Sidebar";
 import ButtonSidebar from "../../Fragments/Dashboard/Button-Sidebar";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -18,42 +19,40 @@ const Sidebar = () => {
           </a>
           <hr />
           <ul className="nav nav-pills flex-column mb-auto">
-            <li className="nav-item mb-2">
-              <a
-                className="nav-link collapsed active link-dashboard"
-                href="#"
-                data-toggle="collapse"
-                data-target="#collapseTwo"
-                aria-expanded="true"
-                aria-controls="collapseTwo"
-              >
-                <img
-                  src="../../public/assets/img/icons/dashboard.png"
-                  className="me-1"
-                />
-                <span>Dashboard</span>
-              </a>
-            </li>
+            <Link to="/dashboard" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="../../public/assets/img/icons/dashboard.png"
+                title="Dashboard"
+              />
+            </Link>
 
-            <ButtonSidebar
-              image="../../public/assets/img/icons/produk.png"
-              title="Produk"
-            />
+            <Link to="/produk" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="../../public/assets/img/icons/produk.png"
+                title="Produk"
+              />
+            </Link>
 
-            <ButtonSidebar
-              image="../../public/assets/img/icons/penjualan.png"
-              title="Penjualan"
-            />
+            <Link to="/penjualan" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="../../public/assets/img/icons/penjualan.png"
+                title="Penjualan"
+              />
+            </Link>
 
-            <ButtonSidebar
-              image="../../public/assets/img/icons/edukasi.png"
-              title="Edukasi"
-            />
+            <Link to="/edukasi" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="../../public/assets/img/icons/edukasi.png"
+                title="Edukasi"
+              />
+            </Link>
 
-            <ButtonSidebar
-              image="../../public/assets/img/icons/biaya.png"
-              title="Biaya Operasional"
-            />
+            <Link to="/biaya-operasional" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="../../public/assets/img/icons/biaya.png"
+                title="Biaya Operasional"
+              />
+            </Link>
 
             <ButtonDropdownSidebar
               id1="#collapseExample1"

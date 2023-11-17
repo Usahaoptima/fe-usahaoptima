@@ -8,7 +8,10 @@ import BiayaOperasional from "../pages/biaya-operasional";
 import Laporan from "../pages/laporan";
 import Pengaturan from "../pages/pengaturan";
 import LandingPage from "../pages/landing-page";
+
 import RegisterPage from "../pages/register-page";
+
+
 
 const AppRouter = () => {
   return (
@@ -22,7 +25,10 @@ const AppRouter = () => {
         <Route path="/biaya-operasional" element={<BiayaOperasional />} />
         <Route path="/laporan" element={<Laporan />} />
         <Route path="/pengaturan" element={<Pengaturan />} />
+
         <Route path="/register" element={<RegisterPage />} />
+
+
       </Routes>
     </>
   );
