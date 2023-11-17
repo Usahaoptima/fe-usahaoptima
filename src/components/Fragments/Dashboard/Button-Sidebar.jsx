@@ -4,9 +4,8 @@ const ButtonSidebar = (props) => {
   return (
     <>
       <li className="nav-item mb-2">
-        <a
+        <div
           className="nav-link collapsed"
-          href="#"
           data-toggle="collapse"
           data-target="#collapseTwo"
           aria-expanded="true"
@@ -14,7 +13,7 @@ const ButtonSidebar = (props) => {
         >
           <img src={image} className="me-1" />
           <span>{title}</span>
-        </a>
+        </div>
       </li>
     </>
   );
