@@ -15,7 +15,6 @@ const AppRouter = () => {
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/produk" element={<Produk />} />
         <Route path="/penjualan" element={<Penjualan />} />
@@ -23,6 +22,7 @@ const AppRouter = () => {
         <Route path="/biaya-operasional" element={<BiayaOperasional />} />
         <Route path="/laporan" element={<Laporan />} />
         <Route path="/pengaturan" element={<Pengaturan />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </>
   );
