@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Register } from "../../../services/Auth-Services";
-
+import ModalRegister from "../../Fragments/Register/Modal-Register";
 function FormContent() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -8,7 +8,7 @@ function FormContent() {
   const [passwordValidation, setPasswordValidation] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmedVisible, setConfirmedVisible] = useState(false);
-  const [isValidate, setIsValidate] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +60,7 @@ function FormContent() {
     <>
       <div className="col-md-6 mt-md">
         <form onSubmit={handlerSubmit} className="form">
-          <h2>Daftar</h2>
+          <h2 className="auth">Daftar</h2>
           <div className="form-group mt-5">
             <input
               type="text"
@@ -146,6 +146,15 @@ function FormContent() {
               </div>
             </div>
           </div>
+          <div className="form-group mt-5">
+            <div className="input-group"></div>
+            <input
+              type="checkbox"
+              checked={modalShow}
+              onChange={(e) => setModalShow(!modalShow)}
+            />
+            <span className="mx-3">apakah anda adalah pengusaha?</span>
+          </div>
           <button
             type="submit"
             className="btn btn-primary btn-lg btn-block mt-5 col-12 button-auth"
@@ -219,6 +228,7 @@ function FormContent() {
           </a>
         </div>
       </div>
+      <ModalRegister show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 }

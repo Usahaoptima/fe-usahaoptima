@@ -16,6 +16,14 @@
 }
 
 body {
+  margin: 0;
+}
+
+.auth {
+  color: var(--primary);
+}
+
+.image-pseudo {
   background-color: var(--bg);
 }
 
