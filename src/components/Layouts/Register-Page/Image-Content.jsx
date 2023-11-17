@@ -6,7 +6,11 @@ function ImageContent() {
           <h2>Daftar ke</h2>
           <p>USAHAOPTIMA</p>
           <span className="mt-3">
-            Sudah punya akun?<a href="index.html"> Login</a>
+            Sudah punya akun?
+            <a href="index.html" className="link-text">
+              {" "}
+              Login
+            </a>
           </span>
         </div>
       </div>
