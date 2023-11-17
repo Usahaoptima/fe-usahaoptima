@@ -1,8 +1,6 @@
-import ContentRegisterPage from "../../Fragments/Register/Content-Register-Page";
-
 function ImageContent() {
   return (
-    <ContentRegisterPage>
+    <>
       <div class="col-md-6 col-md-6 d-flex align-items-center">
         <div class="text-wrapper">
           <h2>Daftar ke</h2>
@@ -12,7 +10,7 @@ function ImageContent() {
           </span>
         </div>
       </div>
-    </ContentRegisterPage>
+    </>
   );
 }
 
