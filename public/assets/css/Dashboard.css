@@ -32,12 +32,12 @@ main aside img.logo {
   width: 100px;
 }
 
-main aside ul li a {
+main aside ul li div {
   color: var(--primary) !important;
   font-weight: 500 !important;
 }
 
-main aside ul li a:hover {
+main aside ul li div:hover {
   color: var(--bg) !important;
   background-color: var(--secondary) !important;
 }
