@@ -91,7 +91,7 @@ input {
 
 body::before {
     content: "";
-    background: url('/login-register-page/assets/image/image\ .png') no-repeat center center;
+    background: url('/assets/img/register/image.png') no-repeat center center;
     background-size: contain;
     width: 40%;
     height: 40%;
