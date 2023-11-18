@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
+import { useNavigate, useParams } from "react-router-dom";
+import { updateProductItem } from "../../../services/Product-Services";
 import { useForm } from "react-hook-form";
-import { postCreateProduct } from "../../../services/Product-Services";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
-const ProductCreate = () => {
+const ProductEdit = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
@@ -12,44 +15,58 @@ const ProductCreate = () => {
     formState: { isSubmitting },
   } = useForm();
 
-  const createProduct = async (data) => {
+  const closeProductUpdateForm = () => {
+    navigate("/produk");
+  };
+
+  const editProductItem = async (form) => {
     try {
-      await postCreateProduct(data);
+      await updateProductItem(id, form);
 
-      // Reset formulir setelah berhasil dikirim
-      setValue("name", "");
-      setValue("price", "");
-      setValue("quantity", "");
-
+      // Menampilkan SweetAlert Suksess :D
       Swal.fire({
         title: "Sukses!",
-        text: "Produk berhasil ditambahkan",
+        text: "Produk berhasil diupdate",
         icon: "success",
         confirmButtonText: "OK",
       });
 
       navigate("/produk");
     } catch (error) {
-      console.error("Error creating product:", error);
+      console.log("Error updating product:", error);
 
-      // Menampilkan SweetAlert error
+      // Menampilkan SweetAlert error :(
       Swal.fire({
         title: "Error!",
-        text: "Terjadi kesalahan saat menambahkan produk",
+        text: "Terjadi kesalahan saat Mengupdate produk",
         icon: "error",
         confirmButtonText: "OK",
       });
     }
   };
 
-  const closeProductForm = () => {
-    navigate("/produk");
-  };
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const response = await updateProductItem(id);
+
+        // Mengisi formulir dengan data dari API
+        setValue("name", response.name);
+        setValue("price", response.price);
+        setValue("quantity", response.quantity);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    // Panggil fungsi fetchProductData saat komponen dipasang
+    fetchProductData();
+  }, [id, setValue]);
 
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleSubmit(createProduct)();
+      handleSubmit(editProductItem)();
     }
   };
 
@@ -57,10 +74,10 @@ const ProductCreate = () => {
     <>
       <div className="section-content">
         <div className="container mt-5">
-          <h2 className="section-content-title">Tambah Produk</h2>
+          <h2 className="section-content-title">Update Produk</h2>
           <form
             id="form-produk"
-            onSubmit={handleSubmit(createProduct)}
+            onSubmit={handleSubmit(editProductItem)}
             onKeyDown={handleEnterKey}
           >
             <div className="form-group mb-3">
@@ -98,19 +115,14 @@ const ProductCreate = () => {
             </div>
             <button
               id="btn-submit"
-              type="button"
+              type="submit"
               className="btn-form justify-content-center"
-              onClick={closeProductForm}
+              onClick={closeProductUpdateForm}
             >
               Batal
             </button>
-            <button
-              id="btn-submit"
-              type="submit"
-              className="btn-form"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Submitting..." : "Submit"}
+            <button id="btn-submit" type="submit" className="btn-form">
+              {isSubmitting ? "Updating..." : "Update"}
             </button>
           </form>
         </div>
@@ -119,4 +131,4 @@ const ProductCreate = () => {
   );
 };
 
-export default ProductCreate;
+export default ProductEdit;
