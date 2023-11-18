@@ -78,7 +78,7 @@ input {
 }
 
 .text-wrapper h2 {
-  color: var(--Primary);
+  color: var(--primary);
   font-size: 50px;
   font-style: normal;
   font-weight: 500;
@@ -86,7 +86,7 @@ input {
 }
 
 .text-wrapper p {
-  color: var(--Primary);
+  color: var(--primary);
   font-size: 35px;
   font-style: normal;
   font-weight: 500;
@@ -109,7 +109,7 @@ input::placeholder {
   color: rgba(25, 167, 206, 0.4) !important;
 }
 
-.icon-wrapper a:hover svg {
+.icon-wrapper .link-text:hover svg {
   transform: scale(1.1); /* Mengubah skala ikon saat dihover */
   animation: bounce 0.5s ease infinite alternate; /* Animasi memantul */
 }

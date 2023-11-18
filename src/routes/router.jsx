@@ -9,6 +9,7 @@ import Laporan from "../pages/laporan";
 import Pengaturan from "../pages/pengaturan";
 import LandingPage from "../pages/landing-page";
 import RegisterPage from "../pages/register-page";
+import LoginPage from "../pages/login-page";
 import ProductForm from "../pages/produk-form";
 
 const AppRouter = () => {
@@ -25,6 +26,7 @@ const AppRouter = () => {
         <Route path="/pengaturan" element={<Pengaturan />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/produk-form" element={<ProductForm />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
   );
