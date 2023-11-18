@@ -10,6 +10,7 @@ import Pengaturan from "../pages/pengaturan";
 import LandingPage from "../pages/landing-page";
 import RegisterPage from "../pages/register-page";
 import ProductForm from "../pages/produk-form";
+import ProductEdit from "../pages/produk-edit-form";
 
 const AppRouter = () => {
   return (
@@ -25,6 +26,7 @@ const AppRouter = () => {
         <Route path="/pengaturan" element={<Pengaturan />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/produk-form" element={<ProductForm />} />
+        <Route path="/produk-edit-form" element={<ProductEdit />} />
       </Routes>
     </>
   );

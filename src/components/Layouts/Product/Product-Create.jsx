@@ -12,7 +12,7 @@ const ProductCreate = () => {
     formState: { isSubmitting },
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const createProduct = async (data) => {
     try {
       // Memanggil fungsi untuk membuat produk baru
       await postCreateProduct(data);
@@ -43,12 +43,27 @@ const ProductCreate = () => {
     }
   };
 
+  const closeProductForm = () => {
+    navigate("/produk");
+  };
+
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSubmit(createProduct)();
+    }
+  };
+
   return (
     <>
       <div className="section-content">
         <div className="container mt-5">
           <h2 className="section-content-title">Tambah Produk</h2>
-          <form id="form-produk" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            id="form-produk"
+            onSubmit={handleSubmit(createProduct)}
+            onKeyDown={handleEnterKey}
+          >
             <div className="form-group mb-3">
               <label htmlFor="name" className="py-2 label-title">
                 Nama Produk
@@ -82,6 +97,14 @@ const ProductCreate = () => {
                 placeholder="Masukkan Stok Produk"
               />
             </div>
+            <button
+              id="btn-submit"
+              type="button"
+              className="btn-form justify-content-center"
+              onClick={closeProductForm}
+            >
+              Batal
+            </button>
             <button
               id="btn-submit"
               type="submit"
