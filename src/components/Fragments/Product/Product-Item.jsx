@@ -8,7 +8,7 @@ const ProductItem = (props) => {
   const navigate = useNavigate();
 
   const openEditProduct = () => {
-    navigate("/produk-edit-form");
+    navigate(`/produk-edit-form/${id}`);
   };
 
   const handleDeleteProduct = async () => {

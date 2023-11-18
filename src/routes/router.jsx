@@ -26,7 +26,7 @@ const AppRouter = () => {
         <Route path="/pengaturan" element={<Pengaturan />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/produk-form" element={<ProductForm />} />
-        <Route path="/produk-edit-form" element={<ProductEdit />} />
+        <Route path="/produk-edit-form/:id" element={<ProductEdit />} />
       </Routes>
     </>
   );

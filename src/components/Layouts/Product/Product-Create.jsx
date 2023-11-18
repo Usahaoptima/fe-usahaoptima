@@ -14,7 +14,6 @@ const ProductCreate = () => {
 
   const createProduct = async (data) => {
     try {
-      // Memanggil fungsi untuk membuat produk baru
       await postCreateProduct(data);
 
       // Reset formulir setelah berhasil dikirim

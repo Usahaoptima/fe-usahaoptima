@@ -27,7 +27,7 @@ const getProductItem = async () => {
 const updateProductItem = async (id, product) => {
   try {
     const url = `${BASE_URL_API}/api/v1/menu-produk/${id}`;
-    const response = await axios.put(url, { product });
+    const response = await axios.put(url, product);
     return response.data;
   } catch (err) {
     console.log(err);
