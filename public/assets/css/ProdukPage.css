@@ -84,6 +84,13 @@ section#produk table thead th.th {
   font-weight: 500;
 }
 
+#btn-submit {
+  margin-top: 12px;
+  margin-right: 16px;
+  width: 113px;
+  height: 44px;
+}
+
 /* Media Query */
 
 /* `sm` applies to x-small devices (portrait phones, less than 576px) */

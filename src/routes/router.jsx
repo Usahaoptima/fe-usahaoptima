@@ -11,6 +11,7 @@ import LandingPage from "../pages/landing-page";
 import RegisterPage from "../pages/register-page";
 import LoginPage from "../pages/login-page";
 import ProductForm from "../pages/produk-form";
+import ProductEdit from "../pages/produk-edit-form";
 
 const AppRouter = () => {
   return (
