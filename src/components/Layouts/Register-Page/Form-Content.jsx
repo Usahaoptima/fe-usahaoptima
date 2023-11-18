@@ -64,7 +64,7 @@ function FormContent() {
           <div className="form-group mt-5">
             <input
               type="text"
-              className="form-control"
+              className="form-control inputs"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
@@ -78,7 +78,7 @@ function FormContent() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
+              className="form-control inputs"
               placeholder="Email"
               autoComplete="email@auto.complete"
               required
@@ -89,7 +89,7 @@ function FormContent() {
             <div className="input-group">
               <input
                 type={passwordVisible ? "text" : "password"}
-                className="form-control"
+                className="form-control inputs"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -121,7 +121,7 @@ function FormContent() {
               <input
                 type={confirmedVisible ? "text" : "password"}
                 id="confirmed"
-                className="form-control"
+                className="form-control inputs"
                 value={passwordValidation}
                 onChange={(e) => setPasswordValidation(e.target.value)}
                 placeholder="Konfirmasi Password"
@@ -146,10 +146,11 @@ function FormContent() {
               </div>
             </div>
           </div>
-          <div className="form-group mt-5">
+          <div className="form-group mt-5 checkbox-auth">
             <div className="input-group"></div>
             <input
               type="checkbox"
+              className="inputs"
               checked={modalShow}
               onChange={(e) => setModalShow(!modalShow)}
             />
