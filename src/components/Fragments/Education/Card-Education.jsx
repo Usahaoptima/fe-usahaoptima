@@ -1,22 +1,19 @@
 import PropTypes from "prop-types";
 
-const CardEducation = ({ imageSrc, altText, title, description }) => {
+import "../../../../public/assets/css/EducationPage.css";
+
+const CardEducation = ({ imageSrc, alt, title, description }) => {
   return (
     <div className="col-md-4">
-      <div className="card edu-item">
-        <img
-          loading="lazy"
-          src={imageSrc}
-          className="card-img-top"
-          alt={altText}
-        />
-        <div className="card-body">
-          <h3 className="card-title">{title}</h3>
-          <p className="card-text">{description}</p>
-          <a href="./articles/index.html" className="btn btn-primary">
-            Read more
-          </a>
+      <div className="edu-item">
+        <div className="edu-image">
+          <img loading="lazy" src={imageSrc} alt={alt} />
         </div>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <a href="/menu-manajemen-keuangan" className="btn">
+          Read more
+        </a>
       </div>
     </div>
   );
@@ -24,7 +21,7 @@ const CardEducation = ({ imageSrc, altText, title, description }) => {
 
 CardEducation.propTypes = {
   imageSrc: PropTypes.string.isRequired,
-  altText: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
