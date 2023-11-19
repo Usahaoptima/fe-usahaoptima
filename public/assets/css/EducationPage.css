@@ -1,0 +1,158 @@
+/* Education Start */
+
+/* Section heading */
+
+.edu-section h1 {
+  color: var(--primary);
+  font-size: 3rem;
+  font-weight: 500;
+  max-width: 598px;
+  margin-left: 10px;
+}
+
+/* Highlighted sidebar item */
+main aside ul li.active a {
+  color: var(--bg) !important;
+  background-color: var(--secondary);
+}
+
+.edu-section h2 {
+  color: var(--primary);
+  font-size: 2.25rem;
+  font-weight: 500;
+  max-width: 766px;
+  margin-left: 10px;
+  margin-top: 20px;
+  height: 100%;
+}
+
+/* Individual education items */
+.edu-item {
+  border: 1px solid var(--primary);
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Education item image */
+.edu-image img {
+  object-fit: cover;
+  width: 100%;
+  max-width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+/* Education item heading */
+.edu-item h3 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+/* Education item description */
+.edu-item p {
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+/* Read more button */
+.edu-item a {
+  color: var(--primary);
+  font-size: 1.125rem;
+  font-weight: 500;
+  width: 150px;
+  border: 1px solid var(--primary);
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+/* Hover effect on the button */
+.edu-item a:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Education End */
+
+/* Education Article Start */
+
+.cards {
+  border-radius: 8px;
+  border: 1px solid black;
+  background-color: #f6f1f1;
+  display: flex;
+  width: 100%;
+  height: 90%;
+  max-width: 500px;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.card-title {
+  color: var(--primary) !important;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 9px;
+}
+
+.card-body p {
+  text-align: justify;
+}
+
+.color {
+  color: var(--primary);
+}
+
+.pub-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 0;
+}
+
+.pub-date span {
+  order: 1;
+}
+
+.article-title {
+  transition: color 0.3s !important;
+}
+
+.article-title:hover {
+  color: var(--secondary) !important;
+}
+
+/* Education Article End */
+
+/* Education Article Page Start */
+
+.banner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 70% !important; */
+}
+
+.article-page .color {
+  color: var(--primary) !important;
+}
+
+.article-page p {
+  color: var(--primary) !important;
+}
+
+/* Education Article Page End */
