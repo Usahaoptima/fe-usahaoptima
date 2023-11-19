@@ -9,7 +9,21 @@ function FormContent() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmedVisible, setConfirmedVisible] = useState(false);
   const [modalShow, setModalShow] = useState(false);
+  const [checkbox, setCheckbox] = useState(false);
+  const [idBusiness, setIdBusiness] = useState("");
 
+  const handleCheckbox = () => {
+    setCheckbox(!checkbox);
+    setModalShow(true);
+  };
+
+  const pasingIdBusinessValueToModal = (value) => {
+    setIdBusiness(value);
+  };
+
+  const pasingCheckboxValueToModal = (value) => {
+    setCheckbox(value);
+  };
   const handlerSubmit = async (e) => {
     e.preventDefault();
     const uppercase = /[A-Z]/;
@@ -45,7 +59,7 @@ function FormContent() {
 
     const resRegister = await Register(data);
     if (resRegister) {
-      console.log("dapat");
+      console.log(resRegister);
     }
   };
 
@@ -152,7 +166,7 @@ function FormContent() {
               type="checkbox"
               className="inputs"
               checked={modalShow}
-              onChange={(e) => setModalShow(!modalShow)}
+              onChange={(e) => handleCheckbox()}
             />
             <span className="mx-3">apakah anda adalah pengusaha?</span>
           </div>
@@ -229,7 +243,12 @@ function FormContent() {
           </a>
         </div>
       </div>
-      <ModalRegister show={modalShow} onHide={() => setModalShow(false)} />
+      <ModalRegister
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        idBusiness={pasingIdBusinessValueToModal}
+        checkbox={pasingCheckboxValueToModal}
+      />
     </>
   );
 }
