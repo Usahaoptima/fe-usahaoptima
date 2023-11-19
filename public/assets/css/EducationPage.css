@@ -99,7 +99,7 @@ main aside ul li.active a {
   flex-direction: column;
 }
 
-.card-title {
+.card-title-edu {
   color: var(--primary) !important;
   font-size: 20px;
   font-weight: 500;
