@@ -60,6 +60,7 @@ function FormContent() {
     const resRegister = await Register(data);
     if (resRegister) {
       console.log(resRegister);
+      window.location.href = "/login";
     }
   };
 

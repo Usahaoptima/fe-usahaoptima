@@ -37,6 +37,14 @@ function ModalRegister(props) {
               <option value="barang">Barang</option>
             </select>
 
+            <textarea
+              name="business_description"
+              id="business_description"
+              cols="30"
+              rows="10"
+              className="form-control my-3"
+            ></textarea>
+
             <button type="submit" className="btn btn-primary send">
               Send
             </button>
