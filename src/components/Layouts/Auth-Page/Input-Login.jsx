@@ -28,9 +28,12 @@ function InputLogin() {
 
     const resLogin = await Login(dataLogin);
     if (resLogin) {
-      console.log(resLogin.data);
       Cookies.set("access_token", resLogin.data.access_token);
       Cookies.set("refresh_token", resLogin.data.refresh_token);
+      window.location.href = "/dashboard";
+    } else {
+      console.log("gagal login");
+      setUsername("");
     }
   };
 
