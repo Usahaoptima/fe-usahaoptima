@@ -51,9 +51,9 @@ const ProductEdit = () => {
         const response = await updateProductItem(id);
 
         // Mengisi formulir dengan data dari API
-        setValue("name", response.name);
-        setValue("price", response.price);
-        setValue("quantity", response.quantity);
+        setValue("product_name", response.data.product_name);
+        setValue("price", response.data.price);
+        setValue("quantity", response.data.quantity);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -87,7 +87,7 @@ const ProductEdit = () => {
               <input
                 type="text"
                 className="form-control"
-                {...register("name", { required: true })}
+                {...register("product_name", { required: true })}
                 placeholder="Masukkan Nama Produk"
               />
             </div>

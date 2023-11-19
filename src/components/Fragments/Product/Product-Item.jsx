@@ -4,15 +4,15 @@ import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
 const ProductItem = (props) => {
-  const { id, name, price, quantity } = props.product;
+  const { _id, product_name, price, quantity } = props.product;
   const navigate = useNavigate();
 
   const openEditProduct = () => {
-    navigate(`/produk-edit-form/${id}`);
+    navigate(`/produk-edit-form/${_id}`);
   };
 
   const handleDeleteProduct = async () => {
-    const productId = id;
+    const productId = _id;
 
     const isConfirmed = await Swal.fire({
       title: "Apakah Anda yakin?",
@@ -47,8 +47,8 @@ const ProductItem = (props) => {
   return (
     <>
       <tr>
-        <td className="td">{id}</td>
-        <td className="td">{name}</td>
+        <td className="td">{_id}</td>
+        <td className="td">{product_name}</td>
         <td className="td">{price}</td>
         <td className="td">{quantity}</td>
         <td>
