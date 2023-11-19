@@ -31,7 +31,7 @@ const CardMenu = ({ article }) => {
             to={`/article/${article.id}`}
             className="text-decoration-none article-title"
           >
-            <h2 className="card-title text-center text-decoration-none title mb-2 article-title">
+            <h2 className="card-title-edu text-center text-decoration-none title mb-2 article-title">
               {article.title}
             </h2>
           </Link>
