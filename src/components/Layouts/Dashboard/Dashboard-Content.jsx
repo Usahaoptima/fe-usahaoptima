@@ -22,7 +22,7 @@ const DashboardContent = () => {
 
         <section className="mt-5 d-flex gap-3 justify-content-center dashboard-card">
           <CardDashboard
-            image="../public/assets/img/icons/pemasukan.png"
+            image="assets/img/icons/pemasukan.png"
             title="Pemasukan Hari Ini"
             description="Jumat 8 September 2023"
             quantity="Rp. 300.000"
