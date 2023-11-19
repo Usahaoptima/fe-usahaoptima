@@ -7,13 +7,13 @@ function InputLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const handlePasswordVisible = (field) => {
+  const handlePasswordVisible = () => {
     setPasswordVisible(!passwordVisible);
   };
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
-    if (!username && !email && !password && !passwordValidation) {
+    if (!username && !email && !password) {
       console.log("hadeuh isi dulu");
       return;
     }
@@ -22,12 +22,12 @@ function InputLogin() {
   return (
     <>
       <div className="col-md-6 mt-md">
-        <form id="form" className="form">
+        <form id="form" className="form" onSubmit={handlerSubmit}>
           <h2>Login</h2>
           <div className="form-group mt-5">
             <input
               type="text"
-              className="form-control"
+              className="form-control inputs"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
@@ -39,7 +39,7 @@ function InputLogin() {
             <div className="input-group">
               <input
                 type={passwordVisible ? "text" : "password"}
-                className="form-control"
+                className="form-control inputs"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -64,7 +64,7 @@ function InputLogin() {
                 </span>
               </div>
             </div>
-            <div className="mt-4 text-right register">
+            <div className="mt-4 mr-3 text-right register">
               <Link to="/" className="link-text my-3">
                 Lupa Password?
               </Link>
@@ -72,7 +72,7 @@ function InputLogin() {
           </div>
           <button
             type="submit"
-            className="btn btn-primary btn-lg btn-block mt-3 "
+            className="btn btn-primary btn-lg btn-block mt-5 col-12 button-auth"
           >
             Login
           </button>
