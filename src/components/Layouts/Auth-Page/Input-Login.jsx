@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Login } from "../../../services/Auth-Services";
+import Cookies from "js-cookie";
 
 import React from "react";
 
@@ -13,9 +15,22 @@ function InputLogin() {
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
+
     if (!username && !email && !password) {
       console.log("hadeuh isi dulu");
       return;
+    }
+
+    const dataLogin = {
+      username: username,
+      password: password,
+    };
+
+    const resLogin = await Login(dataLogin);
+    if (resLogin) {
+      console.log(resLogin.data);
+      Cookies.set("access_token", resLogin.data.access_token);
+      Cookies.set("refresh_token", resLogin.data.refresh_token);
     }
   };
 
