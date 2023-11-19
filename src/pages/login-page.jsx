@@ -1,8 +1,8 @@
 import React from "react";
-import HeaderRegisterPage from "../components/Layouts/Register-Page/Header-Register-Page";
+import HeaderRegisterPage from "../components/Layouts/Auth-Page/Header-Register-Page";
 import "../../public/assets/css/RegisterPage.css";
-import ImageContent from "../components/Layouts/Register-Page/Image-Content-Login";
-import InputLogin from "../components/Layouts/Register-Page/Input-Login";
+import ImageContent from "../components/Layouts/Auth-Page/Image-Content-Login";
+import InputLogin from "../components/Layouts/Auth-Page/Input-Login";
 function registerpage() {
   return (
     <>
