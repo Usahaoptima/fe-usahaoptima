@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const BASE_URL_API = "https://6528eeb055b137ddc83de793.mockapi.io";
+const BASE_URL_API = "http://localhost:3000/api/v1";
 
 const postCreateProduct = async (data) => {
   try {
-    const url = `${BASE_URL_API}/api/v1/menu-produk`;
+    const url = `${BASE_URL_API}/product`;
     const response = await axios.post(url, data);
     return response.data;
   } catch (err) {
@@ -15,9 +15,9 @@ const postCreateProduct = async (data) => {
 
 const getProductItem = async () => {
   try {
-    const url = `${BASE_URL_API}/api/v1/menu-produk`;
+    const url = `${BASE_URL_API}/product`;
     const response = await axios.get(url);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.log(err);
     return null;
@@ -26,7 +26,7 @@ const getProductItem = async () => {
 
 const updateProductItem = async (id, product) => {
   try {
-    const url = `${BASE_URL_API}/api/v1/menu-produk/${id}`;
+    const url = `${BASE_URL_API}/product/${id}`;
     const response = await axios.put(url, product);
     return response.data;
   } catch (err) {
@@ -37,7 +37,7 @@ const updateProductItem = async (id, product) => {
 
 const DeleteProductItem = async (id) => {
   try {
-    const url = `${BASE_URL_API}/api/v1/menu-produk/${id}`;
+    const url = `${BASE_URL_API}/product/${id}`;
     const response = await axios.delete(url);
     return response.data;
   } catch (err) {

@@ -17,7 +17,7 @@ const ProductCreate = () => {
       await postCreateProduct(data);
 
       // Reset formulir setelah berhasil dikirim
-      setValue("name", "");
+      setValue("product_name", "");
       setValue("price", "");
       setValue("quantity", "");
 
@@ -70,7 +70,7 @@ const ProductCreate = () => {
               <input
                 type="text"
                 className="form-control"
-                {...register("name", { required: true })}
+                {...register("product_name", { required: true })}
                 placeholder="Masukkan Nama Produk"
               />
             </div>
