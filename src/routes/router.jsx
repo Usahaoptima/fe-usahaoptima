@@ -12,6 +12,7 @@ import RegisterPage from "../pages/register-page";
 import LoginPage from "../pages/login-page";
 import ProductForm from "../pages/produk-form";
 import ProductEdit from "../pages/produk-edit-form";
+import MenuEdukasi from "../pages/artikel-menu";
 
 const AppRouter = () => {
   return (
@@ -29,6 +30,7 @@ const AppRouter = () => {
         <Route path="/produk-form" element={<ProductForm />} />
         <Route path="/produk-edit-form/:id" element={<ProductEdit />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/menu-manajemen-keuangan" element={<MenuEdukasi />} />
       </Routes>
     </>
   );
