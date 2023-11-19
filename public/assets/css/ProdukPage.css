@@ -104,10 +104,17 @@ section#produk table thead th.th {
   }
 
   .section-content {
-    height: 100vh;
+    height: 140vh;
   }
 
   .hr {
     margin-top: 150px !important;
+  }
+}
+
+/* Media Query for width between 580px and 615px */
+@media (min-width: 575px) and (max-width: 615px) {
+  .section-content {
+    height: 120vh;
   }
 }
