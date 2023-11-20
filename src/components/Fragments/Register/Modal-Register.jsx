@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { RegisterBusiness } from "../../../services/Auth-Services";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 function ModalRegister(props) {
   const { onHide, checkbox, idbusiness, onSubmit, role } = props;
@@ -20,9 +23,29 @@ function ModalRegister(props) {
       business_description: businessDescription,
     };
 
+    try {
+    } catch (error) {}
+
     const resRegisterBusiness = await RegisterBusiness(data);
 
-    if (resRegisterBusiness) {
+    if (resRegisterBusiness.statusCode === 401) {
+      MySwal.fire({
+        icon: "error",
+        title: "Register business gagal",
+        text: resRegisterBusiness.message,
+      });
+      setBusinessName("");
+    }
+
+    if (resRegisterBusiness.statusCode === 400) {
+      MySwal.fire({
+        icon: "error",
+        title: "Register business gagal",
+        text: resRegisterBusiness.message,
+      });
+    }
+
+    if (resRegisterBusiness.statusCode === 201) {
       console.log(resRegisterBusiness);
       checkbox(true);
       role("admin");
@@ -58,6 +81,7 @@ function ModalRegister(props) {
               className="form-control my-3"
               placeholder="Nama Bisnis"
               value={businessName}
+              required
               onChange={(e) => setBusinessName(e.target.value)}
             />
             <label htmlFor="business_type">Pilih Tipe Bisnis Mu</label>
@@ -66,6 +90,7 @@ function ModalRegister(props) {
               className="form-control my-3"
               value={businessType}
               onChange={(e) => setBusinessType(e.target.value)}
+              required
             >
               <option value="">Click Untuk Memilih</option>
               <option value="jasa">Jasa</option>
@@ -81,6 +106,7 @@ function ModalRegister(props) {
               className="form-control my-3"
               value={businessDescription}
               onChange={(e) => setBusinessDescription(e.target.value)}
+              required
             ></textarea>
 
             <button type="submit" className="btn btn-primary send">
