@@ -13,6 +13,17 @@ const Register = async (data) => {
   }
 };
 
+const RegisterBusiness = async (data) => {
+  try {
+    const url = `${BASE_URL_API}/register/business`;
+    const response = await axios.post(url, data);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
 const Login = async (data) => {
   try {
     const url = `${BASE_URL_API}/login`;
@@ -24,4 +35,4 @@ const Login = async (data) => {
   }
 };
 
-export { Register, Login };
+export { Register, Login, RegisterBusiness };

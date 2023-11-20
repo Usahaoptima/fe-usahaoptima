@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Register } from "../../../services/Auth-Services";
 import ModalRegister from "../../Fragments/Register/Modal-Register";
+
 function FormContent() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -10,20 +11,13 @@ function FormContent() {
   const [confirmedVisible, setConfirmedVisible] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [checkbox, setCheckbox] = useState(false);
-  const [idBusiness, setIdBusiness] = useState("");
+  const [idBusiness, setIdBusiness] = useState("none");
+  const [roleUser, setRoleUser] = useState("karyawan");
 
   const handleCheckbox = () => {
-    setCheckbox(!checkbox);
     setModalShow(true);
   };
 
-  const pasingIdBusinessValueToModal = (value) => {
-    setIdBusiness(value);
-  };
-
-  const pasingCheckboxValueToModal = (value) => {
-    setCheckbox(value);
-  };
   const handlerSubmit = async (e) => {
     e.preventDefault();
     const uppercase = /[A-Z]/;
@@ -32,14 +26,14 @@ function FormContent() {
     const lowercasePassword = password.toLowerCase();
     const lowercaseConfirmed = passwordValidation.toLowerCase();
 
-    if (!username && !email && !password && !passwordValidation) {
+    if (!username || !email || !password || !passwordValidation) {
       console.log("hadeuh isi dulu");
       return;
     }
 
     if (
-      !uppercase.test(password) &&
-      !digit.test(password) &&
+      !uppercase.test(password) ||
+      !digit.test(password) ||
       !symbol.test(password)
     ) {
       console.log("hadeuh validasin yang bener napa");
@@ -51,10 +45,15 @@ function FormContent() {
       return;
     }
 
+    console.log(idBusiness);
+
     const data = {
       username: username,
       password: password,
       email: email,
+      active: checkbox,
+      role: roleUser,
+      business_id: idBusiness,
     };
 
     const resRegister = await Register(data);
@@ -166,7 +165,7 @@ function FormContent() {
             <input
               type="checkbox"
               className="inputs"
-              checked={modalShow}
+              checked={checkbox}
               onChange={(e) => handleCheckbox()}
             />
             <span className="mx-3">apakah anda adalah pengusaha?</span>
@@ -246,9 +245,13 @@ function FormContent() {
       </div>
       <ModalRegister
         show={modalShow}
-        onHide={() => setModalShow(false)}
-        idBusiness={pasingIdBusinessValueToModal}
-        checkbox={pasingCheckboxValueToModal}
+        onHide={() => {
+          setModalShow(false), setCheckbox(checkbox);
+        }}
+        onSubmit={() => setModalShow(false)}
+        idbusiness={(value) => setIdBusiness(value)}
+        checkbox={(value) => setCheckbox(value)}
+        role={(value) => setRoleUser(value)}
       />
     </>
   );
