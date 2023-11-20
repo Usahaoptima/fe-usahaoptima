@@ -18,8 +18,8 @@ const Header = () => {
             </form>
 
             <div className="d-flex gap-3">
-              <img src="assets/img/icons/info.png" alt="" />
-              <img src="assets/img/icons/lonceng.png" alt="" />
+              <img src="/assets/img/icons/info.png" alt="" />
+              <img src="/assets/img/icons/lonceng.png" alt="" />
             </div>
 
             <div className="flex-shrink-0 dropdown ms-3">
@@ -30,7 +30,7 @@ const Header = () => {
                 aria-expanded="false"
               >
                 <img
-                  src="assets/img/dashboard/avatar.png"
+                  src="/assets/img/dashboard/avatar.png"
                   alt="mdo"
                   width="32"
                   height="32"
@@ -41,7 +41,7 @@ const Header = () => {
                 <li>
                   <a className="dropdown-item" href="#">
                     <img
-                      src="assets/img/dashboard/avatar.png"
+                      src="/assets/img/dashboard/avatar.png"
                       alt="mdo"
                       width="32"
                       height="32"
@@ -57,7 +57,7 @@ const Header = () => {
                 <li>
                   <a className="dropdown-item" href="#">
                     <img
-                      src="assets/img/icons/settings.png"
+                      src="/assets/img/icons/settings.png"
                       alt="mdo"
                       width="18"
                       height="18"
@@ -70,7 +70,7 @@ const Header = () => {
                 <li>
                   <a id="logout" className="dropdown-item" href="#">
                     <img
-                      src="assets/img/icons/signout.png"
+                      src="/assets/img/icons/signout.png"
                       alt="mdo"
                       width="18"
                       height="18"
