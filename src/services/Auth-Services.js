@@ -8,8 +8,7 @@ const Register = async (data) => {
     const response = await axios.post(url, data);
     return response.data;
   } catch (err) {
-    console.log(err);
-    return null;
+    return err.response.data;
   }
 };
 
@@ -19,8 +18,7 @@ const RegisterBusiness = async (data) => {
     const response = await axios.post(url, data);
     return response.data;
   } catch (err) {
-    console.log(err);
-    return null;
+    return err.response.data;
   }
 };
 
@@ -30,8 +28,7 @@ const Login = async (data) => {
     const response = await axios.post(url, data);
     return response.data;
   } catch (err) {
-    console.log(err);
-    return null;
+    return err.response.data;
   }
 };
 

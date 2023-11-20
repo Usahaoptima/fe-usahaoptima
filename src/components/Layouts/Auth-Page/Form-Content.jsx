@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Register } from "../../../services/Auth-Services";
 import ModalRegister from "../../Fragments/Register/Modal-Register";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 function FormContent() {
   const [username, setUsername] = useState("");
@@ -18,6 +21,17 @@ function FormContent() {
     setModalShow(true);
   };
 
+  useEffect(() => {
+    const access_token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)access_token\s*=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
+
+    if (access_token) {
+      window.location.href = "/dashboard";
+    }
+  }, [history]);
+
   const handlerSubmit = async (e) => {
     e.preventDefault();
     const uppercase = /[A-Z]/;
@@ -27,7 +41,11 @@ function FormContent() {
     const lowercaseConfirmed = passwordValidation.toLowerCase();
 
     if (!username || !email || !password || !passwordValidation) {
-      console.log("hadeuh isi dulu");
+      MySwal.fire({
+        icon: "error",
+        title: "Registrasi Gagal",
+        text: "Data Belum lengkap, mohon check lagi",
+      });
       return;
     }
 
@@ -36,12 +54,24 @@ function FormContent() {
       !digit.test(password) ||
       !symbol.test(password)
     ) {
-      console.log("hadeuh validasin yang bener napa");
+      MySwal.fire({
+        icon: "error",
+        title: "Registrasi Gagal",
+        text: "Password Harus berisikan minimal 1 huruf kapital, numerik dan symbol",
+      });
+      setPassword("");
+      setPasswordValidation("");
       return;
     }
 
     if (lowercasePassword !== lowercaseConfirmed) {
-      console.log("password gassama");
+      MySwal.fire({
+        icon: "error",
+        title: "Registrasi Gagal",
+        text: "Password Tidak Sama",
+      });
+      setPassword("");
+      setPasswordValidation("");
       return;
     }
 
@@ -56,10 +86,42 @@ function FormContent() {
       business_id: idBusiness,
     };
 
-    const resRegister = await Register(data);
-    if (resRegister) {
-      console.log(resRegister);
-      window.location.href = "/login";
+    try {
+      const resRegister = await Register(data);
+      console.log(resRegister.statusCode);
+
+      if (resRegister.statusCode === 401) {
+        MySwal.fire({
+          icon: "error",
+          title: "Register gagal",
+          text: resRegister.message,
+        });
+      }
+
+      if (resRegister.statusCode === 500) {
+        MySwal.fire({
+          icon: "error",
+          title: "Register gagal",
+          text: resRegister.message,
+        });
+      }
+
+      if (resRegister.statusCode === 201) {
+        MySwal.fire({
+          icon: "success",
+          title: "Registrasi Berhasil",
+          text: resRegister.data.message,
+        }).then(() => {
+          // Redirect ke halaman login setelah menutup SweetAlert
+          window.location.href = "/login";
+        });
+      }
+    } catch (error) {
+      MySwal.fire({
+        icon: "error",
+        title: "Gagal Mendaftar",
+        text: error,
+      });
     }
   };
 

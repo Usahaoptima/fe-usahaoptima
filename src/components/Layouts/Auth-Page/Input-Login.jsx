@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Login } from "../../../services/Auth-Services";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 import React from "react";
 
@@ -13,11 +16,26 @@ function InputLogin() {
     setPasswordVisible(!passwordVisible);
   };
 
+  useEffect(() => {
+    const access_token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)access_token\s*=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
+
+    if (access_token) {
+      window.location.href = "/dashboard";
+    }
+  }, [history]);
+
   const handlerSubmit = async (e) => {
     e.preventDefault();
 
     if (!username && !email && !password) {
-      console.log("hadeuh isi dulu");
+      MySwal.fire({
+        icon: "error",
+        title: "Login Gagal",
+        text: "Data Belum lengkap, mohon check lagi",
+      });
       return;
     }
 
@@ -27,21 +45,59 @@ function InputLogin() {
     };
 
     const resLogin = await Login(dataLogin);
-    if (resLogin) {
-      Cookies.set("access_token", resLogin.data.access_token);
-      Cookies.set("refresh_token", resLogin.data.refresh_token);
-      window.location.href = "/dashboard";
-    } else {
-      console.log("gagal login");
-      setUsername("");
+
+    if (resLogin.statusCode === 400) {
+      MySwal.fire({
+        icon: "error",
+        title: "Login Gagal",
+        text: resLogin.message,
+      });
     }
+
+    if (resLogin.statusCode === 401) {
+      MySwal.fire({
+        icon: "error",
+        title: "Login Gagal",
+        text: resLogin.message,
+      });
+    }
+
+    if (resLogin.statusCode === 402) {
+      MySwal.fire({
+        icon: "error",
+        title: resLogin.message,
+        text: `berikan kode: ${resLogin.user_id}`,
+      });
+    }
+
+    if (resLogin.statusCode === 500) {
+      MySwal.fire({
+        icon: "error",
+        title: "Login Gagal",
+        text: resLogin.message,
+      });
+    }
+
+    if (resLogin) {
+      MySwal.fire({
+        icon: "success",
+        title: "Login berhasil",
+        text: resLogin.message,
+      }).then(() => {
+        Cookies.set("access_token", resLogin.data.access_token);
+        Cookies.set("refresh_token", resLogin.data.refresh_token);
+        window.location.href = "/dashboard";
+      });
+    }
+    setUsername("");
+    setPassword("");
   };
 
   return (
     <>
       <div className="col-md-6 mt-md">
-        <form id="form" className="form" onSubmit={handlerSubmit}>
-          <h2>Login</h2>
+        <form id="form" className="form " onSubmit={handlerSubmit}>
+          <h2 className="auth">Login</h2>
           <div className="form-group mt-5">
             <input
               type="text"
