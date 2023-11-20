@@ -116,7 +116,8 @@ body {
   z-index: -2;
 }
 
-.inputs::placeholder {
+.inputs::placeholder,
+.label-auth {
   color: rgba(25, 167, 206, 0.4) !important;
 }
 

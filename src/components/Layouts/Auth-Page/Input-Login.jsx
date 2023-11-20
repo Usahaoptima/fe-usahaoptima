@@ -46,6 +46,20 @@ function InputLogin() {
 
     const resLogin = await Login(dataLogin);
 
+    console.log(resLogin.statusCode);
+
+    if (resLogin.statusCode === 200) {
+      MySwal.fire({
+        icon: "success",
+        title: "Login berhasil",
+        text: resLogin.message,
+      }).then(() => {
+        Cookies.set("access_token", resLogin.data.access_token);
+        window.location.href = "/dashboard";
+      });
+      setUsername("");
+      setPassword("");
+    }
     if (resLogin.statusCode === 400) {
       MySwal.fire({
         icon: "error",
@@ -62,14 +76,6 @@ function InputLogin() {
       });
     }
 
-    if (resLogin.statusCode === 402) {
-      MySwal.fire({
-        icon: "error",
-        title: resLogin.message,
-        text: `berikan kode: ${resLogin.user_id}`,
-      });
-    }
-
     if (resLogin.statusCode === 500) {
       MySwal.fire({
         icon: "error",
@@ -77,20 +83,6 @@ function InputLogin() {
         text: resLogin.message,
       });
     }
-
-    if (resLogin) {
-      MySwal.fire({
-        icon: "success",
-        title: "Login berhasil",
-        text: resLogin.message,
-      }).then(() => {
-        Cookies.set("access_token", resLogin.data.access_token);
-        Cookies.set("refresh_token", resLogin.data.refresh_token);
-        window.location.href = "/dashboard";
-      });
-    }
-    setUsername("");
-    setPassword("");
   };
 
   return (
