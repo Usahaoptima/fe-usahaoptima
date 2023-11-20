@@ -1,4 +1,15 @@
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    Cookies.remove("access_token");
+    Cookies.remove("refresh_token");
+    navigate("/login");
+  };
+
   return (
     <>
       <header className="px-3 pt-3 d-flex justify-content-between align-items-center">
@@ -68,7 +79,12 @@ const Header = () => {
                 </li>
 
                 <li>
-                  <a id="logout" className="dropdown-item" href="#">
+                  <a
+                    id="logout"
+                    className="dropdown-item"
+                    href="#"
+                    onClick={handleSignOut}
+                  >
                     <img
                       src="/assets/img/icons/signout.png"
                       alt="mdo"
