@@ -43,7 +43,6 @@ const ProdukContent = () => {
           <table className="table table-hover mt-4">
             <thead>
               <tr>
-                <TableProduct tableName="#" />
                 <TableProduct tableName="Nama Produk" />
                 <TableProduct tableName="Harga" />
                 <TableProduct tableName="Stok Produk" />
