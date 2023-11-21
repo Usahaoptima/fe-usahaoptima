@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { DeleteProductItem } from "../../../services/Product-Services";
+import { deleteProductItem } from "../../../services/Product-Services";
 import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
@@ -26,7 +26,7 @@ const ProductItem = (props) => {
 
     if (isConfirmed.isConfirmed) {
       try {
-        await DeleteProductItem(productId);
+        await deleteProductItem(productId);
 
         Swal.fire("Dihapus!", "Produk telah dihapus.", "success").then(() => {
           window.location.reload();
@@ -47,7 +47,6 @@ const ProductItem = (props) => {
   return (
     <>
       <tr>
-        <td className="td">{_id}</td>
         <td className="td">{product_name}</td>
         <td className="td">{price}</td>
         <td className="td">{quantity}</td>

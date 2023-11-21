@@ -2,9 +2,9 @@ import axios from "axios";
 
 const BASE_URL_API = "http://localhost:3000/api/v1";
 
-const postCreateProduct = async (data) => {
+const postCreateSales = async (data) => {
   try {
-    const url = `${BASE_URL_API}/product`;
+    const url = `${BASE_URL_API}/sales`;
     const response = await axios.post(url, data);
     return response.data;
   } catch (err) {
@@ -13,9 +13,9 @@ const postCreateProduct = async (data) => {
   }
 };
 
-const getProductItem = async () => {
+const getSalesItem = async () => {
   try {
-    const url = `${BASE_URL_API}/product`;
+    const url = `${BASE_URL_API}/sales`;
     const response = await axios.get(url);
     return response.data.data;
   } catch (err) {
@@ -24,10 +24,10 @@ const getProductItem = async () => {
   }
 };
 
-const updateProductItem = async (id, product) => {
+const updateSalesItem = async (id, sales) => {
   try {
-    const url = `${BASE_URL_API}/product/${id}`;
-    const response = await axios.put(url, product);
+    const url = `${BASE_URL_API}/sales/${id}`;
+    const response = await axios.put(url, sales);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -35,9 +35,9 @@ const updateProductItem = async (id, product) => {
   }
 };
 
-const deleteProductItem = async (id) => {
+const deleteSalesItem = async (id) => {
   try {
-    const url = `${BASE_URL_API}/product/${id}`;
+    const url = `${BASE_URL_API}/sales/${id}`;
     const response = await axios.delete(url);
     return response.data;
   } catch (err) {
@@ -46,9 +46,4 @@ const deleteProductItem = async (id) => {
   }
 };
 
-export {
-  postCreateProduct,
-  getProductItem,
-  updateProductItem,
-  deleteProductItem,
-};
+export { postCreateSales, getSalesItem, updateSalesItem, deleteSalesItem };
