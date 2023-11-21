@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TableProduct from "../../Fragments/Product/Table-Product";
 import Loader from "../../Elements/Loader";
+import PenjualanItem from "../../Fragments/Penjualan/Penjualan-item";
+import { getSalesItem } from "../../../services/Penjualan-Services";
 
 const PenjualanContent = () => {
+  const [sales, setSales] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchPenjualanItem = async () => {
+    setIsLoading(true);
+
+    const resPenjualanItem = await getSalesItem();
+    setSales(resPenjualanItem);
+
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchPenjualanItem();
+  }, []);
   return (
     <>
       <section id="produk" className="mt-4">
@@ -20,10 +37,14 @@ const PenjualanContent = () => {
                 <TableProduct tableName="Action" />
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              {sales.map((penjualan, index) => {
+                return <PenjualanItem key={index} penjualan={penjualan} />;
+              })}
+            </tbody>
           </table>
 
-          <Loader />
+          <Loader isShow={isLoading} />
 
           <ul className="pagination justify-content-end gap-3 m-3">
             <li className="page-item">
