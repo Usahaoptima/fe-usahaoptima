@@ -94,12 +94,12 @@ const PenjualanCreate = () => {
               <LabelForm name="Nama Produk" />
               <select
                 className="form-control"
-                {...register("product_id", { required: true })}
+                {...register("product_name", { required: true })}
               >
                 <option value="">Pilih Nama Produk</option>
                 {products.map((product, index) => (
                   <option key={index} value={product.id}>
-                    {product._id}
+                    {product.product_name}
                   </option>
                 ))}
               </select>

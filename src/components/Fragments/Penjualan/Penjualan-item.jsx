@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
 const PenjualanItem = (props) => {
-  const { _id, sales_name, product_id, quantity, total_price } =
+  const { _id, sales_name, product_name, quantity, total_price } =
     props.penjualan;
 
   const handleDeleteSales = async () => {
@@ -50,7 +50,7 @@ const PenjualanItem = (props) => {
     <>
       <tr>
         <td className="td">{sales_name}</td>
-        <td className="td">{product_id}</td>
+        <td className="td">{product_name}</td>
         <td className="td">{quantity}</td>
         <td className="td">{total_price}</td>
         <td>
