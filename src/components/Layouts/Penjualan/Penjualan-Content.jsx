@@ -3,10 +3,12 @@ import TableProduct from "../../Fragments/Product/Table-Product";
 import Loader from "../../Elements/Loader";
 import PenjualanItem from "../../Fragments/Penjualan/Penjualan-item";
 import { getSalesItem } from "../../../services/Penjualan-Services";
+import { useNavigate } from "react-router-dom";
 
 const PenjualanContent = () => {
   const [sales, setSales] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const fetchPenjualanItem = async () => {
     setIsLoading(true);
@@ -20,11 +22,15 @@ const PenjualanContent = () => {
   useEffect(() => {
     fetchPenjualanItem();
   }, []);
+
+  const openAddPenjualan = () => {
+    navigate("/penjualan-form");
+  };
   return (
     <>
       <section id="produk" className="mt-4">
         <div className="produk-button">
-          <button>Tambah Data Penjualan</button>
+          <button onClick={openAddPenjualan}>Tambah Data Penjualan</button>
         </div>
         <div className="section-content">
           <table className="table table-hover mt-4">
