@@ -1,12 +1,33 @@
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [token, setToken] = useState(null);
+
+  const getUsername = (token) => {
+    const decode = jwtDecode(token);
+    const user = decode.data.user;
+    setUsername(user);
+    return user;
+  };
+
+  useEffect(() => {
+    const storedToken = Cookies.get("access_token");
+    if (storedToken) {
+      setToken(storedToken);
+      getUsername(storedToken);
+    } else {
+      // Tidak bisa login jika tidak ada token :p
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const handleSignOut = () => {
     Cookies.remove("access_token");
-    Cookies.remove("refresh_token");
     navigate("/login");
   };
 
@@ -58,7 +79,7 @@ const Header = () => {
                       height="32"
                       className="rounded-circle me-2"
                     />
-                    <span id="usernamePlaceholder"></span>
+                    <span id="usernamePlaceholder">{username}</span>
                   </a>
                 </li>
 
