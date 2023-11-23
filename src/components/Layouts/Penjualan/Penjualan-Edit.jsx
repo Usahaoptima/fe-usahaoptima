@@ -1,13 +1,14 @@
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { useNavigate, useParams } from "react-router-dom";
 import LabelForm from "../../Elements/Label-Form";
-import { postCreateSales } from "../../../services/Penjualan-Services";
-import { getProductItem } from "../../../services/Product-Services";
+import { updateSalesItem } from "../../../services/Penjualan-Services";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { getProductItem } from "../../../services/Product-Services";
 
-const PenjualanCreate = () => {
+const PenjualanEdit = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
@@ -15,47 +16,35 @@ const PenjualanCreate = () => {
     formState: { isSubmitting },
   } = useForm();
 
-  const [products, setProducts] = useState([]);
+  const [prodcuts, setProducts] = useState([]);
 
-  const CreateSales = async (data) => {
+  const closePenjualanUpdateForm = () => {
+    navigate("/penjualan");
+  };
+
+  const editSalesItem = async (form) => {
     try {
-      await postCreateSales(data);
+      await updateSalesItem(id, form);
 
-      // Reset formulir setelah berhasil dikirim
-      setValue("sales_name", "");
-      setValue("product_name", "");
-      setValue("quantity", "");
-      setValue("total_price", "");
-
+      // Menampilkan SweetAlert Suksess :D
       Swal.fire({
         title: "Sukses!",
-        text: "Produk berhasil ditambahkan",
+        text: "Produk berhasil diupdate",
         icon: "success",
         confirmButtonText: "OK",
       });
 
       navigate("/penjualan");
     } catch (error) {
-      console.error("Error creating product:", error);
+      console.log("Error updating product:", error);
 
-      // Menampilkan SweetAlert error
+      // Menampilkan SweetAlert error :(
       Swal.fire({
         title: "Error!",
-        text: "Terjadi kesalahan saat menambahkan produk",
+        text: "Terjadi kesalahan saat Mengupdate produk",
         icon: "error",
         confirmButtonText: "OK",
       });
-    }
-  };
-
-  const closePenjualanForm = () => {
-    navigate("/penjualan");
-  };
-
-  const handleEnterKey = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleSubmit(CreateSales)();
     }
   };
 
@@ -72,6 +61,31 @@ const PenjualanCreate = () => {
     fetchProductsData();
   }, []);
 
+  useEffect(() => {
+    const fetchSalesData = async () => {
+      try {
+        const response = await updateSalesItem(id);
+
+        // Mengisi formulir dengan data dari API
+        setValue("sales_name", response.data.sales_name);
+        setValue("product_name", response.data.product_name);
+        setValue("quantity", response.data.quantity);
+        setValue("total_price", response.data.total_price);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    // Panggil fungsi fetchSalesData saat komponen dipasang
+    fetchSalesData();
+  }, [id, setValue]);
+
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSubmit(editSalesItem)();
+    }
+  };
   return (
     <>
       <div className="section-content">
@@ -79,7 +93,7 @@ const PenjualanCreate = () => {
           <h2 className="section-content-title">Tambah Data Penjualan</h2>
           <form
             id="form-produk"
-            onSubmit={handleSubmit(CreateSales)}
+            onSubmit={handleSubmit(editSalesItem)}
             onKeyDown={handleEnterKey}
           >
             <div className="form-group mb-3">
@@ -98,7 +112,7 @@ const PenjualanCreate = () => {
                 {...register("product_name", { required: true })}
               >
                 <option value="">Pilih Nama Produk</option>
-                {products.map((product, index) => (
+                {prodcuts.map((product, index) => (
                   <option key={index} value={product.id}>
                     {product.product_name}
                   </option>
@@ -127,7 +141,7 @@ const PenjualanCreate = () => {
               id="btn-submit"
               type="button"
               className="btn-form justify-content-center"
-              onClick={closePenjualanForm}
+              onClick={closePenjualanUpdateForm}
             >
               Batal
             </button>
@@ -137,7 +151,7 @@ const PenjualanCreate = () => {
               className="btn-form"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {isSubmitting ? "Updating..." : "Update"}
             </button>
           </form>
         </div>
@@ -146,4 +160,4 @@ const PenjualanCreate = () => {
   );
 };
 
-export default PenjualanCreate;
+export default PenjualanEdit;
