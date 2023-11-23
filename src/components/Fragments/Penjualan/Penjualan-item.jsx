@@ -1,10 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { deleteSalesItem } from "../../../services/Penjualan-Services";
 import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
 const PenjualanItem = (props) => {
+  const navigate = useNavigate();
   const { _id, sales_name, product_name, quantity, total_price } =
     props.penjualan;
+
+  const openEditPenjualan = () => {
+    navigate(`/penjualan-edit-form/${_id}`);
+  };
 
   const handleDeleteSales = async () => {
     const PenjualanId = _id;
@@ -54,7 +60,10 @@ const PenjualanItem = (props) => {
         <td className="td">{quantity}</td>
         <td className="td">{total_price}</td>
         <td>
-          <i className="fa-regular fa-pen-to-square edit"></i>
+          <i
+            className="fa-regular fa-pen-to-square edit"
+            onClick={openEditPenjualan}
+          ></i>
           <i
             className="fa-regular fa-trash-can delete"
             onClick={handleDeleteSales}

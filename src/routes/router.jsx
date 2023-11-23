@@ -16,6 +16,7 @@ import MenuEdukasi from "../pages/artikel-menu";
 import ArticleDetail from "../pages/artikel-detail";
 import VerifyPage from "../components/Fragments/user/VerifyPage";
 import PenjualanForm from "../pages/penjualan-form";
+import PenjualanEdit from "../pages/penjualan-edit-form";
 
 const AppRouter = () => {
   return (
@@ -37,6 +38,7 @@ const AppRouter = () => {
         <Route path="/article/:id" element={<ArticleDetail />} />
         <Route path="/user/:id/verify/:token" element={<VerifyPage />} />
         <Route path="/penjualan-form" element={<PenjualanForm />} />
+        <Route path="/penjualan-edit-form/:id" element={<PenjualanEdit />} />
       </Routes>
     </>
   );
