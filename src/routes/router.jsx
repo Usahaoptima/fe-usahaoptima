@@ -6,7 +6,7 @@ import Penjualan from "../pages/penjualan";
 import Edukasi from "../pages/edukasi";
 import BiayaOperasional from "../pages/biaya-operasional";
 import Laporan from "../pages/laporan";
-import Pengaturan from "../pages/pengaturan";
+import PengaturanUser from "../pages/pengaturan-user";
 import LandingPage from "../pages/landing-page";
 import RegisterPage from "../pages/register-page";
 import LoginPage from "../pages/login-page";
@@ -29,7 +29,7 @@ const AppRouter = () => {
         <Route path="/edukasi" element={<Edukasi />} />
         <Route path="/biaya-operasional" element={<BiayaOperasional />} />
         <Route path="/laporan" element={<Laporan />} />
-        <Route path="/pengaturan" element={<Pengaturan />} />
+        <Route path="/user-role" element={<PengaturanUser />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/produk-form" element={<ProductForm />} />
         <Route path="/produk-edit-form/:id" element={<ProductEdit />} />

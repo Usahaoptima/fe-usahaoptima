@@ -74,8 +74,10 @@ const Sidebar = () => {
               title="Pengaturan"
               dropdownImage1="/assets/img/icons/user-role.png"
               dropdownTitle1="User Role"
+              link1="/user-role"
               dropdownImage2="/assets/img/icons/add-article.png"
               dropdownTitle2="Tambah Artikel"
+              link2="/add-article"
             />
           </ul>
         </div>

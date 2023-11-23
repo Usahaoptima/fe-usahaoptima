@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import { Link } from "react-router-dom";
 const ButtonDropdownSidebar = (props) => {
   const {
     id1,
@@ -11,6 +11,8 @@ const ButtonDropdownSidebar = (props) => {
     dropdownTitle1,
     dropdownImage2,
     dropdownTitle2,
+    link1,
+    link2,
   } = props;
   return (
     <>
@@ -41,14 +43,26 @@ const ButtonDropdownSidebar = (props) => {
       </li>
       <div className="collapse aside-dropdown" id={id2}>
         <ul className="dropdown-list">
-          <li className="pb-3 aside-list">
-            <img src={dropdownImage1} className="me-1" />
-            <span>{dropdownTitle1}</span>
-          </li>
-          <li className="pb-3 aside-list">
-            <img src={dropdownImage2} className="me-1" />
-            <span>{dropdownTitle2}</span>
-          </li>
+          <Link
+            to={link1}
+            style={{ textDecoration: "none" }}
+            className="dropdown-color"
+          >
+            <li className="pb-3 aside-list">
+              <img src={dropdownImage1} className="me-1" />
+              <span>{dropdownTitle1}</span>
+            </li>
+          </Link>
+          <Link
+            to={link2}
+            style={{ textDecoration: "none" }}
+            className="dropdown-color"
+          >
+            <li className="pb-3 aside-list">
+              <img src={dropdownImage2} className="me-1" />
+              <span>{dropdownTitle2}</span>
+            </li>
+          </Link>
         </ul>
       </div>
     </>
