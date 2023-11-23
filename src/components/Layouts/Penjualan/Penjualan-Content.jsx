@@ -45,6 +45,7 @@ const PenjualanContent = () => {
                 <TableProduct tableName="Nama Produk" />
                 <TableProduct tableName="Quantity" />
                 <TableProduct tableName="Total Harga" />
+                <TableProduct tableName="Tanggal" />
                 <TableProduct tableName="Action" />
               </tr>
             </thead>
