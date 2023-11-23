@@ -5,8 +5,22 @@ import Swal from "sweetalert2";
 /* eslint-disable react/prop-types */
 const PenjualanItem = (props) => {
   const navigate = useNavigate();
-  const { _id, sales_name, product_name, quantity, total_price } =
+  const { _id, sales_name, product_name, quantity, total_price, created_date } =
     props.penjualan;
+
+  const formatTanggal = (tanggalISO) => {
+    const tanggal = new Date(tanggalISO);
+
+    const hari = ("0" + tanggal.getDate()).slice(-2);
+    const bulan = ("0" + (tanggal.getMonth() + 1)).slice(-2);
+    const tahun = tanggal.getFullYear();
+
+    return `${hari}-${bulan}-${tahun}`;
+  };
+
+  const formatRupiah = (harga) => {
+    return `Rp. ${harga.toLocaleString("id-ID")}`;
+  };
 
   const openEditPenjualan = () => {
     navigate(`/penjualan-edit-form/${_id}`);
@@ -58,7 +72,8 @@ const PenjualanItem = (props) => {
         <td className="td">{sales_name}</td>
         <td className="td">{product_name}</td>
         <td className="td">{quantity}</td>
-        <td className="td">{total_price}</td>
+        <td className="td">{formatRupiah(total_price)}</td>
+        <td className="td">{formatTanggal(created_date)}</td>
         <td>
           <i
             className="fa-regular fa-pen-to-square edit"
