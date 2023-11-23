@@ -8,16 +8,7 @@ const Register = async (data) => {
     const response = await axios.post(url, data);
     return response.data;
   } catch (err) {
-    return err.response.data;
-  }
-};
-
-const RegisterBusiness = async (data) => {
-  try {
-    const url = `${BASE_URL_API}/register/business`;
-    const response = await axios.post(url, data);
-    return response.data;
-  } catch (err) {
+    console.log(err);
     return err.response.data;
   }
 };
@@ -32,4 +23,4 @@ const Login = async (data) => {
   }
 };
 
-export { Register, Login, RegisterBusiness };
+export { Register, Login };
