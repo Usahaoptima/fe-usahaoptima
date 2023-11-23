@@ -1,18 +1,17 @@
+import Footer from "../components/Layouts/Dashboard/Footer";
 import Header from "../components/Layouts/Dashboard/Header";
 import Sidebar from "../components/Layouts/Dashboard/Sidebar";
+import PenjualanCreate from "../components/Layouts/Penjualan/Penjualan-Create";
 
-import Footer from "../components/Layouts/Dashboard/Footer";
-import PenjualanContent from "../components/Layouts/Penjualan/Penjualan-Content";
-
-const penjualan = () => {
+const ProductForm = () => {
   return (
     <>
       <main>
         <Sidebar />
         <section id="dashboard" style={{ width: "100%" }}>
           <Header />
-          <PenjualanContent />
-          <hr className="mt-5" />
+          <PenjualanCreate />
+          <hr className="hr" />
           <Footer />
         </section>
       </main>
@@ -20,4 +19,4 @@ const penjualan = () => {
   );
 };
 
-export default penjualan;
+export default ProductForm;

@@ -4,6 +4,7 @@ import { updateProductItem } from "../../../services/Product-Services";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
+import LabelForm from "../../Elements/Label-Form";
 
 const ProductEdit = () => {
   const navigate = useNavigate();
@@ -81,9 +82,7 @@ const ProductEdit = () => {
             onKeyDown={handleEnterKey}
           >
             <div className="form-group mb-3">
-              <label htmlFor="name" className="py-2 label-title">
-                Nama Produk
-              </label>
+              <LabelForm name="Nama Produk" />
               <input
                 type="text"
                 className="form-control"
@@ -92,9 +91,7 @@ const ProductEdit = () => {
               />
             </div>
             <div className="form-group mb-3">
-              <label htmlFor="price" className="py-2 label-title">
-                Harga Produk
-              </label>
+              <LabelForm name="Harga Produk" />
               <input
                 type="number"
                 className="form-control"
@@ -103,9 +100,7 @@ const ProductEdit = () => {
               />
             </div>
             <div className="form-group mb-3">
-              <label htmlFor="quantity" className="py-2 label-title">
-                Stok Produk
-              </label>
+              <LabelForm name=" Stok Produk" />
               <input
                 type="number"
                 className="form-control"
