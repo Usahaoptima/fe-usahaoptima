@@ -14,6 +14,7 @@ import ProductForm from "../pages/produk-form";
 import ProductEdit from "../pages/produk-edit-form";
 import MenuEdukasi from "../pages/artikel-menu";
 import ArticleDetail from "../pages/artikel-detail";
+import VerifyPage from "../components/Fragments/user/VerifyPage";
 import PenjualanForm from "../pages/penjualan-form";
 
 const AppRouter = () => {
@@ -34,6 +35,7 @@ const AppRouter = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/menu-manajemen-keuangan" element={<MenuEdukasi />} />
         <Route path="/article/:id" element={<ArticleDetail />} />
+        <Route path="/user/:id/verify/:token" element={<VerifyPage />} />
         <Route path="/penjualan-form" element={<PenjualanForm />} />
       </Routes>
     </>

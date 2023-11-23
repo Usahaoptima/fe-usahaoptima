@@ -134,3 +134,7 @@ body {
     transform: translateY(-10px);
   }
 }
+
+.verification {
+  background: var(--primary);
+}
