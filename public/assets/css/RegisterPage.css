@@ -22,7 +22,8 @@ body {
   color: var(--primary);
 }
 
-.image-pseudo {
+.image-pseudo,
+.wrapper-full {
   background-color: #f6f1f1;
   display: flex;
   flex-direction: column;

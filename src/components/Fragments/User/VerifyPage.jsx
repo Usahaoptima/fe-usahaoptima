@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 function VerifyPage() {
   const [validUrl, setValidUrl] = useState(false);
   const param = useParams();
+
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:5000/api/user/verify/${param.id}/${param.token}`;
+        const url = `http://localhost:3000/api/v1/auth/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);
@@ -20,7 +21,7 @@ function VerifyPage() {
   }, [param]);
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center verification">
+    <div className="d-flex flex-column justify-content-center align-items-center verification wrapper-full">
       <Fragment>
         {validUrl ? (
           <>
