@@ -11,6 +11,10 @@ const ProductItem = (props) => {
     navigate(`/produk-edit-form/${_id}`);
   };
 
+  const formatRupiah = (harga) => {
+    return `Rp. ${harga.toLocaleString("id-ID")}`;
+  };
+
   const handleDeleteProduct = async () => {
     const productId = _id;
 
@@ -48,7 +52,7 @@ const ProductItem = (props) => {
     <>
       <tr>
         <td className="td">{product_name}</td>
-        <td className="td">{price}</td>
+        <td className="td">{formatRupiah(price)}</td>
         <td className="td">{quantity}</td>
         <td>
           <i

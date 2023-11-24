@@ -9,6 +9,8 @@ const PenjualanContent = () => {
   const [sales, setSales] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   const fetchPenjualanItem = async () => {
     setIsLoading(true);
@@ -22,6 +24,9 @@ const PenjualanContent = () => {
   useEffect(() => {
     fetchPenjualanItem();
   }, []);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   const openAddPenjualan = () => {
     navigate("/penjualan-form");
@@ -40,11 +45,12 @@ const PenjualanContent = () => {
                 <TableProduct tableName="Nama Produk" />
                 <TableProduct tableName="Quantity" />
                 <TableProduct tableName="Total Harga" />
+                <TableProduct tableName="Tanggal" />
                 <TableProduct tableName="Action" />
               </tr>
             </thead>
             <tbody>
-              {sales.map((penjualan, index) => {
+              {sales.slice(startIndex, endIndex).map((penjualan, index) => {
                 return <PenjualanItem key={index} penjualan={penjualan} />;
               })}
             </tbody>
@@ -53,11 +59,25 @@ const PenjualanContent = () => {
           <Loader isShow={isLoading} />
 
           <ul className="pagination justify-content-end gap-3 m-3">
-            <li className="page-item">
-              <button className="page-link">Previous</button>
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous
+              </button>
             </li>
-            <li className="page-item">
-              <button className="page-link">Next</button>
+            <li
+              className={`page-item ${
+                endIndex >= sales.length ? "disabled" : ""
+              }`}
+            >
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
+                Next
+              </button>
             </li>
           </ul>
         </div>
