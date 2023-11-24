@@ -13,6 +13,7 @@
   --secondary: #146c94;
   --bg: #fff;
   --alternatif: #afd3e2;
+  --background-color: #f6f1f1;
 }
 
 main {
@@ -298,4 +299,26 @@ main section#dashboard footer div.icons i {
 
 .dropdown-color {
   color: #19AFDC !important;
+}
+
+.title-table {
+  color: var(--secondary) !important;
+  font-family: Urbanist;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.title-container::before {
+  content: "";
+  width: 228px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background-color: var(--background-color);
+  position: absolute;
+  z-index: -1;
+  
+
 }
