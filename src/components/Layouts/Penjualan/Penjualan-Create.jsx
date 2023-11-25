@@ -25,7 +25,6 @@ const PenjualanCreate = () => {
       setValue("sales_name", "");
       setValue("product_name", "");
       setValue("quantity", "");
-      setValue("total_price", "");
 
       Swal.fire({
         title: "Sukses!",
@@ -119,8 +118,8 @@ const PenjualanCreate = () => {
               <input
                 type="number"
                 className="form-control"
-                {...register("total_price", { required: true })}
-                placeholder="Masukkan total harga"
+                placeholder="Total harga sudah dihitung secara otomatis"
+                disabled={true}
               />
             </div>
             <button

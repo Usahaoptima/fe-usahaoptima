@@ -31,6 +31,7 @@ const PenjualanContent = () => {
   const openAddPenjualan = () => {
     navigate("/penjualan-form");
   };
+
   return (
     <>
       <section id="produk" className="mt-4">
@@ -38,23 +39,25 @@ const PenjualanContent = () => {
           <button onClick={openAddPenjualan}>Tambah Data Penjualan</button>
         </div>
         <div className="section-content">
-          <table className="table table-hover mt-4">
-            <thead>
-              <tr>
-                <TableProduct tableName="Nama Pembeli" />
-                <TableProduct tableName="Nama Produk" />
-                <TableProduct tableName="Quantity" />
-                <TableProduct tableName="Total Harga" />
-                <TableProduct tableName="Tanggal" />
-                <TableProduct tableName="Action" />
-              </tr>
-            </thead>
-            <tbody>
-              {sales.slice(startIndex, endIndex).map((penjualan, index) => {
-                return <PenjualanItem key={index} penjualan={penjualan} />;
-              })}
-            </tbody>
-          </table>
+          <div className="table-responsive">
+            <table className="table table-hover mt-4">
+              <thead>
+                <tr>
+                  <TableProduct tableName="Nama Pembeli" />
+                  <TableProduct tableName="Nama Produk" />
+                  <TableProduct tableName="Quantity" />
+                  <TableProduct tableName="Total Harga" />
+                  <TableProduct tableName="Tanggal" />
+                  <TableProduct tableName="Action" />
+                </tr>
+              </thead>
+              <tbody>
+                {sales.slice(startIndex, endIndex).map((penjualan, index) => {
+                  return <PenjualanItem key={index} penjualan={penjualan} />;
+                })}
+              </tbody>
+            </table>
+          </div>
 
           <Loader isShow={isLoading} />
 
