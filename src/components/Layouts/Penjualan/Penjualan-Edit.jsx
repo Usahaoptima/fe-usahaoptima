@@ -61,24 +61,23 @@ const PenjualanEdit = () => {
     fetchProductsData();
   }, []);
 
-  useEffect(() => {
-    const fetchSalesData = async () => {
-      try {
-        const response = await updateSalesItem(id);
+  // useEffect(() => {
+  //   const fetchSalesData = async () => {
+  //     try {
+  //       const response = await updateSalesItem(id);
 
-        // Mengisi formulir dengan data dari API
-        setValue("sales_name", response.data.sales_name);
-        setValue("product_name", response.data.product_name);
-        setValue("quantity", response.data.quantity);
-        setValue("total_price", response.data.total_price);
-      } catch (error) {
-        console.error("Error fetching product data:", error);
-      }
-    };
+  //       // Mengisi formulir dengan data dari API
+  //       setValue("sales_name", response.data.sales_name);
+  //       setValue("product_name", response.data.product_name);
+  //       setValue("quantity", response.data.quantity);
+  //     } catch (error) {
+  //       console.error("Error fetching product data:", error);
+  //     }
+  //   };
 
-    // Panggil fungsi fetchSalesData saat komponen dipasang
-    fetchSalesData();
-  }, [id, setValue]);
+  //   // Panggil fungsi fetchSalesData saat komponen dipasang
+  //   fetchSalesData();
+  // }, [id, setValue]);
 
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
@@ -90,13 +89,13 @@ const PenjualanEdit = () => {
     <>
       <div className="section-content">
         <div className="container mt-5">
-          <h2 className="section-content-title">Tambah Data Penjualan</h2>
+          <h2 className="section-content-title">Edit Data Penjualan</h2>
           <form
             id="form-produk"
             onSubmit={handleSubmit(editSalesItem)}
             onKeyDown={handleEnterKey}
           >
-            <div className="form-group mb-3">
+            {/* <div className="form-group mb-3">
               <LabelForm name="Nama Pembeli" />
               <input
                 type="text"
@@ -104,7 +103,7 @@ const PenjualanEdit = () => {
                 {...register("sales_name", { required: true })}
                 placeholder="Masukkan Nama Pembeli"
               />
-            </div>
+            </div> */}
             <div>
               <LabelForm name="Nama Produk" />
               <select
@@ -126,15 +125,6 @@ const PenjualanEdit = () => {
                 className="form-control"
                 {...register("quantity", { required: true })}
                 placeholder="Masukkan jumlah produk"
-              />
-            </div>
-            <div className="form-group mb-3">
-              <LabelForm name=" Total Harga" />
-              <input
-                type="number"
-                className="form-control"
-                {...register("total_price", { required: true })}
-                placeholder="Masukkan total harga"
               />
             </div>
             <button
