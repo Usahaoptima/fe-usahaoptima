@@ -17,6 +17,7 @@ import ArticleDetail from "../pages/artikel-detail";
 import VerifyPage from "../components/Fragments/user/VerifyPage";
 import PenjualanForm from "../pages/penjualan-form";
 import PenjualanEdit from "../pages/penjualan-edit-form";
+import UserForm from "../pages/tambah-user";
 
 const AppRouter = () => {
   return (
@@ -30,6 +31,7 @@ const AppRouter = () => {
         <Route path="/biaya-operasional" element={<BiayaOperasional />} />
         <Route path="/laporan" element={<Laporan />} />
         <Route path="/user-role" element={<PengaturanUser />} />
+        <Route path="/user-form" element={<UserForm />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/produk-form" element={<ProductForm />} />
         <Route path="/produk-edit-form/:id" element={<ProductEdit />} />

@@ -16,4 +16,30 @@ const getUsers = async (token) => {
   }
 };
 
-export { getUsers };
+const postUser = async (data, token) => {
+  try {
+    const url = `${BASE_URL_API}`;
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+      "Content-Type": "application/json",
+    };
+    const response = await axios.post(url, data, config);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+const deleteUser = async (id) => {
+  try {
+    const url = `${BASE_URL_API}/${id}`;
+    const response = await axios.delete(url);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+export { getUsers, postUser, deleteUser };

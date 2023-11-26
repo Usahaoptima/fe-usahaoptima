@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteSalesItem } from "../../../services/Penjualan-Services";
+import { deleteUser } from "../../../services/User-Services";
 import Swal from "sweetalert2";
 
 function UserContent(props) {
@@ -15,7 +15,7 @@ function UserContent(props) {
 
     const isConfirmed = await Swal.fire({
       title: "Apakah Anda yakin?",
-      text: "Anda tidak akan dapat memulihkan Data penjualan ini!",
+      text: "Anda tidak akan dapat memulihkan Data user ini!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
@@ -25,9 +25,9 @@ function UserContent(props) {
 
     if (isConfirmed.isConfirmed) {
       try {
-        await deleteSalesItem(id);
+        await deleteUser(id);
 
-        Swal.fire("Dihapus!", "Data penjualan telah dihapus.", "success").then(
+        Swal.fire("Dihapus!", "Data user telah dihapus.", "success").then(
           () => {
             window.location.reload();
           }
@@ -37,13 +37,13 @@ function UserContent(props) {
 
         Swal.fire(
           "Error",
-          "Terjadi kesalahan saat menghapus  Data penjualan.",
+          "Terjadi kesalahan saat menghapus  Data user.",
           "error"
         );
       }
     } else {
       Swal.fire(
-        " Data penjualan Anda aman!",
+        " Data user Anda aman!",
         "Tidak ada perubahan yang dibuat.",
         "info"
       );
@@ -57,10 +57,6 @@ function UserContent(props) {
         <td className="td">{email}</td>
         <td className="td">{role}</td>
         <td>
-          <i
-            className="fa-regular fa-pen-to-square edit"
-            onClick={openEditUser}
-          ></i>
           <i
             className="fa-regular fa-trash-can delete"
             onClick={handleDeleteUser}
