@@ -44,7 +44,7 @@ function NavbarLandingPage() {
                 </a>
               </li>
               <li className="nav-item">
-                <Link Link to="/login" className="nav-link ml-9" role="button">
+                <Link Link to="/login" className="nav-link mx-4" role="button">
                   login
                 </Link>
               </li>
