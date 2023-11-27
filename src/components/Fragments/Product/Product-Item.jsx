@@ -12,7 +12,7 @@ const ProductItem = (props) => {
   };
 
   const formatRupiah = (harga) => {
-    return `Rp. ${harga.toLocaleString("id-ID")}`;
+    return `Rp ${harga.toLocaleString("id-ID")}`;
   };
 
   const handleDeleteProduct = async () => {
