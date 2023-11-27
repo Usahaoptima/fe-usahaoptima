@@ -76,8 +76,8 @@ const Sidebar = () => {
               dropdownTitle1="User Role"
               link1="/user-role"
               dropdownImage2="/assets/img/icons/add-article.png"
-              dropdownTitle2="Tambah Artikel"
-              link2="/add-article"
+              dropdownTitle2="User Setting"
+              link2="/user-setting"
             />
           </ul>
         </div>
