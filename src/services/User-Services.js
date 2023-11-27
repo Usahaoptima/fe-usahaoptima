@@ -42,4 +42,18 @@ const deleteUser = async (id) => {
   }
 };
 
-export { getUsers, postUser, deleteUser };
+const updateUser = async (token, data) => {
+  try {
+    const url = `${BASE_URL_API}`;
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const response = await axios.put(url, data, config);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+export { getUsers, postUser, deleteUser, updateUser };
