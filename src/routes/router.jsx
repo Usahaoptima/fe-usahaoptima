@@ -19,6 +19,7 @@ import PenjualanForm from "../pages/penjualan-form";
 import PenjualanEdit from "../pages/penjualan-edit-form";
 import UserForm from "../pages/tambah-user";
 import SettingUser from "../pages/setting-user";
+import LaporanStok from "../pages/stok";
 
 const AppRouter = () => {
   return (
@@ -43,6 +44,7 @@ const AppRouter = () => {
         <Route path="/user/:id/verify/:token" element={<VerifyPage />} />
         <Route path="/penjualan-form" element={<PenjualanForm />} />
         <Route path="/penjualan-edit-form/:id" element={<PenjualanEdit />} />
+        <Route path="/laporan-stok" element={<LaporanStok />} />
       </Routes>
     </>
   );

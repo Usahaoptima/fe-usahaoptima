@@ -36,6 +36,7 @@ const Sidebar = () => {
               dropdownTitle1="Keuangan"
               dropdownImage2="/assets/img/icons/stock.png"
               dropdownTitle2="Stok"
+              link2="/laporan-stok"
             />
 
             <Link to="/penjualan" style={{ textDecoration: "none" }}>
