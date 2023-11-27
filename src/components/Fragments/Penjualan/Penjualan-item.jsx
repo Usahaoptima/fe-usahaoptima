@@ -11,15 +11,19 @@ const PenjualanItem = (props) => {
   const formatTanggal = (tanggalISO) => {
     const tanggal = new Date(tanggalISO);
 
-    const hari = ("0" + tanggal.getDate()).slice(-2);
-    const bulan = ("0" + (tanggal.getMonth() + 1)).slice(-2);
-    const tahun = tanggal.getFullYear();
+    const formattedDate = tanggal
+      .toLocaleDateString("id-ID", {
+        month: "numeric",
+        day: "numeric",
+        year: "numeric",
+      })
+      .replace(/\//g, "-");
 
-    return `${hari}-${bulan}-${tahun}`;
+    return formattedDate;
   };
 
   const formatRupiah = (harga) => {
-    return `Rp. ${harga.toLocaleString("id-ID")}`;
+    return `Rp ${harga.toLocaleString("id-ID")}`;
   };
 
   const openEditPenjualan = () => {
