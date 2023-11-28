@@ -139,3 +139,20 @@ body {
 .verification {
   background: var(--primary);
 }
+
+.card-shadow {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.color-blue {
+  color: var(--Primary, #19A7CE);
+  font-family: Urbanist;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.color-title {
+  fill: var(--Secondary, #146C94);
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ChartComponent from "../../Elements/Chart";
 import { getTotal } from "../../../services/Report";
+import TitleTable from "../../Elements/Title-Table";
 
 const ReportChart = () => {
   const [totalPengeluaran, setTotalPengeluaran] = useState("");
@@ -33,16 +34,18 @@ const ReportChart = () => {
   return (
     <>
       <div>
-        <h2 className="mx-3 mb-4">Total Amount per Bulan</h2>
+        <TitleTable name="Data Pemasukan dan Pengeluaran" />
         <div className="container">
           <div className="d-flex flex-row align-items-center justify-content-center">
             <div className="col-lg-4 col-sm-12 col-md-5">
-              <div className="card text-center">
-                <div className="card-header">Data Pemasukan Uang</div>
+              <div className="card text-center card-shadow">
+                <div className="card-header py-3 d-flex justify-content-start color-blue">
+                  Data Pemasukan Uang
+                </div>
                 <div className="card-body p-0">
                   <ChartComponent apiUrl={apiUrlSales} />
                 </div>
-                <div className="card-footer text-body-secondary">
+                <div className="card-footer text-body-secondary d-flex justify-content-start color-blue">
                   Total Pemasukan :
                   {!totalPemasukan
                     ? "belum ada data"
@@ -51,12 +54,14 @@ const ReportChart = () => {
               </div>
             </div>
             <div className="col-lg-4 col-sm-12 col-md-5 mx-5">
-              <div className="card text-center">
-                <div className="card-header">Data Pengeluaran Uang</div>
+              <div className="card text-center card-shadow">
+                <div className="card-header py-3 d-flex justify-content-start color-blue">
+                  Data Pengeluaran Uang
+                </div>
                 <div className="card-body p-0">
                   <ChartComponent apiUrl={apiUrlExpense} />
                 </div>
-                <div className="card-footer text-body-secondary">
+                <div className="card-footer text-body-secondary d-flex justify-content-start color-blue">
                   Total Pengeluaran :
                   {!totalPengeluaran
                     ? "belum ada data"

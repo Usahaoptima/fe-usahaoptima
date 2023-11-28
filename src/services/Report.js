@@ -13,4 +13,14 @@ const getTotal = async (criteria) => {
   }
 };
 
-export { getTotal };
+const getData = async () => {
+  try {
+    const response = await axios.get(BASE_URL_API);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export { getTotal, getData };
