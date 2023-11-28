@@ -26,34 +26,6 @@ const Sidebar = () => {
               />
             </Link>
 
-            <Link to="/produk" style={{ textDecoration: "none" }}>
-              <ButtonSidebar
-                image="/assets/img/icons/produk.png"
-                title="Produk"
-              />
-            </Link>
-
-            <Link to="/penjualan" style={{ textDecoration: "none" }}>
-              <ButtonSidebar
-                image="/assets/img/icons/penjualan.png"
-                title="Penjualan"
-              />
-            </Link>
-
-            <Link to="/edukasi" style={{ textDecoration: "none" }}>
-              <ButtonSidebar
-                image="/assets/img/icons/edukasi.png"
-                title="Edukasi"
-              />
-            </Link>
-
-            <Link to="/biaya-operasional" style={{ textDecoration: "none" }}>
-              <ButtonSidebar
-                image="/assets/img/icons/biaya.png"
-                title="Biaya Operasional"
-              />
-            </Link>
-
             <ButtonDropdownSidebar
               id1="#collapseExample1"
               id2="collapseExample1"
@@ -67,6 +39,34 @@ const Sidebar = () => {
               dropdownTitle2="Stok"
               link2="/laporan-stok"
             />
+
+            <Link to="/penjualan" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="/assets/img/icons/penjualan.png"
+                title="Penjualan"
+              />
+            </Link>
+
+            <Link to="/biaya-operasional" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="/assets/img/icons/biaya.png"
+                title="Biaya Operasional"
+              />
+            </Link>
+
+            <Link to="/produk" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="/assets/img/icons/produk.png"
+                title="Produk"
+              />
+            </Link>
+
+            <Link to="/edukasi" style={{ textDecoration: "none" }}>
+              <ButtonSidebar
+                image="/assets/img/icons/edukasi.png"
+                title="Edukasi"
+              />
+            </Link>
 
             <ButtonDropdownSidebar
               id1="#collapseExample2"
