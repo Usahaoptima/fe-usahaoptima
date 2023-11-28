@@ -62,8 +62,10 @@ const Sidebar = () => {
               title="Laporan"
               dropdownImage1="/assets/img/icons/keuangan.png"
               dropdownTitle1="Keuangan"
+              link1="/laporan-keuangan"
               dropdownImage2="/assets/img/icons/stock.png"
               dropdownTitle2="Stok"
+              link2="/laporan-stok"
             />
 
             <ButtonDropdownSidebar
