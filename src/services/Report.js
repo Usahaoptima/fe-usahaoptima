@@ -2,10 +2,26 @@ import axios from "axios";
 
 const BASE_URL_API = "http://localhost:3000/api/v1/report";
 
+function getAuthTokenFromCookies() {
+  const cookies = document.cookie.split(";");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split("=");
+    if (name === "access_token") {
+      return value;
+    }
+  }
+  return null;
+}
+
+const authToken = getAuthTokenFromCookies();
+
 const getTotal = async (criteria) => {
   try {
     const url = `${BASE_URL_API}/total/${criteria}`;
-    const response = await axios.get(url);
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.get(url, config);
     return response;
   } catch (err) {
     console.log(err);
@@ -15,7 +31,10 @@ const getTotal = async (criteria) => {
 
 const getData = async () => {
   try {
-    const response = await axios.get(BASE_URL_API);
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.get(BASE_URL_API, config);
     return response;
   } catch (error) {
     console.log(error);

@@ -7,10 +7,25 @@ const ChartComponent = ({ apiUrl }) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
+  function getAuthTokenFromCookies() {
+    const cookies = document.cookie.split(";");
+    for (const cookie of cookies) {
+      const [name, value] = cookie.trim().split("=");
+      if (name === "access_token") {
+        return value;
+      }
+    }
+    return null;
+  }
+  const authToken = getAuthTokenFromCookies();
+  const config = {
+    headers: { Authorization: `Bearer ${authToken}` },
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(apiUrl);
+        const response = await axios.get(apiUrl, config);
         setChartData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
