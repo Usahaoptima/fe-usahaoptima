@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import axios from "axios";
 
-const ChartComponent = ({ apiUrl }) => {
+const ChartMonth = ({ apiUrl }) => {
   const [chartData, setChartData] = useState([]);
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
@@ -62,10 +62,10 @@ const ChartComponent = ({ apiUrl }) => {
     chartInstance.current = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: chartData.map((item) => getMonthName(item.month)),
+        labels: chartData.map((item) => item.date),
         datasets: [
           {
-            label: "Total Amount per Bulan",
+            label: "Total ",
             data: chartData.map((item) => item.totalAmount),
             backgroundColor: "rgba(75, 192, 192, 0.6)",
           },
@@ -76,7 +76,7 @@ const ChartComponent = ({ apiUrl }) => {
           x: {
             title: {
               display: true,
-              text: "Bulan",
+              text: "Tanggal",
             },
           },
           y: {
@@ -89,26 +89,6 @@ const ChartComponent = ({ apiUrl }) => {
       },
     });
   }, [chartData]);
-
-  const getMonthName = (monthNumber) => {
-    const monthNames = [
-      "Januari",
-      "Februari",
-      "Maret",
-      "April",
-      "Mei",
-      "Juni",
-      "Juli",
-      "Agustus",
-      "September",
-      "Oktober",
-      "November",
-      "Desember",
-    ];
-
-    return monthNames[monthNumber - 1] || "";
-  };
-
   return (
     <canvas
       ref={chartRef}
@@ -118,4 +98,4 @@ const ChartComponent = ({ apiUrl }) => {
   );
 };
 
-export default ChartComponent;
+export default ChartMonth;

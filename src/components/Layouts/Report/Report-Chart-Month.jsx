@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import ChartComponent from "../../Elements/Chart";
-import { getTotal } from "../../../services/Report";
+import ChartMonth from "../../Elements/Chart-Month";
+import { getTotalMonth } from "../../../services/Report";
 import TitleTable from "../../Elements/Title-Table";
+import { useParams } from "react-router-dom";
 
-const ReportChart = () => {
+const ReportChartMonth = () => {
   const [totalPengeluaran, setTotalPengeluaran] = useState("");
   const [totalPemasukan, setTotalPemasukan] = useState("");
-  const apiUrlSales = "http://localhost:3000/api/v1/report/total-sales";
-  const apiUrlExpense = "http://localhost:3000/api/v1/report/total-expense";
+  const { month } = useParams();
+  const apiUrlSales = `http://localhost:3000/api/v1/report/total-sales/${month}`;
+  const apiUrlExpense = `http://localhost:3000/api/v1/report/total-expense/${month}`;
 
   const formatCurrency = (value) => {
     if (!value) return "belum ada data";
@@ -21,8 +23,8 @@ const ReportChart = () => {
   };
 
   const getDataTotal = async () => {
-    const resTotalPemasukan = await getTotal("pemasukan");
-    const resTotalPengeluaran = await getTotal("pengeluaran");
+    const resTotalPemasukan = await getTotalMonth("pemasukan", month);
+    const resTotalPengeluaran = await getTotalMonth("pengeluaran", month);
     setTotalPemasukan(resTotalPemasukan.data.totalExpense);
     setTotalPengeluaran(resTotalPengeluaran.data.totalExpense);
   };
@@ -34,7 +36,7 @@ const ReportChart = () => {
   return (
     <>
       <div>
-        <TitleTable name="Data General" />
+        <TitleTable name="Data Bulanan" />
         <div className="container">
           <div className="d-flex flex-row align-items-center justify-content-center">
             <div className="col-lg-4 col-sm-12 col-md-5">
@@ -43,7 +45,7 @@ const ReportChart = () => {
                   Data Pemasukan Uang
                 </div>
                 <div className="card-body p-0">
-                  <ChartComponent apiUrl={apiUrlSales} />
+                  <ChartMonth apiUrl={apiUrlSales} />
                 </div>
                 <div className="card-footer text-body-secondary d-flex justify-content-start color-blue">
                   Total Pemasukan :
@@ -59,7 +61,7 @@ const ReportChart = () => {
                   Data Pengeluaran Uang
                 </div>
                 <div className="card-body p-0">
-                  <ChartComponent apiUrl={apiUrlExpense} />
+                  <ChartMonth apiUrl={apiUrlExpense} />
                 </div>
                 <div className="card-footer text-body-secondary d-flex justify-content-start color-blue">
                   Total Pengeluaran :
@@ -76,4 +78,4 @@ const ReportChart = () => {
   );
 };
 
-export default ReportChart;
+export default ReportChartMonth;

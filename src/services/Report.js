@@ -29,6 +29,34 @@ const getTotal = async (criteria) => {
   }
 };
 
+const getTotalMonth = async (criteria, month) => {
+  try {
+    const url = `${BASE_URL_API}/total/${criteria}/${month}`;
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.get(url, config);
+    return response;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+const getDataMonth = async (month) => {
+  try {
+    const url = `${BASE_URL_API}/total-month/${month}`;
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.get(url, config);
+    return response;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
 const getData = async () => {
   try {
     const config = {
@@ -42,4 +70,4 @@ const getData = async () => {
   }
 };
 
-export { getTotal, getData };
+export { getTotal, getData, getTotalMonth, getDataMonth };
