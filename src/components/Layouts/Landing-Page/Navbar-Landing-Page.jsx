@@ -5,13 +5,23 @@ function NavbarLandingPage() {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <div className="d-flex justify-content-center align-items-center mt-2">
             <img
-              src="assets/img/landing-page/Group.svg"
+              src="/assets/img/dashboard/usahaoptima.jpg"
               alt="logo"
-              height="30"
+              style={{ width: "55px", height: "55px", marginRight: "2px" }}
             />
-          </a>
+            <h4
+              style={{
+                textTransform: "uppercase",
+                fontWeight: "bolder",
+                color: "#146c94",
+                fontSize: "16px",
+              }}
+            >
+              usahaoptima
+            </h4>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -43,21 +53,23 @@ function NavbarLandingPage() {
                   Services
                 </a>
               </li>
-              <li className="nav-item">
-                <Link Link to="/login" className="nav-link mx-4" role="button">
-                  login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  Link
-                  to="/register"
-                  className="nav-link btn btn-primary"
-                  role="button"
-                >
-                  Sign Up
-                </Link>
-              </li>
+              <div className="nav-end d-flex gap-3">
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link " role="button">
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/register"
+                    className="nav-link btn btn-primary"
+                    role="button"
+                    style={{ width: "150px" }}
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+              </div>
             </ul>
           </div>
         </div>

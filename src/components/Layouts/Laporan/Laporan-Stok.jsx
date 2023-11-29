@@ -26,15 +26,17 @@ const LaporanStok = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center gap-3 flex-wrap">
-        {products.map((product, index) => (
-          <CardDashboard
-            key={index}
-            title={toPascalCase(product.product_name)}
-            description={`Harga: ${formatRupiah(product.price)}`}
-            quantity={`Quantity: ${product.quantity} Pcs`}
-          />
-        ))}
+      <div className=" dashboard-card" style={{ height: "100vh" }}>
+        <div className="d-flex justify-content-center gap-3 flex-wrap">
+          {products.map((product, index) => (
+            <CardDashboard
+              key={index}
+              title={toPascalCase(product.product_name)}
+              description={`Harga: ${formatRupiah(product.price)}`}
+              quantity={`Quantity: ${product.quantity} Pcs`}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
