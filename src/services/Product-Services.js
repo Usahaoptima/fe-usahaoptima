@@ -2,10 +2,26 @@ import axios from "axios";
 
 const BASE_URL_API = "http://localhost:3000/api/v1";
 
+function getAuthTokenFromCookies() {
+  const cookies = document.cookie.split(";");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split("=");
+    if (name === "access_token") {
+      return value;
+    }
+  }
+  return null;
+}
+
+const authToken = getAuthTokenFromCookies();
+
 const postCreateProduct = async (data) => {
   try {
     const url = `${BASE_URL_API}/product`;
-    const response = await axios.post(url, data);
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.post(url, data, config);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -16,7 +32,10 @@ const postCreateProduct = async (data) => {
 const getProductItem = async () => {
   try {
     const url = `${BASE_URL_API}/product`;
-    const response = await axios.get(url);
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.get(url, config);
     return response.data.data;
   } catch (err) {
     console.log(err);
