@@ -1,10 +1,25 @@
+import { useNavigate } from "react-router-dom";
 import "../../../../public/assets/css/OperationalCostPage.css";
 
 function CostSummary() {
+  const navigate = useNavigate();
+
+  const OpenDetailProduksi = () => {
+    navigate("/detail-produksi");
+  };
+
+  const OpenDetailKaryawan = () => {
+    navigate("/detail-karyawan");
+  };
+
+  const OpenDetailToko = () => {
+    navigate("/detail-toko");
+  };
+
   return (
     <>
       <div className="div">
-        <div className="section-title">Biaya Operasional</div>
+        <div className="section-title mt-5">Biaya Operasional</div>
         <div className="div-3">
           Transparansi Keuangan untuk Kesuksesan Bisnis Anda
         </div>
@@ -17,15 +32,33 @@ function CostSummary() {
                   <div className="div-9">
                     <div className="div-10">
                       <div className="div-11">Rp. 14.000.000</div>
-                      <div className="div-12">Toko</div>
+                      <div
+                        className="div-12"
+                        onClick={OpenDetailToko}
+                        style={{ cursor: "pointer" }}
+                      >
+                        Toko
+                      </div>
                     </div>
                     <div className="div-13">
                       <div className="div-14">Rp. 10.000.000</div>
-                      <div className="div-15">Karyawan</div>
+                      <div
+                        className="div-15"
+                        onClick={OpenDetailKaryawan}
+                        style={{ cursor: "pointer" }}
+                      >
+                        Karyawan
+                      </div>
                     </div>
                     <div className="div-16">
                       <div className="div-17">Rp. 15.000.000</div>
-                      <div className="div-18">Barang</div>
+                      <div
+                        className="div-18"
+                        onClick={OpenDetailProduksi}
+                        style={{ cursor: "pointer" }}
+                      >
+                        Barang
+                      </div>
                     </div>
                   </div>
                   <div className="div-19">
@@ -49,7 +82,13 @@ function CostSummary() {
                     <div className="column-3">
                       <div className="div-30">
                         <div className="div-31">
-                          <div className="div-32">Detail Pengeluaran</div>
+                          <div
+                            className="div-32"
+                            onClick={OpenDetailToko}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Detail Pengeluaran
+                          </div>
                           <div className="div-33">Biaya</div>
                         </div>
                         <div className="div-34">Rp. 4.000.000</div>
@@ -64,7 +103,13 @@ function CostSummary() {
             <div className="column-4">
               <div className="div-37">
                 <div className="div-38">Pembiayaan Produksi</div>
-                <div className="div-39">Detail</div>
+                <div
+                  className="div-39"
+                  onClick={OpenDetailProduksi}
+                  style={{ cursor: "pointer" }}
+                >
+                  Detail
+                </div>
                 <div className="div-40">
                   <div className="div-41">
                     <div className="div-42">Tepung Terigu</div>

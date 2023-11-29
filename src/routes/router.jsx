@@ -22,6 +22,13 @@ import SettingUser from "../pages/setting-user";
 import LaporanKeuangan from "../pages/laporan-keuangan";
 import LaporanStok from "../pages/stok";
 import LaporanBulanan from "../pages/laporan-bulanan";
+import DetailProduksi from "../pages/detail-produksi";
+import DetailProduksiForm from "../pages/detail-produksi-form";
+import DetailKaryawan from "../pages/detail-karyawan";
+import DetailKaryawanForm from "../pages/detail-karyawan-form";
+import DetailToko from "../pages/detail-toko";
+import DetailTokoForm from "../pages/detail-toko-form";
+
 const AppRouter = () => {
   return (
     <>
@@ -48,6 +55,12 @@ const AppRouter = () => {
         <Route path="/laporan-keuangan" element={<LaporanKeuangan />} />
         <Route path="/laporan-keuangan/:month" element={<LaporanBulanan />} />
         <Route path="/laporan-stok" element={<LaporanStok />} />
+        <Route path="/detail-produksi" element={<DetailProduksi />} />
+        <Route path="/detail-produksi-form" element={<DetailProduksiForm />} />
+        <Route path="/detail-karyawan" element={<DetailKaryawan />} />
+        <Route path="/detail-karyawan-form" element={<DetailKaryawanForm />} />
+        <Route path="/detail-toko" element={<DetailToko />} />
+        <Route path="/detail-toko-form" element={<DetailTokoForm />} />
       </Routes>
     </>
   );

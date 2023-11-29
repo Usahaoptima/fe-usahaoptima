@@ -1,16 +1,16 @@
 import Footer from "../components/Layouts/Dashboard/Footer";
 import Header from "../components/Layouts/Dashboard/Header";
 import Sidebar from "../components/Layouts/Dashboard/Sidebar";
-import OperationalCostPage from "../components/Layouts/Operational-Cost/Operational-Cost-Content";
+import CreateFormKaryawan from "../components/Layouts/Operational-Cost/Create-Form-Karyawan";
 
-const BiayaOperasional = () => {
+const DetailKaryawanForm = () => {
   return (
     <>
       <main>
         <Sidebar />
         <section id="dashboard" style={{ width: "100%" }}>
           <Header />
-          <OperationalCostPage />
+          <CreateFormKaryawan />
           <hr className="mt-5" />
           <Footer />
         </section>
@@ -19,4 +19,4 @@ const BiayaOperasional = () => {
   );
 };
 
-export default BiayaOperasional;
+export default DetailKaryawanForm;

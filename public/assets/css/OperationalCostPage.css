@@ -478,7 +478,6 @@
   flex-direction: column;
   line-height: normal;
   width: 41%;
-  margin-left: 20px;
 }
 @media (max-width: 991px) {
   .column-4 {
