@@ -156,3 +156,10 @@ body {
 .color-title {
   fill: var(--Secondary, #146C94);
 }
+
+.label-filter {
+  color: var(--Secondary, #146C94);
+  font-family: Urbanist;
+  font-size: 1.2rem;
+  font-weight: 600;
+}

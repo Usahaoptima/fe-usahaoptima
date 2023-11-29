@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
 import TableProduct from "../../Fragments/Product/Table-Product";
-import ReportItems from "../../Fragments/Report/Report-item.jsx";
-import ReportChart from "./Report-Chart.jsx";
+import ReportMonth from "../../Fragments/Report/Report-Month-Item.jsx";
 import TitleTable from "../../Elements/Title-Table";
 import Loader from "../../Elements/Loader";
-import { getData } from "../../../services/Report.js";
+import { getDataMonth } from "../../../services/Report.js";
 import ReportFilter from "../../Fragments/Report/Report-Filter.jsx";
+import ReportChartMonth from "./Report-Chart-Month.jsx";
+import { useParams } from "react-router-dom";
 
-function ReportContent() {
+function ReportContentMonth() {
   const [report, setReport] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { month } = useParams();
   const getDataTotal = async () => {
     setIsLoading(true);
 
-    const resGetData = await getData();
-    setReport(resGetData.data.totalAmountPerMonth);
+    const resGetData = await getDataMonth(month);
+    setReport(resGetData.data.data);
 
     console.log(report);
     setIsLoading(false);
@@ -22,25 +24,25 @@ function ReportContent() {
 
   useEffect(() => {
     getDataTotal();
-  }, []);
+  }, [month]);
   return (
     <>
       <ReportFilter />
-      <ReportChart />
+      <ReportChartMonth />
       <section id="produk" className="mt-4">
         <TitleTable name="Laporan Keuangan" />
         <div className="section-content">
           <table className="table table-hover mt-4 card-shadow">
             <thead>
               <tr>
-                <TableProduct tableName="Bulan" />
+                <TableProduct tableName="Tanggal" />
                 <TableProduct tableName="Kriteria" />
                 <TableProduct tableName="Total" />
               </tr>
             </thead>
             <tbody>
               {report.map((report, index) => {
-                return <ReportItems key={index} report={report} />;
+                return <ReportMonth key={index} report={report} />;
               })}
             </tbody>
           </table>
@@ -59,4 +61,4 @@ function ReportContent() {
   );
 }
 
-export default ReportContent;
+export default ReportContentMonth;
