@@ -20,14 +20,7 @@ body {
 
 .auth {
   color: var(--primary);
-}
-
-.image-pseudo,
-.wrapper-full {
-  background-color: #f6f1f1;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  text-transform: uppercase;
 }
 
 #toggle-icon,
@@ -47,14 +40,9 @@ body {
   box-shadow: 0px 4px 61px 0px rgba(77, 71, 195, 0.4);
 }
 
-.button-auth:hover {
-  background-color: var(--secondary) !important;
-}
-
 .inputs {
   border-radius: 8px !important;
-  background: #f0efff !important;
-  border: none !important;
+  background: #fff !important;
 }
 
 .checkbox-auth {
@@ -100,26 +88,9 @@ body {
   line-height: normal;
 }
 
-.image-pseudo::before {
-  content: "";
-  background: url("/assets/img/register/image.png") no-repeat center center;
-  background-size: contain;
-  width: 20%;
-  height: 30%;
-  position: absolute;
-  bottom: 0;
-  left: 40%;
-  transform: translateX(-50%);
-  z-index: 100;
-}
-
-.image-pseudo {
-  z-index: -2;
-}
-
 .inputs::placeholder,
 .label-auth {
-  color: rgba(25, 167, 206, 0.4) !important;
+  color: gray !important;
 }
 
 .icon-wrapper .link-text:hover svg {
@@ -145,7 +116,7 @@ body {
 }
 
 .color-blue {
-  color: var(--Primary, #19A7CE);
+  color: var(--Primary, #19a7ce);
   font-family: Urbanist;
   font-size: 16px;
   font-style: normal;
@@ -154,5 +125,16 @@ body {
 }
 
 .color-title {
-  fill: var(--Secondary, #146C94);
+  fill: var(--Secondary, #146c94);
+}
+
+@media (max-width: 991.98px) {
+  .log {
+    display: none;
+  }
+
+  .login {
+    width: 100%;
+    text-align: center;
+  }
 }

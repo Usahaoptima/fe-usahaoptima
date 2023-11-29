@@ -6,10 +6,10 @@ import InputLogin from "../components/Layouts/Auth-Page/Input-Login";
 function registerpage() {
   return (
     <>
-      <div className="image-pseudo mt-0">
+      <div className="image-pseudo mt-0" style={{ height: "100vh" }}>
         <HeaderRegisterPage />
-        <div className="container mt-5 pt-5">
-          <div className="row">
+        <div className="container p-5">
+          <div className="d-flex justify-content-center align-items-center">
             <ImageContent />
             <InputLogin />
           </div>

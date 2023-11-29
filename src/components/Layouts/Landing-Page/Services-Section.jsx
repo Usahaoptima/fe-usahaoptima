@@ -3,10 +3,10 @@ import React from "react";
 function ServicesSection() {
   return (
     <>
-      <div className="container" id="services">
+      <div className="container mt-5" id="services">
         <div className="row text-center">
           <div className="col-lg-12">
-            <div className="section-title">
+            <div className="section-title mb-5">
               <p>OUR SERVICES</p>
               <p className="subtext-heading">
                 We Provide Best Services for you
@@ -14,7 +14,7 @@ function ServicesSection() {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-lg-3 col-sm-6 text-center my-3">
             <div className="card service-item d-flex align-content-center flex-wrap">
               <svg
@@ -72,7 +72,7 @@ function ServicesSection() {
               </p>
             </div>
           </div>
-          <div className="col-lg-3 col-sm-6 text-center my-3">
+          <div className="col-lg-3 col-sm-6 text-center my-3 mb-5">
             <div className="card service-item d-flex align-content-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

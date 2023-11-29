@@ -8,7 +8,7 @@ const Sidebar = () => {
       <aside>
         <div className="d-flex flex-column flex-shrink-0 p-3">
           <a
-            href="/"
+            href="/dashboard"
             className="d-flex justify-content-center align-items-center"
           >
             <img
