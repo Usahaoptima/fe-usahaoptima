@@ -4,12 +4,22 @@ function Footer() {
       <div className="container mt-5">
         <div className="row">
           <div className="p-2 flex-grow-1 bd-highlight">
-            <div className="footer-logo">
+            <div className="d-flex align-items-center mt-2">
               <img
-                src="assets/img/landing-page/Group.svg"
+                src="/assets/img/dashboard/usahaoptima.jpg"
                 alt="logo"
-                height="30"
+                style={{ width: "55px", height: "55px", marginRight: "2px" }}
               />
+              <h4
+                style={{
+                  textTransform: "uppercase",
+                  fontWeight: "bolder",
+                  color: "#146c94",
+                  fontSize: "16px",
+                }}
+              >
+                usahaoptima
+              </h4>
             </div>
             <div className="footer-text mt-2">
               <p>Designed and built by the USAHAOPTIMA team.</p>
@@ -19,8 +29,9 @@ function Footer() {
             <div className="footer-social">
               <a href="">
                 <svg
+                  className="px-2"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="30"
+                  width="50"
                   height="51"
                   viewBox="0 0 50 51"
                   fill="none"
@@ -33,8 +44,9 @@ function Footer() {
               </a>
               <a href="">
                 <svg
+                  className="px-2"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="30"
+                  width="50"
                   height="51"
                   viewBox="0 0 50 51"
                   fill="none"
@@ -47,8 +59,9 @@ function Footer() {
               </a>
               <a href="">
                 <svg
+                  className="px-2"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="30"
+                  width="50"
                   height="51"
                   viewBox="0 0 50 51"
                   fill="none"
@@ -61,8 +74,9 @@ function Footer() {
               </a>
               <a href="https://github.com/helvizar/usahaoptima">
                 <svg
+                  className="px-2"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="30"
+                  width="50"
                   height="51"
                   viewBox="0 0 50 51"
                   fill="none"
@@ -76,7 +90,8 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="row mt-5 text-center r">
+        <hr />
+        <div className="row mb-3 text-center">
           <div className="col-12 footer-copyright">
             &copy; 2023 Usaha Optima. All rights reserved.
           </div>

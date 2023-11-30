@@ -31,6 +31,10 @@ const Header = () => {
     navigate("/login");
   };
 
+  const handlePengaturan = () => {
+    navigate("/user-setting");
+  };
+
   return (
     <>
       <header className="px-3 pt-3 d-flex justify-content-between align-items-center">
@@ -87,7 +91,11 @@ const Header = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={handlePengaturan}
+                  >
                     <img
                       src="/assets/img/icons/settings.png"
                       alt="mdo"

@@ -129,7 +129,11 @@ const DashboardContent = () => {
               day: "numeric",
               year: "numeric",
             })}`}
-            quantity={`${remainingStock.product} ${remainingStock.quantity} Pcs.`}
+            quantity={
+              remainingStock.product
+                ? `${remainingStock.product} ${remainingStock.quantity} Pcs.`
+                : "Produk belum ada"
+            }
           />
 
           <CardDashboard
@@ -141,7 +145,11 @@ const DashboardContent = () => {
               day: "numeric",
               year: "numeric",
             })}`}
-            quantity={`Item. ${mostSoldProducts.join(", ")}`}
+            quantity={
+              mostSoldProducts.length > 0
+                ? `${mostSoldProducts.join(", ")}`
+                : "Belum ada penjualan"
+            }
           />
 
           <CardDashboard
@@ -153,7 +161,11 @@ const DashboardContent = () => {
               day: "numeric",
               year: "numeric",
             })}`}
-            quantity={`Orang. ${uniqueCustomers}`}
+            quantity={
+              uniqueCustomers > 0
+                ? `${uniqueCustomers} Pelanggan`
+                : "Belum ada pelanggan"
+            }
           />
         </section>
       </div>

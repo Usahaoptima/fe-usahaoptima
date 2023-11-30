@@ -61,24 +61,6 @@ const PenjualanEdit = () => {
     fetchProductsData();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchSalesData = async () => {
-  //     try {
-  //       const response = await updateSalesItem(id);
-
-  //       // Mengisi formulir dengan data dari API
-  //       setValue("sales_name", response.data.sales_name);
-  //       setValue("product_name", response.data.product_name);
-  //       setValue("quantity", response.data.quantity);
-  //     } catch (error) {
-  //       console.error("Error fetching product data:", error);
-  //     }
-  //   };
-
-  //   // Panggil fungsi fetchSalesData saat komponen dipasang
-  //   fetchSalesData();
-  // }, [id, setValue]);
-
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -95,15 +77,6 @@ const PenjualanEdit = () => {
             onSubmit={handleSubmit(editSalesItem)}
             onKeyDown={handleEnterKey}
           >
-            {/* <div className="form-group mb-3">
-              <LabelForm name="Nama Pembeli" />
-              <input
-                type="text"
-                className="form-control"
-                {...register("sales_name", { required: true })}
-                placeholder="Masukkan Nama Pembeli"
-              />
-            </div> */}
             <div>
               <LabelForm name="Nama Produk" />
               <select
