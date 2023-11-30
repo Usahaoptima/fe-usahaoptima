@@ -147,7 +147,7 @@ const DashboardContent = () => {
             })}`}
             quantity={
               mostSoldProducts.length > 0
-                ? `Item. ${mostSoldProducts.join(", ")}`
+                ? `${mostSoldProducts.join(", ")}`
                 : "Belum ada penjualan"
             }
           />
@@ -163,7 +163,7 @@ const DashboardContent = () => {
             })}`}
             quantity={
               uniqueCustomers > 0
-                ? `Orang. ${uniqueCustomers}`
+                ? `${uniqueCustomers} Pelanggan`
                 : "Belum ada pelanggan"
             }
           />

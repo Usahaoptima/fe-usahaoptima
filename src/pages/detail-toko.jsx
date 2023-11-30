@@ -1,16 +1,18 @@
 import Footer from "../components/Layouts/Dashboard/Footer";
 import Header from "../components/Layouts/Dashboard/Header";
 import Sidebar from "../components/Layouts/Dashboard/Sidebar";
-import OperationalCostPage from "../components/Layouts/Operational-Cost/Operational-Cost-Content";
+import TableToko from "../components/Layouts/Operational-Cost/Table-Toko";
+import TitleTable from "../components/Elements/Title-Table";
 
-const BiayaOperasional = () => {
+const DetailProduksi = () => {
   return (
     <>
       <main>
         <Sidebar />
         <section id="dashboard" style={{ width: "100%" }}>
           <Header />
-          <OperationalCostPage />
+          <TitleTable name="Pembiayaan Toko" />
+          <TableToko />
           <hr className="mt-5" />
           <Footer />
         </section>
@@ -19,4 +21,4 @@ const BiayaOperasional = () => {
   );
 };
 
-export default BiayaOperasional;
+export default DetailProduksi;
