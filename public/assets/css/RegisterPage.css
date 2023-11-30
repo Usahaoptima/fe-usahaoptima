@@ -20,7 +20,14 @@ body {
 
 .auth {
   color: var(--primary);
-  text-transform: uppercase;
+}
+
+.image-pseudo,
+.wrapper-full {
+  background-color: #f6f1f1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 #toggle-icon,
@@ -108,7 +115,7 @@ body {
 }
 
 .verification {
-  background: var(--primary);
+  background: white;
 }
 
 .card-shadow {
@@ -144,4 +151,8 @@ body {
   font-family: Urbanist;
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.big {
+  font-size: 4rem;
 }
