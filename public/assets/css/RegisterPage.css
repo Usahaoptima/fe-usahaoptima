@@ -24,7 +24,7 @@ body {
 
 .image-pseudo,
 .wrapper-full {
-  background-color: #f6f1f1;
+  background-color: red;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -137,7 +137,7 @@ body {
 }
 
 .verification {
-  background: var(--primary);
+  background: white;
 }
 
 .card-shadow {
@@ -162,4 +162,8 @@ body {
   font-family: Urbanist;
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.big {
+  font-size: 4rem;
 }
