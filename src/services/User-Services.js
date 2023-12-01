@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL_API = "http://localhost:3000/api/v1/users";
+const BASE_URL_API = "https://usahaoptima-api.sengked.com/api/v1/users";
 
 const getUsers = async (token) => {
   try {

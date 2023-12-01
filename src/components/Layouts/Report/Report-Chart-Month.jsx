@@ -8,8 +8,8 @@ const ReportChartMonth = () => {
   const [totalPengeluaran, setTotalPengeluaran] = useState("");
   const [totalPemasukan, setTotalPemasukan] = useState("");
   const { month } = useParams();
-  const apiUrlSales = `http://localhost:3000/api/v1/report/total-sales/${month}`;
-  const apiUrlExpense = `http://localhost:3000/api/v1/report/total-expense/${month}`;
+  const apiUrlSales = `https://usahaoptima-api.sengked.com/api/v1/report/total-sales/${month}`;
+  const apiUrlExpense = `https://usahaoptima-api.sengked.com/api/v1/report/total-expense/${month}`;
 
   const formatCurrency = (value) => {
     if (!value) return "belum ada data";
@@ -38,8 +38,8 @@ const ReportChartMonth = () => {
       <div>
         <TitleTable name="Data Bulanan" />
         <div className="container">
-          <div className="d-flex flex-row align-items-center justify-content-center">
-            <div className="col-lg-4 col-sm-12 col-md-5">
+          <div className="row d-flex justify-content-center">
+            <div className="col-12 col-sm-6 mb-4">
               <div className="card text-center card-shadow">
                 <div className="card-header py-3 d-flex justify-content-start color-blue">
                   Data Pemasukan Uang
@@ -55,7 +55,7 @@ const ReportChartMonth = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-sm-12 col-md-5 mx-5">
+            <div className="col-12 col-sm-6 mb-4">
               <div className="card text-center card-shadow">
                 <div className="card-header py-3 d-flex justify-content-start color-blue">
                   Data Pengeluaran Uang
