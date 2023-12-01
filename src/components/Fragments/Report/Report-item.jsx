@@ -32,7 +32,7 @@ const ReportItems = (props) => {
   };
 
   const textColorStyle = {
-    color: criteria === "pemasukan" ? "red" : "green",
+    color: criteria === "pemasukan" ? "green" : "red",
   };
 
   return (

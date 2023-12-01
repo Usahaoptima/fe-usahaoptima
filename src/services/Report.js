@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL_API = "http://localhost:3000/api/v1/report";
+const BASE_URL_API = "https://usahaoptima-api.sengked.com/api/v1/report";
 
 function getAuthTokenFromCookies() {
   const cookies = document.cookie.split(";");
