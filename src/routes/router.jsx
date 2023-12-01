@@ -47,7 +47,7 @@ const AppRouter = () => {
         <Route path="/produk-form" element={<ProductForm />} />
         <Route path="/produk-edit-form/:id" element={<ProductEdit />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/menu-manajemen-keuangan" element={<MenuEdukasi />} />
+        <Route path="/manajemen-keuangan" element={<MenuEdukasi />} />
         <Route path="/article/:id" element={<ArticleDetail />} />
         <Route path="/user/:id/verify/:token" element={<VerifyPage />} />
         <Route path="/penjualan-form" element={<PenjualanForm />} />

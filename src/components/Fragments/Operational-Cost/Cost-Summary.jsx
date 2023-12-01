@@ -1,9 +1,48 @@
 import { useNavigate } from "react-router-dom";
 import "../../../../public/assets/css/OperationalCostPage.css";
+import { useEffect, useState } from "react";
 
 function CostSummary() {
+  const [totalCost, setTotalCost] = useState(0);
+  const [itemCost, setItemCost] = useState(0);
+  const [staffCost, setStaffCost] = useState(0);
+  const [recentExpenses, setRecentExpenses] = useState([]);
+  const [recentItems, setRecentItems] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchTotalCost = async (apiEndpoint) => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/v1/${apiEndpoint}/`
+        );
+        const data = await response.json();
+
+        if (data?.data?.length > 0 && data.data[0].total_cost !== undefined) {
+          if (apiEndpoint === "expenses") {
+            setTotalCost(data.data[0].total_cost);
+            setRecentExpenses(data.data.slice(0, 3));
+          } else if (apiEndpoint === "item") {
+            setItemCost(data.data[0].total_cost);
+            setRecentItems(data.data.slice(0, 6));
+          } else if (apiEndpoint === "staff") {
+            setStaffCost(data.data[0].total_cost);
+          }
+        } else {
+          console.error(
+            `Data total_cost tidak tersedia atau undefined untuk ${apiEndpoint}.`
+          );
+        }
+      } catch (error) {
+        console.error(`Error fetching total_cost for ${apiEndpoint}:`, error);
+      }
+    };
+
+    // Fetch total_cost untuk setiap endpoint yang diperlukan
+    fetchTotalCost("expenses");
+    fetchTotalCost("item");
+    fetchTotalCost("staff");
+  }, []);
   const OpenDetailProduksi = () => {
     navigate("/detail-produksi");
   };
@@ -14,6 +53,10 @@ function CostSummary() {
 
   const OpenDetailToko = () => {
     navigate("/detail-toko");
+  };
+
+  const OpenEdukasi = () => {
+    navigate("/edukasi");
   };
 
   return (
@@ -31,7 +74,9 @@ function CostSummary() {
                   <div className="div-8">Ringkasan Biaya 30 Hari Terakhir</div>
                   <div className="div-9">
                     <div className="div-10">
-                      <div className="div-11">Rp. 14.000.000</div>
+                      <div className="div-11">
+                        Rp. {totalCost.toLocaleString()}
+                      </div>
                       <div
                         className="div-12"
                         onClick={OpenDetailToko}
@@ -41,7 +86,9 @@ function CostSummary() {
                       </div>
                     </div>
                     <div className="div-13">
-                      <div className="div-14">Rp. 10.000.000</div>
+                      <div className="div-14">
+                        Rp. {staffCost.toLocaleString()}
+                      </div>
                       <div
                         className="div-15"
                         onClick={OpenDetailKaryawan}
@@ -51,7 +98,9 @@ function CostSummary() {
                       </div>
                     </div>
                     <div className="div-16">
-                      <div className="div-17">Rp. 15.000.000</div>
+                      <div className="div-17">
+                        Rp. {itemCost.toLocaleString()}
+                      </div>
                       <div
                         className="div-18"
                         onClick={OpenDetailProduksi}
@@ -64,7 +113,13 @@ function CostSummary() {
                   <div className="div-19">
                     Kebingungan dalam mengatur keuangan?
                   </div>
-                  <div className="div-20">Simak tipsnya disini.</div>
+                  <div
+                    className="div-20"
+                    onClick={OpenEdukasi}
+                    style={{ cursor: "pointer" }}
+                  >
+                    Simak tipsnya disini.
+                  </div>
                 </div>
                 <div className="div-21">
                   <div className="div-22">
@@ -73,9 +128,11 @@ function CostSummary() {
                         <div className="div-24">Pembiayaan Toko</div>
                         <div className="div-25">
                           <div className="div-26">Pembayaran</div>
-                          <div className="div-27">Sewa Toko</div>
-                          <div className="div-28">Listrik dan Utilitas</div>
-                          <div className="div-29">Renovasi Dapur</div>
+                          {recentExpenses.map((expense) => (
+                            <div key={expense._id} className="div-27">
+                              {expense.expense_name}
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -91,9 +148,11 @@ function CostSummary() {
                           </div>
                           <div className="div-33">Biaya</div>
                         </div>
-                        <div className="div-34">Rp. 4.000.000</div>
-                        <div className="div-35">Rp. 1.000.000</div>
-                        <div className="div-36">Rp. 9.000.000</div>
+                        {recentExpenses.map((expense) => (
+                          <div key={expense._id} className="div-34">
+                            Rp. {expense.cost.toLocaleString()}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -110,41 +169,19 @@ function CostSummary() {
                 >
                   Detail
                 </div>
-                <div className="div-40">
-                  <div className="div-41">
-                    <div className="div-42">Tepung Terigu</div>
-                    <div className="div-43">Jumlah barang : 10 Packet</div>
+                {recentItems.map((item) => (
+                  <div key={item._id} className="div-40">
+                    <div className="div-41">
+                      <div className="div-42">{item.item_name}</div>
+                      <div className="div-43">
+                        Jumlah barang: {item.quantity} Pcs
+                      </div>
+                    </div>
+                    <div className="div-44">
+                      Rp. {item.cost.toLocaleString()}
+                    </div>
                   </div>
-                  <div className="div-44">Rp. 430.000</div>
-                </div>
-                <div className="div-45">
-                  <div className="div-46">
-                    <div className="div-47">Garam</div>
-                    <div className="div-48">Jumlah barang : 10 Packet</div>
-                  </div>
-                  <div className="div-49">Rp. 257.000</div>
-                </div>
-                <div className="div-50">
-                  <div className="div-51">
-                    <div className="div-52">Ragi</div>
-                    <div className="div-53">Jumlah barang : 10 Packet</div>
-                  </div>
-                  <div className="div-54">Rp. 405.000</div>
-                </div>
-                <div className="div-55">
-                  <div className="div-56">
-                    <div className="div-57">Gula</div>
-                    <div className="div-58">Jumlah barang : 10 Packet</div>
-                  </div>
-                  <div className="div-59">Rp. 502.000</div>
-                </div>
-                <div className="div-60">
-                  <div className="div-61">
-                    <div className="div-62">Mentega</div>
-                    <div className="div-63">Jumlah barang : 10 Packet</div>
-                  </div>
-                  <div className="div-64">Rp. 530.000</div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
