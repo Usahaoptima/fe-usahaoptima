@@ -227,6 +227,11 @@
     white-space: initial;
   }
 }
+
+/* Overview End */
+
+/* Shop Expenses Start */
+
 .div-21 {
   border-radius: 8px;
   background-color: var(--Background, #f6f1f1);
@@ -239,7 +244,7 @@
   .div-21 {
     max-width: 100%;
     margin: 40px -2px 0 0;
-    padding: 0 20px;
+    padding: 20px;
   }
 }
 @media (max-width: 640px) {
@@ -248,10 +253,6 @@
     flex-direction: column;
   }
 }
-
-/* Overview End */
-
-/* Shop Expenses Start */
 
 .div-22 {
   gap: 20px;
@@ -282,7 +283,7 @@
 }
 @media (max-width: 991px) {
   .div-23 {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 }
 .div-24 {
@@ -293,7 +294,7 @@
 @media (max-width: 991px) {
   .div-24 {
     white-space: initial;
-    margin-left: auto;
+    align-self: center;
   }
 }
 @media (max-width: 640px) {
@@ -312,7 +313,7 @@
 @media (max-width: 991px) {
   .div-25 {
     max-width: 400px;
-    width: 110%;
+    align-self: center;
   }
 }
 @media (max-width: 640px) {
@@ -394,7 +395,7 @@
 }
 @media (max-width: 991px) {
   .div-30 {
-    margin: 40px auto 0 0;
+    align-self: center;
   }
 }
 @media (max-width: 640px) {
