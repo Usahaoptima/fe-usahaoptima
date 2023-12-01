@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LabelForm from "../../Elements/Label-Form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { CreateExpenses } from "../../../services/Expenses";
+import { updateExpensesItem } from "../../../services/Expenses";
 
-const CreateFormToko = () => {
+const EditFormToko = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
@@ -14,28 +15,25 @@ const CreateFormToko = () => {
     formState: { isSubmitting },
   } = useForm();
 
-  const createExpense = async (data) => {
+  const updateExpenses = async (form) => {
     try {
-      await CreateExpenses(data);
-
-      setValue("expense_name", "");
-      setValue("cost", "");
+      await updateExpensesItem(id, form);
 
       Swal.fire({
         title: "Sukses!",
-        text: "Produk berhasil ditambahkan",
+        text: "Data berhasil diupdate",
         icon: "success",
         confirmButtonText: "OK",
       });
 
       navigate("/detail-toko");
     } catch (error) {
-      console.error("Error creating data:", error);
+      console.error("Error updating data:", error);
 
       // Menampilkan SweetAlert error
       Swal.fire({
         title: "Error!",
-        text: "Terjadi kesalahan saat menambahkan data ",
+        text: "Terjadi kesalahan saat mengupdate data ",
         icon: "error",
         confirmButtonText: "OK",
       });
@@ -45,7 +43,7 @@ const CreateFormToko = () => {
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleSubmit(createExpense)();
+      handleSubmit(updateExpenses)();
     }
   };
 
@@ -59,7 +57,7 @@ const CreateFormToko = () => {
           <h2 className="section-content-title">Tambah Data Biaya</h2>
           <form
             id="form-produk"
-            onSubmit={handleSubmit(createExpense)}
+            onSubmit={handleSubmit(updateExpenses)}
             onKeyDown={handleEnterKey}
           >
             <div className="form-group mb-3">
@@ -94,7 +92,7 @@ const CreateFormToko = () => {
               className="btn-form"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {isSubmitting ? "Updating..." : "Update"}
             </button>
           </form>
         </div>
@@ -103,4 +101,4 @@ const CreateFormToko = () => {
   );
 };
 
-export default CreateFormToko;
+export default EditFormToko;

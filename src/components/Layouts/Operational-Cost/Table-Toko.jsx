@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TableProduct from "../../Fragments/Product/Table-Product";
 import Loader from "../../Elements/Loader";
 import { useNavigate } from "react-router-dom";
+import { getExpensesItem } from "../../../services/Expenses";
+import ExpensesItem from "../../Fragments/Operational-Cost/Expenses-Item";
 
 const TableProduksi = () => {
   const navigate = useNavigate();
+  const [expenses, setExpenses] = useState([]);
 
   const backToBiayaOperasional = () => {
     navigate("/biaya-operasional");
   };
+
+  const getExpenses = async () => {
+    const resExpenses = await getExpensesItem();
+    setExpenses(resExpenses);
+  };
+
+  useEffect(() => {
+    getExpenses();
+  }, []);
+
   const openAddToko = () => {
     navigate("/detail-toko-form");
   };
@@ -36,10 +49,15 @@ const TableProduksi = () => {
                 <tr>
                   <TableProduct tableName="Nama Pengeluaran" />
                   <TableProduct tableName="Biaya" />
+                  <TableProduct tableName="Tanggal" />
                   <TableProduct tableName="Action" />
                 </tr>
               </thead>
-              <tbody>{/* Maping produksinya mas */}</tbody>
+              <tbody>
+                {expenses.map((expenses, index) => {
+                  return <ExpensesItem key={index} expenses={expenses} />;
+                })}
+              </tbody>
             </table>
           </div>
 
