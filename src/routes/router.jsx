@@ -14,7 +14,7 @@ import ProductForm from "../pages/produk-form";
 import ProductEdit from "../pages/produk-edit-form";
 import MenuEdukasi from "../pages/artikel-menu";
 import ArticleDetail from "../pages/artikel-detail";
-import VerifyPage from "../components/Fragments/user/VerifyPage";
+import VerifyPage from "../pages/verify-page";
 import PenjualanForm from "../pages/penjualan-form";
 import PenjualanEdit from "../pages/penjualan-edit-form";
 import UserForm from "../pages/tambah-user";

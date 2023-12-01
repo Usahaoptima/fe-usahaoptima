@@ -24,7 +24,7 @@ body {
 
 .image-pseudo,
 .wrapper-full {
-  background-color: #f6f1f1;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -147,7 +147,7 @@ body {
 }
 
 .label-filter {
-  color: var(--Secondary, #146C94);
+  color: var(--Secondary, #146c94);
   font-family: Urbanist;
   font-size: 1.2rem;
   font-weight: 600;
