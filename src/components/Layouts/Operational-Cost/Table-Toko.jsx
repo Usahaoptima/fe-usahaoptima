@@ -7,6 +7,7 @@ import ExpensesItem from "../../Fragments/Operational-Cost/Expenses-Item";
 
 const TableProduksi = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [expenses, setExpenses] = useState([]);
 
   const backToBiayaOperasional = () => {
@@ -14,7 +15,9 @@ const TableProduksi = () => {
   };
 
   const getExpenses = async () => {
+    setIsLoading(true);
     const resExpenses = await getExpensesItem();
+    setIsLoading(false);
     setExpenses(resExpenses);
   };
 
@@ -61,7 +64,7 @@ const TableProduksi = () => {
             </table>
           </div>
 
-          {/* <Loader isShow={isLoading} /> */}
+          <Loader isShow={isLoading} />
 
           <ul className="pagination justify-content-end gap-3 m-3">
             <li className="page-item ">
