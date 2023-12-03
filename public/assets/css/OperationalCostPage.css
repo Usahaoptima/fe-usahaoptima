@@ -235,9 +235,12 @@
 .div-21 {
   border-radius: 8px;
   background-color: var(--Background, #f6f1f1);
-  margin-top: 30px;
+  margin-top: 59px;
   border-style: solid;
   border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   padding: 27px 30px;
 }
 @media (max-width: 991px) {
@@ -247,90 +250,52 @@
     padding: 20px;
   }
 }
-@media (max-width: 640px) {
-  .div-21 {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .div-22 {
-  gap: 20px;
   display: flex;
-}
-@media (max-width: 991px) {
-  .div-22 {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0px;
-  }
-}
-.column-2 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 50%;
-  margin-left: 0px;
-}
-@media (max-width: 991px) {
-  .column-2 {
-    width: 100%;
-  }
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
 }
 .div-23 {
-  display: flex;
-  flex-direction: column;
-}
-@media (max-width: 991px) {
-  .div-23 {
-    margin-top: 20px;
-  }
-}
-.div-24 {
   color: var(--Secondary, #146c94);
   white-space: nowrap;
   font: 500 20px/30px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
 }
 @media (max-width: 991px) {
-  .div-24 {
+  .div-23 {
     white-space: initial;
-    align-self: center;
   }
 }
 @media (max-width: 640px) {
-  .div-24 {
+  .div-23 {
     margin: 0 auto;
+  }
+}
+.div-24 {
+  color: var(--grey-grey-500, #667085);
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-24 {
+    white-space: initial;
   }
 }
 .div-25 {
   display: flex;
-  margin-top: 25px;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
-  min-height: 160px;
-  padding: 0 20px;
-}
-@media (max-width: 991px) {
-  .div-25 {
-    max-width: 400px;
-    align-self: center;
-  }
-}
-@media (max-width: 640px) {
-  .div-25 {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    max-width: 122px;
-    margin: 0 auto;
-  }
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
 }
 .div-26 {
   color: var(--Primary, #19a7ce);
   text-decoration-line: underline;
   white-space: nowrap;
+  text-align: center;
   width: 100%;
-  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 500 14px Urbanist, sans-serif;
 }
 @media (max-width: 991px) {
   .div-26 {
@@ -339,22 +304,32 @@
     margin-right: -5px;
   }
 }
-.div-27 {
+.biaya {
   color: var(--Primary, #19a7ce);
+  text-decoration-line: underline;
   white-space: nowrap;
-  margin-top: 25px;
+  text-align: center;
   width: 100%;
-  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 500 14px Urbanist, sans-serif;
 }
 @media (max-width: 991px) {
-  .div-27 {
+  .biaya {
     white-space: initial;
+    max-width: 200px;
+    margin-right: -5px;
   }
+}
+.div-27 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
 }
 .div-28 {
   color: var(--Primary, #19a7ce);
+  text-align: center;
   white-space: nowrap;
-  margin-top: 26px;
+  margin-top: 28px;
   width: 100%;
   font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
 }
@@ -365,92 +340,73 @@
 }
 .div-29 {
   color: var(--Primary, #19a7ce);
+  margin-top: 25px;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-29 {
+    white-space: initial;
+    margin-left: 3px;
+  }
+}
+.div-30 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
+}
+.div-31 {
+  color: var(--Primary, #19a7ce);
   white-space: nowrap;
   margin-top: 26px;
   width: 100%;
   font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
 }
 @media (max-width: 991px) {
-  .div-29 {
+  .div-31 {
     white-space: initial;
   }
 }
-
-.column-3 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 50%;
-  margin-left: 20px;
-}
-@media (max-width: 991px) {
-  .column-3 {
-    width: 100%;
-  }
-}
-.div-30 {
-  display: flex;
-  flex-direction: column;
-  margin-top: 8px;
-}
-@media (max-width: 991px) {
-  .div-30 {
-    align-self: center;
-  }
-}
-@media (max-width: 640px) {
-  .div-30 {
-    margin: 0 auto;
-  }
-}
-.div-31 {
-  display: flex;
-  flex-direction: column;
-}
-@media (max-width: 991px) {
-  .div-31 {
-    margin-right: auto;
-  }
-}
 .div-32 {
-  color: var(--grey-grey-500, #667085);
+  color: var(--Primary, #19a7ce);
+  margin-top: 22px;
   white-space: nowrap;
+  width: 100%;
+  text-align: center;
   font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
 }
 @media (max-width: 991px) {
   .div-32 {
     white-space: initial;
-    margin: 0 auto 18px 0;
   }
 }
 .div-33 {
-  color: var(--Primary, #19a7ce);
-  text-decoration-line: underline;
-  margin-top: 27px;
-  white-space: nowrap;
-  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-33 {
-    white-space: initial;
-  }
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
 }
 .div-34 {
   color: var(--Primary, #19a7ce);
-  margin-top: 25px;
   white-space: nowrap;
+  margin-top: 26px;
+  width: 100%;
   font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
 }
 @media (max-width: 991px) {
   .div-34 {
     white-space: initial;
-    margin-left: 3px;
   }
 }
 .div-35 {
   color: var(--Primary, #19a7ce);
   margin-top: 22px;
   white-space: nowrap;
+  width: 100%;
+  text-align: center;
   font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
 }
 @media (max-width: 991px) {
@@ -458,17 +414,38 @@
     white-space: initial;
   }
 }
+.column-2 {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 41%;
+  margin-left: 20px;
+}
+@media (max-width: 991px) {
+  .column-2 {
+    width: 100%;
+  }
+}
 .div-36 {
-  color: var(--Primary, #19a7ce);
-  margin-top: 22px;
-  white-space: nowrap;
-  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+  align-content: space-between;
+  border-radius: 10px;
+  background-color: var(--Background, #f6f1f1);
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0 auto;
+  padding: 20px 13px 12px;
 }
 @media (max-width: 991px) {
   .div-36 {
-    white-space: initial;
+    margin-top: 40px;
   }
 }
+
+/* fix toko akhirnya beresnya juga styling bug pusing asli */
 
 /* Shop Expenses End */
 
@@ -496,7 +473,7 @@
   border-style: solid;
   border-width: 1px;
   margin: 0 auto;
-  padding: 20px 13px 12px;
+  padding: 20px;
 }
 @media (max-width: 991px) {
   .div-37 {

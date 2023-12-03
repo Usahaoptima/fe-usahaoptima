@@ -123,41 +123,27 @@ function CostSummary() {
                 </div>
                 <div className="div-21">
                   <div className="div-22">
-                    <div className="columns-container">
-                      <div className="column-2">
-                        <div className="div-23">
-                          <div className="div-24">Pembiayaan Toko</div>
-                          <div className="div-25">
-                            <div className="div-26">Pembayaran</div>
-                            {recentExpenses.map((expense) => (
-                              <div key={expense._id} className="div-27">
-                                {expense.expense_name}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="column-3">
-                        <div className="div-30">
-                          <div className="div-31">
-                            <div
-                              className="div-32"
-                              onClick={OpenDetailToko}
-                              style={{ cursor: "pointer" }}
-                            >
-                              Detail Pengeluaran
-                            </div>
-                            <div className="div-33">Biaya</div>
-                          </div>
-                          {recentExpenses.map((expense) => (
-                            <div key={expense._id} className="div-34">
-                              Rp. {expense.cost.toLocaleString()}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+                    <div className="div-23">Pembiayaan Toko</div>
+                    <div
+                      className="div-24"
+                      onClick={OpenDetailToko}
+                      style={{ cursor: "pointer" }}
+                    >
+                      Detail Pengeluaran
                     </div>
                   </div>
+                  <div className="div-25">
+                    <div className="div-26">Pembayaran</div>
+                    <div className="biaya">Biaya</div>
+                  </div>
+                  {recentExpenses.map((expense) => (
+                    <div key={expense._id} className="div-27">
+                      <div className="div-28">{expense.expense_name}</div>
+                      <div className="div-29">
+                        Rp. {expense.cost.toLocaleString()}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
