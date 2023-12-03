@@ -220,6 +220,7 @@
   margin-top: 12px;
   white-space: nowrap;
   font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+  width: 30%;
 }
 @media (max-width: 991px) {
   .div-20 {
@@ -487,6 +488,7 @@
 .div-39 {
   color: var(--grey-grey-500, #667085);
   font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+  width: 15%;
 }
 .div-40 {
   justify-content: space-between;
@@ -808,4 +810,13 @@
   color: grey;
   text-align: center;
   margin-top: 20px;
+}
+
+.clickable-item {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.clickable-item:hover {
+  color: #2196f3;
 }

@@ -78,7 +78,7 @@ function CostSummary() {
                         Rp. {totalCost.toLocaleString()}
                       </div>
                       <div
-                        className="div-12"
+                        className="div-12 clickable-item"
                         onClick={OpenDetailToko}
                         style={{ cursor: "pointer" }}
                       >
@@ -90,7 +90,7 @@ function CostSummary() {
                         Rp. {staffCost.toLocaleString()}
                       </div>
                       <div
-                        className="div-15"
+                        className="div-15 clickable-item"
                         onClick={OpenDetailKaryawan}
                         style={{ cursor: "pointer" }}
                       >
@@ -102,7 +102,7 @@ function CostSummary() {
                         Rp. {itemCost.toLocaleString()}
                       </div>
                       <div
-                        className="div-18"
+                        className="div-18 clickable-item"
                         onClick={OpenDetailProduksi}
                         style={{ cursor: "pointer" }}
                       >
@@ -114,7 +114,7 @@ function CostSummary() {
                     Kebingungan dalam mengatur keuangan?
                   </div>
                   <div
-                    className="div-20"
+                    className="div-20 clickable-item"
                     onClick={OpenEdukasi}
                     style={{ cursor: "pointer" }}
                   >
@@ -125,7 +125,7 @@ function CostSummary() {
                   <div className="div-22">
                     <div className="div-23">Pembiayaan Toko</div>
                     <div
-                      className="div-24"
+                      className="div-24 clickable-item"
                       onClick={OpenDetailToko}
                       style={{ cursor: "pointer" }}
                     >
@@ -157,7 +157,7 @@ function CostSummary() {
               <div className="div-37">
                 <div className="div-38">Pembiayaan Produksi</div>
                 <div
-                  className="div-39"
+                  className="div-39 clickable-item"
                   onClick={OpenDetailProduksi}
                   style={{ cursor: "pointer" }}
                 >
