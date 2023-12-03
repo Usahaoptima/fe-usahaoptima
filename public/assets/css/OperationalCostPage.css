@@ -67,7 +67,7 @@
 @media (max-width: 991px) {
   .div-6 {
     max-width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 }
 .div-7 {
@@ -235,7 +235,7 @@
 .div-21 {
   border-radius: 8px;
   background-color: var(--Background, #f6f1f1);
-  margin-top: 59px;
+  margin-top: 40px;
   border-style: solid;
   border-width: 1px;
   display: flex;
@@ -803,3 +803,9 @@
 }
 
 /* Production Expenses End */
+
+.placeholder-text {
+  color: grey;
+  text-align: center;
+  margin-top: 20px;
+}

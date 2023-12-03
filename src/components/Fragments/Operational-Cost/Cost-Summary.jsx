@@ -136,14 +136,20 @@ function CostSummary() {
                     <div className="div-26">Pembayaran</div>
                     <div className="biaya">Biaya</div>
                   </div>
-                  {recentExpenses.map((expense) => (
-                    <div key={expense._id} className="div-27">
-                      <div className="div-28">{expense.expense_name}</div>
-                      <div className="div-29">
-                        Rp. {expense.cost.toLocaleString()}
+                  {recentExpenses.length > 0 ? (
+                    recentExpenses.map((expense) => (
+                      <div key={expense._id} className="div-27">
+                        <div className="div-28">{expense.expense_name}</div>
+                        <div className="div-29">
+                          Rp. {expense.cost.toLocaleString()}
+                        </div>
                       </div>
+                    ))
+                  ) : (
+                    <div className="placeholder-text">
+                      Belum ada data pembayaran
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
@@ -157,19 +163,25 @@ function CostSummary() {
                 >
                   Detail
                 </div>
-                {recentItems.map((item) => (
-                  <div key={item._id} className="div-40">
-                    <div className="div-41">
-                      <div className="div-42">{item.item_name}</div>
-                      <div className="div-43">
-                        Jumlah barang: {item.quantity} Pcs
+                {recentItems.length > 0 ? (
+                  recentItems.map((item) => (
+                    <div key={item._id} className="div-40">
+                      <div className="div-41">
+                        <div className="div-42">{item.item_name}</div>
+                        <div className="div-43">
+                          Jumlah barang: {item.quantity} Pcs
+                        </div>
+                      </div>
+                      <div className="div-44">
+                        Rp. {item.cost.toLocaleString()}
                       </div>
                     </div>
-                    <div className="div-44">
-                      Rp. {item.cost.toLocaleString()}
-                    </div>
+                  ))
+                ) : (
+                  <div className="placeholder-text">
+                    Belum ada data pembiayaan produksi
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </div>
