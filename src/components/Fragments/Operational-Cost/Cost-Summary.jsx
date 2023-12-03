@@ -21,10 +21,10 @@ function CostSummary() {
         if (data?.data?.length > 0 && data.data[0].total_cost !== undefined) {
           if (apiEndpoint === "expenses") {
             setTotalCost(data.data[0].total_cost);
-            setRecentExpenses(data.data.slice(0, 3));
+            setRecentExpenses(data.data.slice(-3).reverse());
           } else if (apiEndpoint === "item") {
             setItemCost(data.data[0].total_cost);
-            setRecentItems(data.data.slice(0, 6));
+            setRecentItems(data.data.slice(-6).reverse());
           } else if (apiEndpoint === "staff") {
             setStaffCost(data.data[0].total_cost);
           }
@@ -78,7 +78,7 @@ function CostSummary() {
                         Rp. {totalCost.toLocaleString()}
                       </div>
                       <div
-                        className="div-12"
+                        className="div-12 clickable-item"
                         onClick={OpenDetailToko}
                         style={{ cursor: "pointer" }}
                       >
@@ -90,7 +90,7 @@ function CostSummary() {
                         Rp. {staffCost.toLocaleString()}
                       </div>
                       <div
-                        className="div-15"
+                        className="div-15 clickable-item"
                         onClick={OpenDetailKaryawan}
                         style={{ cursor: "pointer" }}
                       >
@@ -102,7 +102,7 @@ function CostSummary() {
                         Rp. {itemCost.toLocaleString()}
                       </div>
                       <div
-                        className="div-18"
+                        className="div-18 clickable-item"
                         onClick={OpenDetailProduksi}
                         style={{ cursor: "pointer" }}
                       >
@@ -114,7 +114,7 @@ function CostSummary() {
                     Kebingungan dalam mengatur keuangan?
                   </div>
                   <div
-                    className="div-20"
+                    className="div-20 clickable-item"
                     onClick={OpenEdukasi}
                     style={{ cursor: "pointer" }}
                   >
@@ -123,39 +123,33 @@ function CostSummary() {
                 </div>
                 <div className="div-21">
                   <div className="div-22">
-                    <div className="column-2">
-                      <div className="div-23">
-                        <div className="div-24">Pembiayaan Toko</div>
-                        <div className="div-25">
-                          <div className="div-26">Pembayaran</div>
-                          {recentExpenses.map((expense) => (
-                            <div key={expense._id} className="div-27">
-                              {expense.expense_name}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="column-3">
-                      <div className="div-30">
-                        <div className="div-31">
-                          <div
-                            className="div-32"
-                            onClick={OpenDetailToko}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Detail Pengeluaran
-                          </div>
-                          <div className="div-33">Biaya</div>
-                        </div>
-                        {recentExpenses.map((expense) => (
-                          <div key={expense._id} className="div-34">
-                            Rp. {expense.cost.toLocaleString()}
-                          </div>
-                        ))}
-                      </div>
+                    <div className="div-23">Pembiayaan Toko</div>
+                    <div
+                      className="div-24 clickable-item"
+                      onClick={OpenDetailToko}
+                      style={{ cursor: "pointer" }}
+                    >
+                      Detail Pengeluaran
                     </div>
                   </div>
+                  <div className="div-25">
+                    <div className="div-26">Pembayaran</div>
+                    <div className="biaya">Biaya</div>
+                  </div>
+                  {recentExpenses.length > 0 ? (
+                    recentExpenses.map((expense) => (
+                      <div key={expense._id} className="div-27">
+                        <div className="div-28">{expense.expense_name}</div>
+                        <div className="div-29">
+                          Rp. {expense.cost.toLocaleString()}
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="placeholder-text">
+                      Belum ada data pembayaran
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -163,25 +157,31 @@ function CostSummary() {
               <div className="div-37">
                 <div className="div-38">Pembiayaan Produksi</div>
                 <div
-                  className="div-39"
+                  className="div-39 clickable-item"
                   onClick={OpenDetailProduksi}
                   style={{ cursor: "pointer" }}
                 >
                   Detail
                 </div>
-                {recentItems.map((item) => (
-                  <div key={item._id} className="div-40">
-                    <div className="div-41">
-                      <div className="div-42">{item.item_name}</div>
-                      <div className="div-43">
-                        Jumlah barang: {item.quantity} Pcs
+                {recentItems.length > 0 ? (
+                  recentItems.map((item) => (
+                    <div key={item._id} className="div-40">
+                      <div className="div-41">
+                        <div className="div-42">{item.item_name}</div>
+                        <div className="div-43">
+                          Jumlah barang: {item.quantity} Pcs
+                        </div>
+                      </div>
+                      <div className="div-44">
+                        Rp. {item.cost.toLocaleString()}
                       </div>
                     </div>
-                    <div className="div-44">
-                      Rp. {item.cost.toLocaleString()}
-                    </div>
+                  ))
+                ) : (
+                  <div className="placeholder-text">
+                    Belum ada data pembiayaan produksi
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </div>
