@@ -9,6 +9,8 @@ const TableProduksi = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [expenses, setExpenses] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const backToBiayaOperasional = () => {
     navigate("/biaya-operasional");
@@ -24,6 +26,9 @@ const TableProduksi = () => {
   useEffect(() => {
     getExpenses();
   }, []);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   const openAddToko = () => {
     navigate("/detail-toko-form");
@@ -57,7 +62,7 @@ const TableProduksi = () => {
                 </tr>
               </thead>
               <tbody>
-                {expenses.map((expenses, index) => {
+                {expenses.slice(startIndex, endIndex).map((expenses, index) => {
                   return <ExpensesItem key={index} expenses={expenses} />;
                 })}
               </tbody>
@@ -67,11 +72,25 @@ const TableProduksi = () => {
           <Loader isShow={isLoading} />
 
           <ul className="pagination justify-content-end gap-3 m-3">
-            <li className="page-item ">
-              <button className="page-link">Previous</button>
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous
+              </button>
             </li>
-            <li className="page-item ">
-              <button className="page-link">Next</button>
+            <li
+              className={`page-item ${
+                endIndex >= expenses.length ? "disabled" : ""
+              }`}
+            >
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
+                Next
+              </button>
             </li>
           </ul>
         </div>
