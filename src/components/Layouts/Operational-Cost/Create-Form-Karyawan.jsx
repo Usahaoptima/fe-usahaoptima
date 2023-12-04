@@ -90,7 +90,7 @@ const CreateFormKaryawan = () => {
             <div className="form-group mb-3">
               <LabelForm name="Nomer Handphone" />
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 {...register("phoneNumber", { required: true })}
                 placeholder="Masukkan Nomer Handphone"

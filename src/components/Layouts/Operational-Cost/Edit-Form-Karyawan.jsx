@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
 import LabelForm from "../../Elements/Label-Form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { updateExpensesItem } from "../../../services/Expenses";
+import { updateStaf } from "../../../services/Staff-Services";
 
-const EditFormToko = () => {
+const EditFormKaryawan = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const {
@@ -14,9 +13,9 @@ const EditFormToko = () => {
     formState: { isSubmitting },
   } = useForm();
 
-  const updateExpenses = async (form) => {
+  const updateStafItem = async (form) => {
     try {
-      await updateExpensesItem(id, form);
+      await updateStaf(id, form);
 
       Swal.fire({
         title: "Sukses!",
@@ -25,7 +24,7 @@ const EditFormToko = () => {
         confirmButtonText: "OK",
       });
 
-      navigate("/detail-toko");
+      navigate("/detail-karyawan");
     } catch (error) {
       console.error("Error updating data:", error);
 
@@ -42,39 +41,48 @@ const EditFormToko = () => {
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleSubmit(updateExpenses)();
+      handleSubmit(updateStafItem)();
     }
   };
 
   const backToTable = () => {
-    navigate("/detail-toko");
+    navigate("/detail-karyawan");
   };
   return (
     <>
       <div className="section-content">
         <div className="container mt-5">
-          <h2 className="section-content-title">Update Data Biaya</h2>
+          <h2 className="section-content-title">Update Data Karyawan</h2>
           <form
             id="form-produk"
-            onSubmit={handleSubmit(updateExpenses)}
+            onSubmit={handleSubmit(updateStafItem)}
             onKeyDown={handleEnterKey}
           >
             <div className="form-group mb-3">
-              <LabelForm name="Nama Pengeluaran" />
-              <input
-                type="text"
-                className="form-control"
-                {...register("expenseName", { required: true })}
-                placeholder="Masukkan Nama Pengeluaran"
-              />
-            </div>
-            <div className="form-group mb-3">
-              <LabelForm name="Biaya" />
+              <LabelForm name="Gaji" />
               <input
                 type="number"
                 className="form-control"
-                {...register("cost", { required: true })}
-                placeholder="Masukkan Biaya"
+                {...register("salary", { required: true })}
+                placeholder="Masukkan Gaji"
+              />
+            </div>
+            <div className="form-group mb-3">
+              <LabelForm name="Nomer Handphone" />
+              <input
+                type="text"
+                className="form-control"
+                {...register("phoneNumber", { required: true })}
+                placeholder="Masukkan Nomer Handphone"
+              />
+            </div>
+            <div className="form-group mb-3">
+              <LabelForm name="Email" />
+              <input
+                type="text"
+                className="form-control"
+                {...register("email", { required: true })}
+                placeholder="Masukkan Email"
               />
             </div>
             <button
@@ -100,4 +108,4 @@ const EditFormToko = () => {
   );
 };
 
-export default EditFormToko;
+export default EditFormKaryawan;
