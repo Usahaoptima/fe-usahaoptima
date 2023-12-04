@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TableProduct from "../../Fragments/Product/Table-Product";
 import Loader from "../../Elements/Loader";
 import { useNavigate } from "react-router-dom";
+import { getStaf } from "../../../services/Staff-Services";
+import StafItem from "../../Fragments/Operational-Cost/Staff-Item";
 
 const TableKaryawan = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [staffs, setStaffs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const getdataStaf = async () => {
+    setIsLoading(true);
+    const resStaff = await getStaf();
+    setIsLoading(false);
+    setStaffs(resStaff);
+  };
+
+  useEffect(() => {
+    getdataStaf();
+  }, []);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   const backToBiayaOperasional = () => {
     navigate("/biaya-operasional");
@@ -41,18 +60,36 @@ const TableKaryawan = () => {
                   <TableProduct tableName="Action" />
                 </tr>
               </thead>
-              <tbody>{/* Maping produksinya mas */}</tbody>
+              <tbody>
+                {staffs.map((staffs, index) => (
+                  <StafItem key={index} staffs={staffs} />
+                ))}
+              </tbody>
             </table>
           </div>
 
-          {/* <Loader isShow={isLoading} /> */}
+          <Loader isShow={isLoading} />
 
           <ul className="pagination justify-content-end gap-3 m-3">
-            <li className="page-item ">
-              <button className="page-link">Previous</button>
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous
+              </button>
             </li>
-            <li className="page-item ">
-              <button className="page-link">Next</button>
+            <li
+              className={`page-item ${
+                endIndex >= staffs.length ? "disabled" : ""
+              }`}
+            >
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
+                Next
+              </button>
             </li>
           </ul>
         </div>

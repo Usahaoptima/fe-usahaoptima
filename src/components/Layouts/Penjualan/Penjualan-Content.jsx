@@ -10,7 +10,7 @@ const PenjualanContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 5;
 
   const fetchPenjualanItem = async () => {
     setIsLoading(true);

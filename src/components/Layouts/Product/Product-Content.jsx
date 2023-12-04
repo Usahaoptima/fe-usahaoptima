@@ -12,7 +12,7 @@ const ProdukContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   const fetchProductItem = async () => {
     setIsLoading(true);
