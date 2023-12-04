@@ -1,8 +1,16 @@
 import ButtonDropdownSidebar from "../../Fragments/Dashboard/Button-Dropdown-Sidebar";
 import ButtonSidebar from "../../Fragments/Dashboard/Button-Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const location = useLocation();
+
+  const isRouteActive = (routes) => {
+    return routes.includes(location.pathname);
+  };
+
+  console.log(isRouteActive("/laporan-keuangan"));
+
   return (
     <>
       <aside>
@@ -23,6 +31,7 @@ const Sidebar = () => {
               <ButtonSidebar
                 image="/assets/img/icons/dashboard.png"
                 title="Dashboard"
+                active={isRouteActive("/dashboard")}
               />
             </Link>
 
@@ -32,6 +41,7 @@ const Sidebar = () => {
               controls="collapseExample1"
               image="/assets/img/icons/laporan.png"
               title="Laporan"
+              active={isRouteActive(["/laporan-keuangan", "/laporan-stok"])}
               dropdownImage1="/assets/img/icons/keuangan.png"
               dropdownTitle1="Keuangan"
               link1="/laporan-keuangan"
@@ -44,6 +54,7 @@ const Sidebar = () => {
               <ButtonSidebar
                 image="/assets/img/icons/penjualan.png"
                 title="Penjualan"
+                active={isRouteActive("/penjualan")}
               />
             </Link>
 
@@ -51,6 +62,7 @@ const Sidebar = () => {
               <ButtonSidebar
                 image="/assets/img/icons/biaya.png"
                 title="Biaya Operasional"
+                active={isRouteActive("/biaya-operasional")}
               />
             </Link>
 
@@ -58,6 +70,7 @@ const Sidebar = () => {
               <ButtonSidebar
                 image="/assets/img/icons/produk.png"
                 title="Produk"
+                active={isRouteActive("/produk")}
               />
             </Link>
 
@@ -65,6 +78,7 @@ const Sidebar = () => {
               <ButtonSidebar
                 image="/assets/img/icons/edukasi.png"
                 title="Edukasi"
+                active={isRouteActive("/edukasi")}
               />
             </Link>
 
@@ -74,6 +88,7 @@ const Sidebar = () => {
               controls="collapseExample2"
               image="/assets/img/icons/pengaturan.png"
               title="Pengaturan"
+              active={isRouteActive(["/user-role", "/user-setting"])}
               dropdownImage1="/assets/img/icons/user-role.png"
               dropdownTitle1="User Role"
               link1="/user-role"
