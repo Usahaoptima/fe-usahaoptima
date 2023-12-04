@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../../../../public/assets/css/OperationalCostPage.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function CostSummary() {
   const [totalCost, setTotalCost] = useState(0);
@@ -10,13 +11,31 @@ function CostSummary() {
   const [recentItems, setRecentItems] = useState([]);
   const navigate = useNavigate();
 
+  const getAuthTokenFromCookies = () => {
+    const cookies = document.cookie.split(";");
+    for (const cookie of cookies) {
+      const [name, value] = cookie.trim().split("=");
+      if (name === "access_token") {
+        return value;
+      }
+    }
+    return null;
+  };
+
+  const authToken = getAuthTokenFromCookies();
+
   useEffect(() => {
     const fetchTotalCost = async (apiEndpoint) => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/v1/${apiEndpoint}/`
+        const response = await axios.get(
+          `http://localhost:3000/api/v1/${apiEndpoint}/`,
+          {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
         );
-        const data = await response.json();
+        const data = response.data;
 
         if (data?.data?.length > 0 && data.data[0].total_cost !== undefined) {
           if (apiEndpoint === "expenses") {
@@ -42,7 +61,8 @@ function CostSummary() {
     fetchTotalCost("expenses");
     fetchTotalCost("item");
     fetchTotalCost("staff");
-  }, []);
+  }, [authToken]);
+
   const OpenDetailProduksi = () => {
     navigate("/detail-produksi");
   };

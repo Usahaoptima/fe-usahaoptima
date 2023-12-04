@@ -34,7 +34,7 @@ main aside img.logo {
 }
 
 main aside ul li div {
-  color: var(--primary) !important;
+  color: var(--primary);
   font-weight: 500 !important;
 }
 
@@ -319,7 +319,12 @@ main section#dashboard footer div.icons i {
   background-color: var(--background-color);
   position: absolute;
   z-index: -1;
-  
+}
 
+.nav-link {
+  color: var(--primary);
+}
 
+.nav-pills .nav-link:hover img {
+  filter: invert(50%) brightness(200%);
 }
