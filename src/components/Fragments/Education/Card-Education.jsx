@@ -11,7 +11,7 @@ const CardEducation = ({ imageSrc, alt, title, description }) => {
         </div>
         <h3>{title}</h3>
         <p>{description}</p>
-        <a href="/manajemen-keuangan" className="btn">
+        <a href="/edukasi/manajemen-keuangan" className="btn">
           Read more
         </a>
       </div>
