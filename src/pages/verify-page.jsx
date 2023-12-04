@@ -8,7 +8,7 @@ function VerifyPage() {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:3000/api/v1/auth/${param.id}/verify/${param.token}`;
+        const url = `https://usahaoptima-api.sengked.com/api/v1/auth/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl("true");
