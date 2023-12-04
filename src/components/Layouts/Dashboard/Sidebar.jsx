@@ -1,9 +1,10 @@
 import ButtonDropdownSidebar from "../../Fragments/Dashboard/Button-Dropdown-Sidebar";
 import ButtonSidebar from "../../Fragments/Dashboard/Button-Sidebar";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const Sidebar = () => {
   const location = useLocation();
+  const { id } = useParams();
 
   const isRouteActive = (routes) => {
     return routes.includes(location.pathname);
@@ -60,7 +61,15 @@ const Sidebar = () => {
               <ButtonSidebar
                 image="/assets/img/icons/biaya.png"
                 title="Biaya Operasional"
-                active={isRouteActive("/biaya-operasional")}
+                active={isRouteActive([
+                  "/biaya-operasional",
+                  "/detail-toko",
+                  "/detail-karyawan",
+                  "/detail-produksi",
+                  `/toko-edit-form/${id}`,
+                  `/karyawan-edit-form/${id}`,
+                  `/produksi-edit-form/${id}`,
+                ])}
               />
             </Link>
 
