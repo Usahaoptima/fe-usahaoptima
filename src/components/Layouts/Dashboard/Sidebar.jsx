@@ -85,7 +85,11 @@ const Sidebar = () => {
               <ButtonSidebar
                 image="/assets/img/icons/edukasi.png"
                 title="Edukasi"
-                active={isRouteActive("/edukasi")}
+                active={isRouteActive([
+                  "/edukasi",
+                  "/edukasi/manajemen-keuangan",
+                  `/article/${id}`,
+                ])}
               />
             </Link>
 
