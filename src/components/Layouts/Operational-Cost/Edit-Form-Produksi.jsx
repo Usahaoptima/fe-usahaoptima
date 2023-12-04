@@ -1,37 +1,37 @@
-import React from "react";
 import LabelForm from "../../Elements/Label-Form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { CreateProduksi } from "../../../services/Produksi.Services";
+import { updateProduksi } from "../../../services/Produksi.Services";
 
-const CreateFormProduksi = () => {
+const EditFormProduksi = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm();
 
-  const createProduksi = async (data) => {
+  const updateProduksiItem = async (form) => {
     try {
-      await CreateProduksi(data);
+      await updateProduksi(id, form);
 
       Swal.fire({
         title: "Sukses!",
-        text: "Data Penjualan berhasil ditambahkan",
+        text: "Data berhasil diupdate",
         icon: "success",
         confirmButtonText: "OK",
       });
 
       navigate("/detail-produksi");
     } catch (error) {
-      console.error("Error creating data:", error);
+      console.error("Error updating data:", error);
 
       // Menampilkan SweetAlert error
       Swal.fire({
         title: "Error!",
-        text: "Terjadi kesalahan saat menambahkan data ",
+        text: "Terjadi kesalahan saat mengupdate data ",
         icon: "error",
         confirmButtonText: "OK",
       });
@@ -41,7 +41,7 @@ const CreateFormProduksi = () => {
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleSubmit(createProduksi)();
+      handleSubmit(updateProduksiItem)();
     }
   };
 
@@ -55,7 +55,7 @@ const CreateFormProduksi = () => {
           <h2 className="section-content-title">Tambah Data Produksi</h2>
           <form
             id="form-produk"
-            onSubmit={handleSubmit(createProduksi)}
+            onSubmit={handleSubmit(updateProduksiItem)}
             onKeyDown={handleEnterKey}
           >
             <div className="form-group mb-3">
@@ -99,7 +99,7 @@ const CreateFormProduksi = () => {
               className="btn-form"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {isSubmitting ? "Updating..." : "Update"}
             </button>
           </form>
         </div>
@@ -108,4 +108,4 @@ const CreateFormProduksi = () => {
   );
 };
 
-export default CreateFormProduksi;
+export default EditFormProduksi;

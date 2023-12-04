@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TableProduct from "../../Fragments/Product/Table-Product";
 import Loader from "../../Elements/Loader";
 import { useNavigate } from "react-router-dom";
+import { getProduksi } from "../../../services/Produksi.Services";
+import ProduksiItem from "../../Fragments/Operational-Cost/Produksi-Item";
 
 const TableProduksi = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [produksi, setProduksi] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const getdataproduksi = async () => {
+    setIsLoading(true);
+    const resProduksi = await getProduksi();
+    setIsLoading(false);
+    setProduksi(resProduksi);
+  };
+
+  useEffect(() => {
+    getdataproduksi();
+  }, []);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   const backToBiayaOperasional = () => {
     navigate("/biaya-operasional");
@@ -40,18 +60,36 @@ const TableProduksi = () => {
                   <TableProduct tableName="Action" />
                 </tr>
               </thead>
-              <tbody>{/* Maping produksinya mas */}</tbody>
+              <tbody>
+                {produksi.slice(startIndex, endIndex).map((produksi, index) => (
+                  <ProduksiItem key={index} produksi={produksi} />
+                ))}
+              </tbody>
             </table>
           </div>
 
-          {/* <Loader isShow={isLoading} /> */}
+          <Loader isShow={isLoading} />
 
           <ul className="pagination justify-content-end gap-3 m-3">
-            <li className="page-item ">
-              <button className="page-link">Previous</button>
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous
+              </button>
             </li>
-            <li className="page-item ">
-              <button className="page-link">Next</button>
+            <li
+              className={`page-item ${
+                endIndex >= produksi.length ? "disabled" : ""
+              }`}
+            >
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
+                Next
+              </button>
             </li>
           </ul>
         </div>

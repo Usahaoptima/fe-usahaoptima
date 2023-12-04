@@ -22,8 +22,6 @@ const ButtonDropdownSidebar = (props) => {
     color: active ? "#ffffff" : "",
   };
 
-  console.log(active);
-
   const imgStyle = {
     filter: active ? "invert(50%) brightness(200%)" : "",
   };

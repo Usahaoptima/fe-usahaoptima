@@ -9,8 +9,6 @@ const Sidebar = () => {
     return routes.includes(location.pathname);
   };
 
-  console.log(isRouteActive("/laporan-keuangan"));
-
   return (
     <>
       <aside>

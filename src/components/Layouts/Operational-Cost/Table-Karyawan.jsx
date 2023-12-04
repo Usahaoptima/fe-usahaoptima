@@ -22,6 +22,7 @@ const TableKaryawan = () => {
   useEffect(() => {
     getdataStaf();
   }, []);
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 

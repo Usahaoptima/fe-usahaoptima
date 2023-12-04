@@ -30,6 +30,7 @@ import DetailToko from "../pages/detail-toko";
 import DetailTokoForm from "../pages/detail-toko-form";
 import TokoEditForm from "../pages/toko-edit-form";
 import KaryawanEditForm from "../pages/karyawan-edit-form";
+import ProduksiEditForm from "../pages/produksi-edit-form";
 
 const AppRouter = () => {
   return (
@@ -65,6 +66,7 @@ const AppRouter = () => {
         <Route path="/detail-toko-form" element={<DetailTokoForm />} />
         <Route path="/toko-edit-form/:id" element={<TokoEditForm />} />
         <Route path="/karyawan-edit-form/:id" element={<KaryawanEditForm />} />
+        <Route path="/produksi-edit-form/:id" element={<ProduksiEditForm />} />
       </Routes>
     </>
   );
