@@ -23,7 +23,7 @@ const CreateFormToko = () => {
 
       Swal.fire({
         title: "Sukses!",
-        text: "Produk berhasil ditambahkan",
+        text: "Data Penjualan berhasil ditambahkan",
         icon: "success",
         confirmButtonText: "OK",
       });
