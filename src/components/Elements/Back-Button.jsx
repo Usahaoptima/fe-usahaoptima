@@ -2,9 +2,9 @@ import { Link, useLocation } from "react-router-dom";
 
 const BackButton = () => {
   const location = useLocation();
-  const isMenuPage = location.pathname === "/manajemen-keuangan";
+  const isMenuPage = location.pathname === "/edukasi/manajemen-keuangan";
 
-  const redirectPath = isMenuPage ? "/edukasi" : "/manajemen-keuangan";
+  const redirectPath = isMenuPage ? "/edukasi" : "/edukasi/manajemen-keuangan";
 
   return (
     <div className="col-md-6">
