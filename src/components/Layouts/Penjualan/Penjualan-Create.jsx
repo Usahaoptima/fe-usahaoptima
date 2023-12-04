@@ -28,7 +28,7 @@ const PenjualanCreate = () => {
 
       Swal.fire({
         title: "Sukses!",
-        text: "Produk berhasil ditambahkan",
+        text: "Data Penjualan berhasil ditambahkan",
         icon: "success",
         confirmButtonText: "OK",
       });
@@ -40,7 +40,7 @@ const PenjualanCreate = () => {
       // Menampilkan SweetAlert error
       Swal.fire({
         title: "Error!",
-        text: "Terjadi kesalahan saat menambahkan produk",
+        text: "Terjadi kesalahan saat menambahkan data",
         icon: "error",
         confirmButtonText: "OK",
       });

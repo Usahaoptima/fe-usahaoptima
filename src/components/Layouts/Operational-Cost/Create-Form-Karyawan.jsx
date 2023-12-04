@@ -30,7 +30,7 @@ const CreateFormKaryawan = () => {
 
       Swal.fire({
         title: "Sukses!",
-        text: "Produk berhasil ditambahkan",
+        text: "Data Karyawan berhasil ditambahkan",
         icon: "success",
         confirmButtonText: "OK",
       });
