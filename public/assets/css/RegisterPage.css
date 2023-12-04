@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Urbanist", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  --primary: #19a7ce;
+  --secondary: #146c94;
+  --alternatif: #afd3e2;
+}
+
+.auth {
+  color: var(--primary);
+}
+
+.image-pseudo,
+.wrapper-full {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#toggle-icon,
+#toggle-icon-confirm {
+  cursor: pointer;
+}
+
+.link-text {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+.button-auth {
+  border-radius: 9px !important;
+  background-color: var(--primary) !important;
+  border: none !important;
+  box-shadow: 0px 4px 61px 0px rgba(77, 71, 195, 0.4);
+}
+
+.inputs {
+  border-radius: 8px !important;
+  background: #fff !important;
+}
+
+.checkbox-auth {
+  z-index: 100 !important;
+}
+
+#password,
+#confirmed {
+  border-radius: 8px 0px 0px 8px !important;
+}
+
+#toggle-password,
+#toggle-password-confirm {
+  background: #f0efff !important;
+  border: none !important;
+  border-radius: 0px 8px 8px 0px !important;
+  height: 2.3rem;
+}
+
+@media (max-width: 1024px) {
+  .image-pseudo::before {
+    display: none;
+  }
+
+  .form {
+    margin-top: 20%;
+  }
+}
+
+.text-wrapper h2 {
+  color: var(--primary);
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.text-wrapper p {
+  color: var(--primary);
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.inputs::placeholder,
+.label-auth {
+  color: gray !important;
+}
+
+.icon-wrapper .link-text:hover svg {
+  transform: scale(1.1); /* Mengubah skala ikon saat dihover */
+  animation: bounce 0.5s ease infinite alternate; /* Animasi memantul */
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.verification {
+  background: white;
+}
+
+.card-shadow {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.color-blue {
+  color: var(--Primary, #19a7ce);
+  font-family: Urbanist;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.color-title {
+  fill: var(--Secondary, #146c94);
+}
+
+@media (max-width: 991.98px) {
+  .log {
+    display: none;
+  }
+
+  .login {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.label-filter {
+  color: var(--Secondary, #146c94);
+  font-family: Urbanist;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.big {
+  font-size: 4rem;
+}

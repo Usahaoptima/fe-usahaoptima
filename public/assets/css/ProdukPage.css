@@ -1,0 +1,120 @@
+/* Dashboard Start */
+.section-content {
+  height: 70vh;
+}
+
+.hr {
+  margin-top: 10%;
+}
+
+/* Main container */
+.container.main-container {
+  margin-top: 50px;
+}
+
+/* Highlighted sidebar item */
+main aside ul li.active a {
+  color: var(--bg) !important;
+  background-color: var(--secondary);
+}
+
+/* Menu produk start */
+
+section#produk {
+  margin-inline: 18px;
+}
+
+section#produk .produk-button button {
+  background-color: var(--primary);
+  border: none;
+  padding: 8px;
+  border-radius: 12px;
+  color: var(--bg);
+}
+
+section#produk table tbody td.td {
+  background-color: var(--bg);
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+section#produk table thead th.th {
+  color: var(--secondary);
+  font-weight: bolder;
+  background-color: #f3f3f3;
+}
+
+.page-link {
+  background-color: var(--primary) !important;
+  color: var(--bg) !important;
+  font-weight: 600;
+}
+
+.edit {
+  color: darkorange;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 6px;
+}
+
+.delete {
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 6px;
+}
+
+/* Form */
+.btn-form {
+  background-color: var(--primary);
+  border: none;
+  padding: 8px;
+  border-radius: 12px;
+  color: var(--bg);
+}
+
+.section-content-title {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.label-title {
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#btn-submit {
+  margin-top: 12px;
+  margin-right: 16px;
+  width: 113px;
+  height: 44px;
+}
+
+/* Media Query */
+
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  section#produk {
+    margin-inline: 0;
+  }
+
+  section#produk .produk-button button {
+    margin: 12px;
+  }
+
+  /* .section-content {
+    height: 140vh;
+  } */
+
+  .hr {
+    margin-top: 150px !important;
+  }
+}
+
+/* Media Query for width between 580px and 615px */
+@media (min-width: 575px) and (max-width: 615px) {
+  .section-content {
+    height: 120vh;
+  }
+}

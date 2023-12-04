@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Menangani permintaan ke file atau direktori yang ada
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Menangani semua permintaan lainnya dan mengarahkannya ke index.html
+  RewriteRule ^ index.html [L]
+</IfModule>

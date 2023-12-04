@@ -1,0 +1,822 @@
+/* Overview Start */
+
+.div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+.section-title {
+  color: var(--Secondary, #146c94);
+  width: 100%;
+  font: 500 45px Urbanist, sans-serif;
+}
+@media (max-width: 991px) {
+  .section-title {
+    max-width: 100%;
+    font-size: 40px;
+  }
+}
+.div-3 {
+  color: var(--Primary, #19a7ce);
+  width: 100%;
+  font: 500 30px Urbanist, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-3 {
+    max-width: 100%;
+  }
+}
+.div-4 {
+  margin-top: 56px;
+  width: 100%;
+}
+@media (max-width: 991px) {
+  .div-4 {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+.div-5 {
+  gap: 20px;
+  display: flex;
+}
+@media (max-width: 991px) {
+  .div-5 {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+  }
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 59%;
+  margin-left: 0px;
+}
+@media (max-width: 991px) {
+  .column {
+    width: 100%;
+  }
+}
+.div-6 {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+@media (max-width: 991px) {
+  .div-6 {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+}
+.div-7 {
+  justify-content: space-between;
+  border-radius: 8px;
+  background-color: var(--Background, #f6f1f1);
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 1px;
+  padding: 20px 20px 20px 15px;
+}
+@media (max-width: 991px) {
+  .div-7 {
+    max-width: 100%;
+    padding-right: 20px;
+    border-style: solid;
+    border-width: 1px;
+  }
+}
+.div-8 {
+  color: var(--Secondary, #146c94);
+  text-align: center;
+  white-space: nowrap;
+  font: 500 20px/30px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-8 {
+    max-width: 100%;
+    white-space: initial;
+  }
+}
+.div-9 {
+  justify-content: space-between;
+  display: flex;
+  margin-top: 30px;
+  padding-right: 8px;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .div-9 {
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.div-10 {
+  justify-content: center;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+}
+.div-11 {
+  color: var(--Primary, #19a7ce);
+  white-space: nowrap;
+  align-self: center;
+  font: 500 16px/24px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-11 {
+    white-space: initial;
+  }
+}
+.div-12 {
+  color: #000;
+  align-self: center;
+  margin-top: 12px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-12 {
+    white-space: initial;
+  }
+}
+.div-13 {
+  justify-content: center;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+}
+.div-14 {
+  color: var(--Primary, #19a7ce);
+  white-space: nowrap;
+  align-self: center;
+  font: 500 16px/24px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-14 {
+    white-space: initial;
+  }
+}
+.div-15 {
+  color: #000;
+  align-self: center;
+  margin-top: 12px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-15 {
+    white-space: initial;
+  }
+}
+.div-16 {
+  justify-content: center;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+}
+.div-17 {
+  color: var(--Primary, #19a7ce);
+  white-space: nowrap;
+  align-self: center;
+  font: 500 16px/24px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-17 {
+    white-space: initial;
+    margin: 0 auto;
+  }
+}
+.div-18 {
+  color: #000;
+  align-self: center;
+  margin-top: 12px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-18 {
+    white-space: initial;
+  }
+}
+.div-19 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 30px;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-19 {
+    max-width: 100%;
+  }
+}
+.div-20 {
+  color: #667085;
+  margin-top: 12px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+  width: 30%;
+}
+@media (max-width: 991px) {
+  .div-20 {
+    max-width: 100%;
+    white-space: initial;
+  }
+}
+
+/* Overview End */
+
+/* Shop Expenses Start */
+
+.div-21 {
+  border-radius: 8px;
+  background-color: var(--Background, #f6f1f1);
+  margin-top: 40px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 27px 30px;
+}
+@media (max-width: 991px) {
+  .div-21 {
+    max-width: 100%;
+    margin: 40px -2px 0 0;
+    padding: 20px;
+  }
+}
+.div-22 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
+}
+.div-23 {
+  color: var(--Secondary, #146c94);
+  white-space: nowrap;
+  font: 500 20px/30px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-23 {
+    white-space: initial;
+  }
+}
+@media (max-width: 640px) {
+  .div-23 {
+    margin: 0 auto;
+  }
+}
+.div-24 {
+  color: var(--grey-grey-500, #667085);
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-24 {
+    white-space: initial;
+  }
+}
+.div-25 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+}
+.div-26 {
+  color: var(--Primary, #19a7ce);
+  text-decoration-line: underline;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  font: 500 14px Urbanist, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-26 {
+    white-space: initial;
+    max-width: 200px;
+    margin-right: -5px;
+  }
+}
+.biaya {
+  color: var(--Primary, #19a7ce);
+  text-decoration-line: underline;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  font: 500 14px Urbanist, sans-serif;
+}
+@media (max-width: 991px) {
+  .biaya {
+    white-space: initial;
+    max-width: 200px;
+    margin-right: -5px;
+  }
+}
+.div-27 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
+}
+.div-28 {
+  color: var(--Primary, #19a7ce);
+  text-align: center;
+  white-space: nowrap;
+  margin-top: 28px;
+  width: 100%;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-28 {
+    white-space: initial;
+  }
+}
+.div-29 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 25px;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-29 {
+    white-space: initial;
+    margin-left: 3px;
+  }
+}
+.div-30 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
+}
+.div-31 {
+  color: var(--Primary, #19a7ce);
+  white-space: nowrap;
+  margin-top: 26px;
+  width: 100%;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-31 {
+    white-space: initial;
+  }
+}
+.div-32 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 22px;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-32 {
+    white-space: initial;
+  }
+}
+.div-33 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
+}
+.div-34 {
+  color: var(--Primary, #19a7ce);
+  white-space: nowrap;
+  margin-top: 26px;
+  width: 100%;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-34 {
+    white-space: initial;
+  }
+}
+.div-35 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 22px;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-35 {
+    white-space: initial;
+  }
+}
+.column-2 {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 41%;
+  margin-left: 20px;
+}
+@media (max-width: 991px) {
+  .column-2 {
+    width: 100%;
+  }
+}
+.div-36 {
+  align-content: space-between;
+  border-radius: 10px;
+  background-color: var(--Background, #f6f1f1);
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0 auto;
+  padding: 20px 13px 12px;
+}
+@media (max-width: 991px) {
+  .div-36 {
+    margin-top: 40px;
+  }
+}
+
+/* fix toko akhirnya beresnya juga styling bug pusing asli */
+
+/* Shop Expenses End */
+
+/* Production Expenses Start */
+
+.column-4 {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 41%;
+}
+@media (max-width: 991px) {
+  .column-4 {
+    width: 100%;
+  }
+}
+.div-37 {
+  align-content: space-between;
+  border-radius: 10px;
+  background-color: var(--Background, #f6f1f1);
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0 auto;
+  padding: 20px;
+}
+@media (max-width: 991px) {
+  .div-37 {
+    margin-top: 40px;
+  }
+}
+.div-38 {
+  color: var(--Secondary, #146c94);
+  font: 500 20px/30px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+.div-39 {
+  color: var(--grey-grey-500, #667085);
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+  width: 15%;
+}
+.div-40 {
+  justify-content: space-between;
+  display: flex;
+  margin-top: 12px;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .div-40 {
+    justify-content: center;
+  }
+}
+.img {
+  aspect-ratio: 0.86;
+  object-fit: contain;
+  object-position: center;
+  width: 60px;
+  overflow: hidden;
+  max-width: 100%;
+}
+.div-41 {
+  align-self: center;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  margin: auto 0;
+}
+.div-42 {
+  color: var(--Secondary, #146c94);
+  white-space: nowrap;
+  font: 500 16px/24px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-42 {
+    white-space: initial;
+  }
+}
+.div-43 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 4px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-43 {
+    white-space: initial;
+  }
+}
+.div-44 {
+  color: var(--Secondary, #146c94);
+  text-align: center;
+  white-space: nowrap;
+  justify-content: center;
+  border-radius: 16px;
+  background-color: var(--Alternate, #afd3e2);
+  align-self: center;
+  flex-grow: 1;
+  margin: auto 0;
+  padding: 2px 0;
+  font: 500 12px/18px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-44 {
+    white-space: initial;
+  }
+}
+.div-45 {
+  justify-content: space-between;
+  display: flex;
+  margin-top: 24px;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .div-45 {
+    justify-content: center;
+  }
+}
+.div-46 {
+  align-self: center;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  margin: auto 0;
+}
+.div-47 {
+  color: var(--Secondary, #146c94);
+  white-space: nowrap;
+  font: 500 16px/24px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-47 {
+    white-space: initial;
+  }
+}
+.div-48 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 4px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-48 {
+    white-space: initial;
+  }
+}
+.div-49 {
+  color: var(--Secondary, #146c94);
+  text-align: center;
+  white-space: nowrap;
+  justify-content: center;
+  border-radius: 16px;
+  background-color: var(--Alternate, #afd3e2);
+  align-self: center;
+  flex-grow: 1;
+  margin: auto 0;
+  padding: 2px 0;
+  font: 500 12px/18px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-49 {
+    white-space: initial;
+  }
+}
+.div-50 {
+  justify-content: space-between;
+  display: flex;
+  margin-top: 25px;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .div-50 {
+    justify-content: center;
+  }
+}
+.div-51 {
+  align-self: center;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  margin: auto 0;
+}
+.div-52 {
+  color: var(--Secondary, #146c94);
+  white-space: nowrap;
+  font: 500 16px/24px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-52 {
+    white-space: initial;
+  }
+}
+.div-53 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 4px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-53 {
+    white-space: initial;
+  }
+}
+.div-54 {
+  color: var(--Secondary, #146c94);
+  text-align: center;
+  white-space: nowrap;
+  justify-content: center;
+  border-radius: 16px;
+  background-color: var(--Alternate, #afd3e2);
+  align-self: center;
+  flex-grow: 1;
+  margin: auto 0;
+  padding: 2px 0;
+  font: 500 12px/18px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-54 {
+    white-space: initial;
+  }
+}
+.div-55 {
+  justify-content: space-between;
+  display: flex;
+  margin-top: 24px;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .div-55 {
+    justify-content: center;
+  }
+}
+.div-56 {
+  align-self: center;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  margin: auto 0;
+}
+.div-57 {
+  color: var(--Secondary, #146c94);
+  white-space: nowrap;
+  font: 500 16px/24px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-57 {
+    white-space: initial;
+  }
+}
+.div-58 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 4px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-58 {
+    white-space: initial;
+  }
+}
+.div-59 {
+  color: var(--Secondary, #146c94);
+  text-align: center;
+  white-space: nowrap;
+  justify-content: center;
+  border-radius: 16px;
+  background-color: var(--Alternate, #afd3e2);
+  align-self: center;
+  flex-grow: 1;
+  margin: auto 0;
+  padding: 2px 0;
+  font: 500 12px/18px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-59 {
+    white-space: initial;
+  }
+}
+.div-60 {
+  justify-content: space-between;
+  display: flex;
+  margin-top: 24px;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .div-60 {
+    justify-content: center;
+    margin-left: -1px;
+    padding-left: 5px;
+  }
+}
+.img-2 {
+  aspect-ratio: 0.86;
+  object-fit: contain;
+  object-position: center;
+  width: 60px;
+  overflow: hidden;
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .img-2 {
+    width: 59px;
+  }
+}
+.div-61 {
+  align-self: center;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  margin: auto 0;
+}
+.div-62 {
+  color: var(--Secondary, #146c94);
+  white-space: nowrap;
+  font: 500 16px/24px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-62 {
+    white-space: initial;
+  }
+}
+.div-63 {
+  color: var(--Primary, #19a7ce);
+  margin-top: 4px;
+  white-space: nowrap;
+  font: 500 14px/20px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-63 {
+    white-space: initial;
+  }
+}
+.div-64 {
+  color: var(--Secondary, #146c94);
+  text-align: center;
+  white-space: nowrap;
+  justify-content: center;
+  border-radius: 16px;
+  background-color: var(--Alternate, #afd3e2);
+  align-self: center;
+  flex-grow: 1;
+  margin: auto 0;
+  padding: 2px 0;
+  font: 500 12px/18px Urbanist, -apple-system, Roboto, Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-64 {
+    white-space: initial;
+  }
+}
+
+/* Production Expenses End */
+
+.placeholder-text {
+  color: grey;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.clickable-item {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.clickable-item:hover {
+  color: #2196f3;
+}
