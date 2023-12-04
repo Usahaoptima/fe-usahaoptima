@@ -12,19 +12,24 @@ function ReportContentMonth() {
   const [report, setReport] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { month } = useParams();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
   const getDataTotal = async () => {
     setIsLoading(true);
 
     const resGetData = await getDataMonth(month);
     setReport(resGetData.data.data);
 
-    console.log(report);
     setIsLoading(false);
   };
 
   useEffect(() => {
     getDataTotal();
   }, [month]);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
   return (
     <>
       <ReportFilter />
@@ -41,18 +46,33 @@ function ReportContentMonth() {
               </tr>
             </thead>
             <tbody>
-              {report.map((report, index) => {
+              {report.slice(startIndex, endIndex).map((report, index) => {
                 return <ReportMonth key={index} report={report} />;
               })}
             </tbody>
           </table>
           <Loader isShow={isLoading} />
+
           <ul className="pagination justify-content-end gap-3 m-3">
-            <li className="page-item">
-              <button className="page-link">Previous</button>
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous
+              </button>
             </li>
-            <li className="page-item">
-              <button className="page-link">Next</button>
+            <li
+              className={`page-item ${
+                endIndex >= report.length ? "disabled" : ""
+              }`}
+            >
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
+                Next
+              </button>
             </li>
           </ul>
         </div>

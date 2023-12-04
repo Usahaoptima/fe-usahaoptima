@@ -9,6 +9,8 @@ function SettingContent() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 1;
 
   function getAuthTokenFromCookies() {
     const cookies = document.cookie.split(";");
@@ -35,6 +37,9 @@ function SettingContent() {
     getUsersData();
   }, []);
 
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
   const openAddUsers = () => {
     navigate("/user-form");
   };
@@ -56,20 +61,33 @@ function SettingContent() {
               </tr>
             </thead>
             <tbody>
-              {users.map((user, index) => {
+              {users.slice(startIndex, endIndex).map((user, index) => {
                 return <UserContent key={index} user={user} />;
               })}
             </tbody>
           </table>
 
           <Loader isShow={isLoading} />
-
           <ul className="pagination justify-content-end gap-3 m-3">
-            <li className="page-item">
-              <button className="page-link">Previous</button>
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous
+              </button>
             </li>
-            <li className="page-item">
-              <button className="page-link">Next</button>
+            <li
+              className={`page-item ${
+                endIndex >= users.length ? "disabled" : ""
+              }`}
+            >
+              <button
+                className="page-link"
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
+                Next
+              </button>
             </li>
           </ul>
         </div>
