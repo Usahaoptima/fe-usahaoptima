@@ -67,7 +67,7 @@ const CreateFormToko = () => {
               <input
                 type="text"
                 className="form-control"
-                {...register("expenseName", { required: true })}
+                {...register("expense_name", { required: true })}
                 placeholder="Masukkan Nama Pengeluaran"
               />
             </div>

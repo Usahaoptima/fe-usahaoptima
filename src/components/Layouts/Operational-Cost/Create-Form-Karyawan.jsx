@@ -17,7 +17,9 @@ const CreateFormKaryawan = () => {
     try {
       await CreateStaf(data);
 
-      const isValidPhoneNumber = /^(\+62|0)[0-9]{8,15}$/.test(data.phoneNumber);
+      const isValidPhoneNumber = /^(\+62|0)[0-9]{8,15}$/.test(
+        data.phone_number
+      );
       if (!isValidPhoneNumber) {
         Swal.fire({
           title: "Error!",
@@ -74,7 +76,7 @@ const CreateFormKaryawan = () => {
               <input
                 type="text"
                 className="form-control"
-                {...register("staffName", { required: true })}
+                {...register("staff_name", { required: true })}
                 placeholder="Masukkan Nama Karyawan"
               />
             </div>
@@ -92,7 +94,7 @@ const CreateFormKaryawan = () => {
               <input
                 type="text"
                 className="form-control"
-                {...register("phoneNumber", { required: true })}
+                {...register("phone_number", { required: true })}
                 placeholder="Masukkan Nomer Handphone"
               />
             </div>

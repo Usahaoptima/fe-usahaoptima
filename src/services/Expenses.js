@@ -46,7 +46,10 @@ const getExpensesItem = async () => {
 const updateExpensesItem = async (id, expenses) => {
   try {
     const url = `${BASE_URL_API}/expenses/${id}`;
-    const response = await axios.put(url, expenses);
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.put(url, expenses, config);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -57,7 +60,10 @@ const updateExpensesItem = async (id, expenses) => {
 const deleteExpensesItem = async (id) => {
   try {
     const url = `${BASE_URL_API}/expenses/${id}`;
-    const response = await axios.delete(url);
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.delete(url, config);
     return response.data;
   } catch (err) {
     console.log(err);

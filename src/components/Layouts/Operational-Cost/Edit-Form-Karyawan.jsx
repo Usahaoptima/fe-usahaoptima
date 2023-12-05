@@ -72,7 +72,7 @@ const EditFormKaryawan = () => {
               <input
                 type="text"
                 className="form-control"
-                {...register("phoneNumber", { required: true })}
+                {...register("phone_number", { required: true })}
                 placeholder="Masukkan Nomer Handphone"
               />
             </div>

@@ -63,7 +63,7 @@ const CreateFormProduksi = () => {
               <input
                 type="text"
                 className="form-control"
-                {...register("itemName", { required: true })}
+                {...register("item_name", { required: true })}
                 placeholder="Masukkan Nama Produk"
               />
             </div>
