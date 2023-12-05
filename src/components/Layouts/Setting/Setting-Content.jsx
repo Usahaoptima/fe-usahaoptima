@@ -10,7 +10,7 @@ function SettingContent() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 1;
+  const itemsPerPage = 5;
 
   function getAuthTokenFromCookies() {
     const cookies = document.cookie.split(";");
