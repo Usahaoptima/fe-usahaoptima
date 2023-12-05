@@ -46,7 +46,10 @@ const getStaf = async () => {
 const updateStaf = async (id, staf) => {
   try {
     const url = `${BASE_URL_API}/staff/${id}`;
-    const response = await axios.put(url, staf);
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.put(url, staf, config);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -57,7 +60,10 @@ const updateStaf = async (id, staf) => {
 const deleteStaf = async (id) => {
   try {
     const url = `${BASE_URL_API}/staff/${id}`;
-    const response = await axios.delete(url);
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.delete(url, config);
     return response.data;
   } catch (err) {
     console.log(err);
