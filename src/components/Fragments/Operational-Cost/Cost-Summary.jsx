@@ -28,7 +28,7 @@ function CostSummary() {
     const fetchTotalCost = async (apiEndpoint) => {
       try {
         const response = await axios.get(
-          `https://usahaoptima-api.sengked.com/api/v1/${apiEndpoint}/`,
+          `https://usahaoptima-api.sengked.com/api/v1/${apiEndpoint}/total`,
           {
             headers: {
               Authorization: `Bearer ${authToken}`,
