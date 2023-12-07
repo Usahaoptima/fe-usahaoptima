@@ -24,44 +24,69 @@ function CostSummary() {
 
   const authToken = getAuthTokenFromCookies();
 
-  useEffect(() => {
-    const fetchTotalCost = async (apiEndpoint) => {
-      try {
-        const response = await axios.get(
-          `https://usahaoptima-api.sengked.com/api/v1/${apiEndpoint}/total`,
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          }
-        );
-        const data = response.data;
-
-        if (data?.data?.length > 0 && data.data[0].total_cost !== undefined) {
-          if (apiEndpoint === "expenses") {
-            setTotalCost(data.data[0].total_cost);
-            setRecentExpenses(data.data.slice(-3).reverse());
-          } else if (apiEndpoint === "item") {
-            setItemCost(data.data[0].total_cost);
-            setRecentItems(data.data.slice(-6).reverse());
-          } else if (apiEndpoint === "staff") {
-            setStaffCost(data.data[0].total_cost);
-          }
-        } else {
-          console.error(
-            `Data total_cost tidak tersedia atau undefined untuk ${apiEndpoint}.`
-          );
+  const fetchTotalCost = async (apiEndpoint) => {
+    try {
+      const response = await axios.get(
+        `https://usahaoptima-api.sengked.com/api/v1/${apiEndpoint}/total`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
         }
-      } catch (error) {
-        console.error(`Error fetching total_cost for ${apiEndpoint}:`, error);
+      );
+      const data = response.data;
+  
+      if (data?.data?.totalCost !== undefined) {
+        if (apiEndpoint === "expenses") {
+          setTotalCost(data.data.totalCost);
+        } else if (apiEndpoint === "item") {
+          setItemCost(data.data.totalCost);
+        } else if (apiEndpoint === "staff") {
+          setStaffCost(data.data.totalCost);
+        }
+      } else {
+        console.error(
+          `Data total_cost tidak tersedia atau undefined untuk ${apiEndpoint}.`
+        );
       }
-    };
-
-    // Fetch total_cost untuk setiap endpoint yang diperlukan
+    } catch (error) {
+      console.error(`Error fetching totalCost for ${apiEndpoint}:`, error);
+    }
+  };
+  
+  const fetchRecentData = async (apiEndpoint) => {
+    try {
+      const response = await axios.get(
+        `https://usahaoptima-api.sengked.com/api/v1/${apiEndpoint}`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      const data = response.data;
+  
+      if (apiEndpoint === "expenses") {
+        setRecentExpenses(data.data.slice(-3).reverse());
+      } else if (apiEndpoint === "item") {
+        setRecentItems(data.data.slice(-6).reverse());
+      }
+    } catch (error) {
+      console.error(`Error fetching recent data for ${apiEndpoint}:`, error);
+    }
+  };
+  
+  useEffect(() => {
+    // Fetch totalCost
     fetchTotalCost("expenses");
     fetchTotalCost("item");
     fetchTotalCost("staff");
+  
+    // Fetch recent data
+    fetchRecentData("expenses");
+    fetchRecentData("item");
   }, [authToken]);
+  
 
   const OpenDetailProduksi = () => {
     navigate("/detail-produksi");
