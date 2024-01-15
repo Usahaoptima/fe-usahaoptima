@@ -6,10 +6,6 @@ import Swal from "sweetalert2";
 function UserContent(props) {
   const navigate = useNavigate();
   const { _id, username, email, role } = props.user;
-  const openEditUser = () => {
-    navigate(`/user-edit-form/${_id}`);
-  };
-
   const handleDeleteUser = async () => {
     const id = _id;
 

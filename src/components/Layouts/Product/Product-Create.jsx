@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { postCreateProduct } from "../../../services/Product-Services";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+  import Swal from "sweetalert2";
 import LabelForm from "../../Elements/Label-Form";
 
 const ProductCreate = () => {
