@@ -1,28 +1,29 @@
-import { useEffect, useState } from "react";
-import { Register } from "../../../services/Auth-Services";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import { useEffect, useState } from 'react';
+import { Register } from '../../../services/Auth-Services';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
 
 function FormContent() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordValidation, setPasswordValidation] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordValidation, setPasswordValidation] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmedVisible, setConfirmedVisible] = useState(false);
-  const [businessName, setBusinessName] = useState("");
-  const [businessType, setBusinessType] = useState("");
-  const [businessDescription, setBusinessDescription] = useState("");
+  const [businessName, setBusinessName] = useState('');
+  const [businessType, setBusinessType] = useState('');
+  const [businessDescription, setBusinessDescription] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const access_token = document.cookie.replace(
       /(?:(?:^|.*;\s*)access_token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
+      '$1'
     );
 
     if (access_token) {
-      window.location.href = "/dashboard";
+      window.location.href = '/dashboard';
     }
   }, [history]);
 
@@ -44,9 +45,9 @@ function FormContent() {
       !businessDescription
     ) {
       MySwal.fire({
-        icon: "error",
-        title: "Registrasi Gagal",
-        text: "Data Belum lengkap, mohon check lagi",
+        icon: 'error',
+        title: 'Registrasi Gagal',
+        text: 'Data Belum lengkap, mohon check lagi',
       });
       return;
     }
@@ -57,23 +58,23 @@ function FormContent() {
       !symbol.test(password)
     ) {
       MySwal.fire({
-        icon: "error",
-        title: "Registrasi Gagal",
-        text: "Password Harus berisikan minimal 1 huruf kapital, numerik dan symbol",
+        icon: 'error',
+        title: 'Registrasi Gagal',
+        text: 'Password Harus berisikan minimal 1 huruf kapital, numerik dan symbol',
       });
-      setPassword("");
-      setPasswordValidation("");
+      setPassword('');
+      setPasswordValidation('');
       return;
     }
 
     if (lowercasePassword !== lowercaseConfirmed) {
       MySwal.fire({
-        icon: "error",
-        title: "Registrasi Gagal",
-        text: "Password Tidak Sama",
+        icon: 'error',
+        title: 'Registrasi Gagal',
+        text: 'Password Tidak Sama',
       });
-      setPassword("");
-      setPasswordValidation("");
+      setPassword('');
+      setPasswordValidation('');
       return;
     }
 
@@ -87,56 +88,58 @@ function FormContent() {
     };
 
     try {
+      setIsLoading(true);
       const resRegister = await Register(data);
+      setIsLoading(false);
       console.log(resRegister.statusCode);
 
       if (resRegister.statusCode === 401) {
         MySwal.fire({
-          icon: "error",
-          title: "Register gagal",
+          icon: 'error',
+          title: 'Register gagal',
           text: resRegister.message,
         });
       }
 
       if (resRegister.statusCode === 400) {
         MySwal.fire({
-          icon: "error",
-          title: "Register gagal",
+          icon: 'error',
+          title: 'Register gagal',
           text: resRegister.message,
         });
       }
 
       if (resRegister.statusCode === 500) {
         MySwal.fire({
-          icon: "error",
-          title: "Register gagal",
+          icon: 'error',
+          title: 'Register gagal',
           text: resRegister.message,
         });
       }
 
       if (resRegister.statusCode === 201) {
         MySwal.fire({
-          icon: "success",
-          title: "Registrasi Berhasil, silahkan verifikasi email anda",
+          icon: 'success',
+          title: 'Registrasi Berhasil, silahkan verifikasi email anda',
           text: resRegister.data.message,
         }).then(() => {
           // Redirect ke halaman login setelah menutup SweetAlert
-          window.location.href = "/login";
+          window.location.href = '/login';
         });
       }
     } catch (error) {
       MySwal.fire({
-        icon: "error",
-        title: "Gagal Mendaftar",
+        icon: 'error',
+        title: 'Gagal Mendaftar',
         text: error,
       });
     }
   };
 
   const handlePasswordVisible = (field) => {
-    if (field === "password") {
+    if (field === 'password') {
       setPasswordVisible(!passwordVisible);
-    } else if (field === "confirmed") {
+    } else if (field === 'confirmed') {
       setConfirmedVisible(!confirmedVisible);
     }
   };
@@ -172,7 +175,7 @@ function FormContent() {
           <div className="form-group mt-5">
             <div className="input-group">
               <input
-                type={passwordVisible ? "text" : "password"}
+                type={passwordVisible ? 'text' : 'password'}
                 className="form-control inputs"
                 id="password"
                 value={password}
@@ -187,11 +190,11 @@ function FormContent() {
                 <span
                   className="input-group-text bg-light"
                   id="toggle-password"
-                  onClick={() => handlePasswordVisible("password")}
+                  onClick={() => handlePasswordVisible('password')}
                 >
                   <i
                     className={
-                      passwordVisible ? "fa fa-eye-slash" : "fa fa-eye"
+                      passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'
                     }
                     id="toggle-icon"
                   ></i>
@@ -203,7 +206,7 @@ function FormContent() {
           <div className="form-group mt-5">
             <div className="input-group">
               <input
-                type={confirmedVisible ? "text" : "password"}
+                type={confirmedVisible ? 'text' : 'password'}
                 id="confirmed"
                 className="form-control inputs"
                 value={passwordValidation}
@@ -218,11 +221,11 @@ function FormContent() {
                 <span
                   className="input-group-text bg-light"
                   id="toggle-password-confirm"
-                  onClick={() => handlePasswordVisible("confirmed")}
+                  onClick={() => handlePasswordVisible('confirmed')}
                 >
                   <i
                     className={
-                      confirmedVisible ? "fa fa-eye-slash" : "fa fa-eye"
+                      confirmedVisible ? 'fa fa-eye-slash' : 'fa fa-eye'
                     }
                     id="toggle-icon-confirm"
                   ></i>
@@ -274,8 +277,9 @@ function FormContent() {
           <button
             type="submit"
             className="btn btn-primary btn-lg btn-block mt-5 mb-5 col-12 button-auth"
+            disabled={isLoading}
           >
-            Daftar
+            {isLoading ? 'Loading...' : 'Daftar'}
           </button>
         </form>
       </div>
