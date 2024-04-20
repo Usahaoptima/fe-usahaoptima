@@ -53,7 +53,6 @@ function CostSummary() {
       console.error(`Error fetching totalCost for ${apiEndpoint}:`, error);
     }
   };
-
   const fetchRecentData = async (apiEndpoint) => {
     try {
       const response = await axios.get(
@@ -75,17 +74,18 @@ function CostSummary() {
       console.error(`Error fetching recent data for ${apiEndpoint}:`, error);
     }
   };
-
+  
   useEffect(() => {
     // Fetch totalCost
-    fetchTotalCost('expenses');
-    fetchTotalCost('item');
-    fetchTotalCost('staff');
-
+    fetchTotalCost("expenses");
+    fetchTotalCost("item");
+    fetchTotalCost("staff");
+  
     // Fetch recent data
-    fetchRecentData('expenses');
-    fetchRecentData('item');
+    fetchRecentData("expenses");
+    fetchRecentData("item");
   }, [authToken]);
+  
 
   const OpenDetailProduksi = () => {
     navigate('/detail-produksi');
