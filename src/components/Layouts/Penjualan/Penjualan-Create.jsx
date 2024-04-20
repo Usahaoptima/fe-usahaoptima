@@ -1,10 +1,13 @@
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import LabelForm from "../../Elements/Label-Form";
-import { postCreateSales } from "../../../services/Penjualan-Services";
-import { getProductItem } from "../../../services/Product-Services";
-import { useEffect, useState } from "react";
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import LabelForm from '../../Elements/Label-Form';
+import {
+  getPaymentToken,
+  postCreateSales,
+} from '../../../services/Penjualan-Services';
+import { getProductItem } from '../../../services/Product-Services';
+import { useEffect, useState } from 'react';
 
 const PenjualanCreate = () => {
   const navigate = useNavigate();
@@ -16,59 +19,101 @@ const PenjualanCreate = () => {
   } = useForm();
 
   const [products, setProducts] = useState([]);
+  const [isMasive, setIsMasive] = useState(false);
+  const [isCashless, setIsCashless] = useState(false);
+
+  const CreateSaleData = async (data) => {
+    let saveSales = await postCreateSales(data);
+    if (saveSales.statusCode === 200) {
+      Swal.fire({
+        title: 'Sukses!',
+        text: 'Data Penjualan berhasil ditambahkan',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+      navigate('/penjualan');
+    } else {
+      Swal.fire({
+        title: 'Error',
+        text: saveSales.message,
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+  };
 
   const CreateSales = async (data) => {
     try {
-      await postCreateSales(data);
-
-      // Reset formulir setelah berhasil dikirim
-      setValue("sales_name", "");
-      setValue("product_name", "");
-      setValue("quantity", "");
-
-      Swal.fire({
-        title: "Sukses!",
-        text: "Data Penjualan berhasil ditambahkan",
-        icon: "success",
-        confirmButtonText: "OK",
-      });
-
-      navigate("/penjualan");
+      if (!isCashless) {
+        CreateSaleData(data);
+      } else {
+        if (isMasive) {
+          setValue('sales_name', 'Data tanpa nama');
+        }
+        const token = await getPaymentToken(data);
+        if (token.statusCode > 200) {
+          Swal.fire({
+            title: 'Error',
+            text: token.message,
+            icon: 'error',
+            confirmButtonText: 'OK',
+          });
+        } else {
+          window.snap.pay(token.transactionToken, {
+            onSuccess: async function () {
+              setValue('sales_name', '');
+              setValue('product_name', '');
+              setValue('quantity', '');
+              CreateSaleData(data);
+            },
+          });
+        }
+      }
     } catch (error) {
-      console.error("Error creating product:", error);
-
-      // Menampilkan SweetAlert error
+      console.error('Error creating product:', error);
       Swal.fire({
-        title: "Error!",
-        text: "Terjadi kesalahan saat menambahkan data",
-        icon: "error",
-        confirmButtonText: "OK",
+        title: 'Error!',
+        text: 'Terjadi kesalahan saat menambahkan data',
+        icon: 'error',
+        confirmButtonText: 'OK',
       });
     }
   };
 
   const closePenjualanForm = () => {
-    navigate("/penjualan");
+    navigate('/penjualan');
   };
 
   const handleEnterKey = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleSubmit(CreateSales)();
     }
   };
 
-  useEffect(() => {
-    const fetchProductsData = async () => {
-      try {
-        const productsData = await getProductItem();
-        setProducts(productsData);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
+  const fetchProductsData = async () => {
+    try {
+      const productsData = await getProductItem();
+      setProducts(productsData);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchProductsData();
+    const snapScript = 'https://app.sandbox.midtrans.com/snap/snap.js';
+    const clientKey = 'SB-Mid-client-fF8YD5MoijVmF-ZA';
+    const script = document.createElement('script');
+    script.src = snapScript;
+    script.setAttribute('data-client-key', clientKey);
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   return (
@@ -86,15 +131,32 @@ const PenjualanCreate = () => {
               <input
                 type="text"
                 className="form-control"
-                {...register("sales_name", { required: true })}
+                {...register('sales_name', { required: true })}
                 placeholder="Masukkan Nama Pembeli"
+                disabled={isMasive}
               />
+            </div>
+            <div className="d-flex flex-row form-group mb-3 gap-2">
+              <input
+                type="checkbox"
+                value={isMasive}
+                onClick={() => {
+                  setIsCashless(!isCashless);
+                  setIsMasive(!isMasive);
+                  if (isMasive) {
+                    setValue('sales_name', '');
+                  } else {
+                    setValue('sales_name', 'Data tanpa nama');
+                  }
+                }}
+              />
+              <span>Apakah anda ingin memasukan data tanpa nama?</span>
             </div>
             <div>
               <LabelForm name="Nama Produk" />
               <select
                 className="form-control"
-                {...register("product_name", { required: true })}
+                {...register('product_name', { required: true })}
               >
                 <option value="">Pilih Nama Produk</option>
                 {products.map((product, index) => (
@@ -109,7 +171,7 @@ const PenjualanCreate = () => {
               <input
                 type="number"
                 className="form-control"
-                {...register("quantity", { required: true })}
+                {...register('quantity', { required: true })}
                 placeholder="Masukkan jumlah produk"
               />
             </div>
@@ -121,6 +183,18 @@ const PenjualanCreate = () => {
                 placeholder="Total harga sudah dihitung secara otomatis"
                 disabled={true}
               />
+            </div>
+            <div
+              className={`flex-row form-group mb-3 gap-2 ${
+                isMasive ? 'd-none' : 'd-flex'
+              }`}
+            >
+              <input
+                type="checkbox"
+                value={isCashless}
+                onClick={() => setIsCashless(!isCashless)}
+              />
+              <span>Apakah pembayaran menggunakan pembayaran online?</span>
             </div>
             <button
               id="btn-submit"
@@ -136,7 +210,7 @@ const PenjualanCreate = () => {
               className="btn-form"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </form>
         </div>

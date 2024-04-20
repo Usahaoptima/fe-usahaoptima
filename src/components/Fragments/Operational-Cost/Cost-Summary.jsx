@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import "../../../../public/assets/css/OperationalCostPage.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import '../../../../public/assets/css/OperationalCostPage.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function CostSummary() {
   const [totalCost, setTotalCost] = useState(0);
@@ -12,10 +12,10 @@ function CostSummary() {
   const navigate = useNavigate();
 
   const getAuthTokenFromCookies = () => {
-    const cookies = document.cookie.split(";");
+    const cookies = document.cookie.split(';');
     for (const cookie of cookies) {
-      const [name, value] = cookie.trim().split("=");
-      if (name === "access_token") {
+      const [name, value] = cookie.trim().split('=');
+      if (name === 'access_token') {
         return value;
       }
     }
@@ -35,13 +35,13 @@ function CostSummary() {
         }
       );
       const data = response.data;
-  
+
       if (data?.data?.totalCost !== undefined) {
-        if (apiEndpoint === "expenses") {
+        if (apiEndpoint === 'expenses') {
           setTotalCost(data.data.totalCost);
-        } else if (apiEndpoint === "item") {
+        } else if (apiEndpoint === 'item') {
           setItemCost(data.data.totalCost);
-        } else if (apiEndpoint === "staff") {
+        } else if (apiEndpoint === 'staff') {
           setStaffCost(data.data.totalCost);
         }
       } else {
@@ -53,7 +53,6 @@ function CostSummary() {
       console.error(`Error fetching totalCost for ${apiEndpoint}:`, error);
     }
   };
-  
   const fetchRecentData = async (apiEndpoint) => {
     try {
       const response = await axios.get(
@@ -65,10 +64,10 @@ function CostSummary() {
         }
       );
       const data = response.data;
-  
-      if (apiEndpoint === "expenses") {
+
+      if (apiEndpoint === 'expenses') {
         setRecentExpenses(data.data.slice(-3).reverse());
-      } else if (apiEndpoint === "item") {
+      } else if (apiEndpoint === 'item') {
         setRecentItems(data.data.slice(-6).reverse());
       }
     } catch (error) {
@@ -89,19 +88,19 @@ function CostSummary() {
   
 
   const OpenDetailProduksi = () => {
-    navigate("/detail-produksi");
+    navigate('/detail-produksi');
   };
 
   const OpenDetailKaryawan = () => {
-    navigate("/detail-karyawan");
+    navigate('/detail-karyawan');
   };
 
   const OpenDetailToko = () => {
-    navigate("/detail-toko");
+    navigate('/detail-toko');
   };
 
   const OpenEdukasi = () => {
-    navigate("/edukasi");
+    navigate('/edukasi');
   };
 
   return (
@@ -125,7 +124,7 @@ function CostSummary() {
                       <div
                         className="div-12 clickable-item"
                         onClick={OpenDetailToko}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: 'pointer' }}
                       >
                         Toko
                       </div>
@@ -137,7 +136,7 @@ function CostSummary() {
                       <div
                         className="div-15 clickable-item"
                         onClick={OpenDetailKaryawan}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: 'pointer' }}
                       >
                         Karyawan
                       </div>
@@ -149,7 +148,7 @@ function CostSummary() {
                       <div
                         className="div-18 clickable-item"
                         onClick={OpenDetailProduksi}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: 'pointer' }}
                       >
                         Barang
                       </div>
@@ -161,7 +160,7 @@ function CostSummary() {
                   <div
                     className="div-20 clickable-item"
                     onClick={OpenEdukasi}
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: 'pointer' }}
                   >
                     Simak tipsnya disini.
                   </div>
@@ -172,7 +171,7 @@ function CostSummary() {
                     <div
                       className="div-24 clickable-item"
                       onClick={OpenDetailToko}
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: 'pointer' }}
                     >
                       Detail Pengeluaran
                     </div>
@@ -204,7 +203,7 @@ function CostSummary() {
                 <div
                   className="div-39 clickable-item"
                   onClick={OpenDetailProduksi}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: 'pointer' }}
                 >
                   Detail
                 </div>

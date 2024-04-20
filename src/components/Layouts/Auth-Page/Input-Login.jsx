@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Login } from "../../../services/Auth-Services";
-import Cookies from "js-cookie";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Login } from '../../../services/Auth-Services';
+import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
 
-import React from "react";
+import React from 'react';
 
 function InputLogin() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const handlePasswordVisible = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -19,11 +21,11 @@ function InputLogin() {
   useEffect(() => {
     const access_token = document.cookie.replace(
       /(?:(?:^|.*;\s*)access_token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
+      '$1'
     );
 
     if (access_token) {
-      window.location.href = "/dashboard";
+      window.location.href = '/dashboard';
     }
   }, [history]);
 
@@ -32,9 +34,9 @@ function InputLogin() {
 
     if (!username && !email && !password) {
       MySwal.fire({
-        icon: "error",
-        title: "Login Gagal",
-        text: "Data Belum lengkap, mohon check lagi",
+        icon: 'error',
+        title: 'Login Gagal',
+        text: 'Data Belum lengkap, mohon check lagi',
       });
       return;
     }
@@ -44,42 +46,41 @@ function InputLogin() {
       password: password,
     };
 
+    setIsLoading(true);
     const resLogin = await Login(dataLogin);
-
-    console.log(resLogin.statusCode);
-
+    setIsLoading(false);
     if (resLogin.statusCode === 200) {
       MySwal.fire({
-        icon: "success",
-        title: "Login berhasil",
+        icon: 'success',
+        title: 'Login berhasil',
         text: resLogin.message,
       }).then(() => {
-        Cookies.set("access_token", resLogin.data.access_token);
-        window.location.href = "/dashboard";
+        Cookies.set('access_token', resLogin.data.access_token);
+        window.location.href = '/dashboard';
       });
-      setUsername("");
-      setPassword("");
+      setUsername('');
+      setPassword('');
     }
     if (resLogin.statusCode === 400) {
       MySwal.fire({
-        icon: "error",
-        title: "Login Gagal",
+        icon: 'error',
+        title: 'Login Gagal',
         text: resLogin.message,
       });
     }
 
     if (resLogin.statusCode === 401) {
       MySwal.fire({
-        icon: "error",
-        title: "Login Gagal",
+        icon: 'error',
+        title: 'Login Gagal',
         text: resLogin.message,
       });
     }
 
     if (resLogin.statusCode === 500) {
       MySwal.fire({
-        icon: "error",
-        title: "Login Gagal",
+        icon: 'error',
+        title: 'Login Gagal',
         text: resLogin.message,
       });
     }
@@ -92,13 +93,13 @@ function InputLogin() {
           id="form"
           className="form "
           onSubmit={handlerSubmit}
-          style={{ width: "500px" }}
+          style={{ width: '500px' }}
         >
           <div className="text-center">
             <img
               src="assets/img/register/avatar.svg"
               alt="avatar"
-              style={{ width: "100px" }}
+              style={{ width: '100px' }}
             />
             <h1 className="auth mt-3">Login</h1>
           </div>
@@ -116,7 +117,7 @@ function InputLogin() {
           <div className="form-group mt-5">
             <div className="input-group">
               <input
-                type={passwordVisible ? "text" : "password"}
+                type={passwordVisible ? 'text' : 'password'}
                 className="form-control inputs"
                 id="password"
                 value={password}
@@ -131,11 +132,11 @@ function InputLogin() {
                 <span
                   className="input-group-text bg-light"
                   id="toggle-password"
-                  onClick={() => handlePasswordVisible("password")}
+                  onClick={() => handlePasswordVisible('password')}
                 >
                   <i
                     className={
-                      passwordVisible ? "fa fa-eye-slash" : "fa fa-eye"
+                      passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'
                     }
                     id="toggle-icon"
                   ></i>
@@ -146,8 +147,9 @@ function InputLogin() {
           <button
             type="submit"
             className="btn btn-primary mt-3 col-12 button-auth"
+            disabled={isLoading}
           >
-            Login
+            {isLoading ? 'Loading...' : 'Login'}
           </button>
 
           <div className="mt-3 mr-3 text-right register">
@@ -157,7 +159,7 @@ function InputLogin() {
           </div>
           <hr />
 
-          <Link to="/register" style={{ textDecoration: "none" }}>
+          <Link to="/register" style={{ textDecoration: 'none' }}>
             <button className="btn btn-primary mt-2 col-12 mb-5 button-auth">
               Buat Akun Baru
             </button>
