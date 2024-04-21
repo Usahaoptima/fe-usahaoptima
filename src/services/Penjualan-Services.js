@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL_API = 'http://localhost:3000/api/v1';
+const BASE_URL_API = 'https://usahaoptima-api.sengked.com/api/v1';
 
 function getAuthTokenFromCookies() {
   const cookies = document.cookie.split(';');
@@ -32,11 +32,7 @@ const postCreateSales = async (data) => {
 const getPDFReport = async (id) => {
   try {
     const url = `${BASE_URL_API}/sales/report/${id}`;
-    const config = {
-      headers: { Authorization: `Bearer ${authToken}` },
-    };
-    const response = await axios.get(url, config);
-    return response.data;
+    window.open(url, '_blank');
   } catch (err) {
     console.log(err);
     return null;

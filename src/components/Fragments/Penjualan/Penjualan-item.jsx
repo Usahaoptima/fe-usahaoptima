@@ -76,10 +76,7 @@ const PenjualanItem = (props) => {
   const handlePDFDownload = async () => {
     const PenjualanId = _id;
 
-    window.open(
-      `http://localhost:3000/api/v1/sales/report/${PenjualanId}`,
-      '_blank'
-    );
+    getPDFReport(PenjualanId);
   };
 
   return (
