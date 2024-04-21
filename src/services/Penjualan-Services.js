@@ -29,6 +29,16 @@ const postCreateSales = async (data) => {
   }
 };
 
+const getPDFReport = async (id) => {
+  try {
+    const url = `${BASE_URL_API}/sales/report/${id}`;
+    window.open(url, '_blank');
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
 const getPaymentToken = async (data) => {
   try {
     const url = `${BASE_URL_API}/sales/payment`;
@@ -85,4 +95,5 @@ export {
   updateSalesItem,
   deleteSalesItem,
   getPaymentToken,
+  getPDFReport,
 };

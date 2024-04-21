@@ -1,6 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { deleteSalesItem } from "../../../services/Penjualan-Services";
-import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
+import {
+  deleteSalesItem,
+  getPDFReport,
+} from '../../../services/Penjualan-Services';
+import Swal from 'sweetalert2';
 
 /* eslint-disable react/prop-types */
 const PenjualanItem = (props) => {
@@ -12,18 +15,18 @@ const PenjualanItem = (props) => {
     const tanggal = new Date(tanggalISO);
 
     const formattedDate = tanggal
-      .toLocaleDateString("id-ID", {
-        month: "numeric",
-        day: "numeric",
-        year: "numeric",
+      .toLocaleDateString('id-ID', {
+        month: 'numeric',
+        day: 'numeric',
+        year: 'numeric',
       })
-      .replace(/\//g, "-");
+      .replace(/\//g, '-');
 
     return formattedDate;
   };
 
   const formatRupiah = (harga) => {
-    return `Rp ${harga.toLocaleString("id-ID")}`;
+    return `Rp ${harga.toLocaleString('id-ID')}`;
   };
 
   const openEditPenjualan = () => {
@@ -34,20 +37,20 @@ const PenjualanItem = (props) => {
     const PenjualanId = _id;
 
     const isConfirmed = await Swal.fire({
-      title: "Apakah Anda yakin?",
-      text: "Anda tidak akan dapat memulihkan Data penjualan ini!",
-      icon: "warning",
+      title: 'Apakah Anda yakin?',
+      text: 'Anda tidak akan dapat memulihkan Data penjualan ini!',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Ya, hapus!",
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Ya, hapus!',
     });
 
     if (isConfirmed.isConfirmed) {
       try {
         await deleteSalesItem(PenjualanId);
 
-        Swal.fire("Dihapus!", "Data penjualan telah dihapus.", "success").then(
+        Swal.fire('Dihapus!', 'Data penjualan telah dihapus.', 'success').then(
           () => {
             window.location.reload();
           }
@@ -56,18 +59,24 @@ const PenjualanItem = (props) => {
         console.log(error);
 
         Swal.fire(
-          "Error",
-          "Terjadi kesalahan saat menghapus  Data penjualan.",
-          "error"
+          'Error',
+          'Terjadi kesalahan saat menghapus  Data penjualan.',
+          'error'
         );
       }
     } else {
       Swal.fire(
-        " Data penjualan Anda aman!",
-        "Tidak ada perubahan yang dibuat.",
-        "info"
+        ' Data penjualan Anda aman!',
+        'Tidak ada perubahan yang dibuat.',
+        'info'
       );
     }
+  };
+
+  const handlePDFDownload = async () => {
+    const PenjualanId = _id;
+
+    getPDFReport(PenjualanId);
   };
 
   return (
@@ -87,6 +96,7 @@ const PenjualanItem = (props) => {
             className="fa-regular fa-trash-can delete"
             onClick={handleDeleteSales}
           ></i>
+          <i className="fa-regular fa-file pdf" onClick={handlePDFDownload}></i>
         </td>
       </tr>
     </>
