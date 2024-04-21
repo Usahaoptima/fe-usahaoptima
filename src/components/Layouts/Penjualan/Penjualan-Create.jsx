@@ -11,10 +11,12 @@ import { useEffect, useState } from 'react';
 
 const PenjualanCreate = () => {
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { isSubmitting },
   } = useForm();
 
@@ -41,6 +43,15 @@ const PenjualanCreate = () => {
       });
     }
   };
+
+  const quantity = watch('quantity');
+  const product_name = watch('product_name');
+
+  if (quantity && product_name) {
+    let filter = products.filter((item) => item.product_name === product_name);
+    let total_price = quantity * filter[0].price;
+    setValue('total_price', total_price);
+  }
 
   const CreateSales = async (data) => {
     try {
@@ -180,8 +191,8 @@ const PenjualanCreate = () => {
               <input
                 type="number"
                 className="form-control"
-                placeholder="Total harga sudah dihitung secara otomatis"
-                disabled={true}
+                {...register('total_price', { required: true })}
+                placeholder="Masukan Total Harga"
               />
             </div>
             <div
