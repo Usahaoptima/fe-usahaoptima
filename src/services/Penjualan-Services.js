@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL_API = 'https://usahaoptima-api.sengked.com/api/v1';
+const BASE_URL_API = 'http://localhost:3000/api/v1';
 
 function getAuthTokenFromCookies() {
   const cookies = document.cookie.split(';');
@@ -22,6 +22,20 @@ const postCreateSales = async (data) => {
       headers: { Authorization: `Bearer ${authToken}` },
     };
     const response = await axios.post(url, data, config);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+const getPDFReport = async (id) => {
+  try {
+    const url = `${BASE_URL_API}/sales/report/${id}`;
+    const config = {
+      headers: { Authorization: `Bearer ${authToken}` },
+    };
+    const response = await axios.get(url, config);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -85,4 +99,5 @@ export {
   updateSalesItem,
   deleteSalesItem,
   getPaymentToken,
+  getPDFReport,
 };

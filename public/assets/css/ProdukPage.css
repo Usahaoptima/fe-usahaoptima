@@ -64,6 +64,13 @@ section#produk table thead th.th {
   margin: 6px;
 }
 
+.pdf {
+  color: green;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 6px;
+}
+
 /* Form */
 .btn-form {
   background-color: var(--primary);
