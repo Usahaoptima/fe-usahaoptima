@@ -1,10 +1,10 @@
-import { useNavigate, useParams } from "react-router-dom";
-import LabelForm from "../../Elements/Label-Form";
-import { updateSalesItem } from "../../../services/Penjualan-Services";
-import Swal from "sweetalert2";
-import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-import { getProductItem } from "../../../services/Product-Services";
+import { useNavigate, useParams } from 'react-router-dom';
+import LabelForm from '../../Elements/Label-Form';
+import { updateSalesItem } from '../../../services/Penjualan-Services';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { getProductItem } from '../../../services/Product-Services';
 
 const PenjualanEdit = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const PenjualanEdit = () => {
   const [prodcuts, setProducts] = useState([]);
 
   const closePenjualanUpdateForm = () => {
-    navigate("/penjualan");
+    navigate('/penjualan');
   };
 
   const editSalesItem = async (form) => {
@@ -28,22 +28,22 @@ const PenjualanEdit = () => {
 
       // Menampilkan SweetAlert Suksess :D
       Swal.fire({
-        title: "Sukses!",
-        text: "Produk berhasil diupdate",
-        icon: "success",
-        confirmButtonText: "OK",
+        title: 'Sukses!',
+        text: 'Produk berhasil diupdate',
+        icon: 'success',
+        confirmButtonText: 'OK',
       });
 
-      navigate("/penjualan");
+      navigate('/penjualan');
     } catch (error) {
-      console.log("Error updating product:", error);
+      console.log('Error updating product:', error);
 
       // Menampilkan SweetAlert error :(
       Swal.fire({
-        title: "Error!",
-        text: "Terjadi kesalahan saat Mengupdate produk",
-        icon: "error",
-        confirmButtonText: "OK",
+        title: 'Error!',
+        text: 'Terjadi kesalahan saat Mengupdate produk',
+        icon: 'error',
+        confirmButtonText: 'OK',
       });
     }
   };
@@ -54,7 +54,7 @@ const PenjualanEdit = () => {
         const productsData = await getProductItem();
         setProducts(productsData);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       }
     };
 
@@ -62,7 +62,7 @@ const PenjualanEdit = () => {
   }, []);
 
   const handleEnterKey = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleSubmit(editSalesItem)();
     }
@@ -81,7 +81,7 @@ const PenjualanEdit = () => {
               <LabelForm name="Nama Produk" />
               <select
                 className="form-control"
-                {...register("product_name", { required: true })}
+                {...register('product_name', { required: true })}
               >
                 <option value="">Pilih Nama Produk</option>
                 {prodcuts.map((product, index) => (
@@ -96,8 +96,9 @@ const PenjualanEdit = () => {
               <input
                 type="number"
                 className="form-control"
-                {...register("quantity", { required: true })}
+                {...register('quantity', { required: true })}
                 placeholder="Masukkan jumlah produk"
+                min={1}
               />
             </div>
             <button
@@ -114,7 +115,7 @@ const PenjualanEdit = () => {
               className="btn-form"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Updating..." : "Update"}
+              {isSubmitting ? 'Updating...' : 'Update'}
             </button>
           </form>
         </div>
