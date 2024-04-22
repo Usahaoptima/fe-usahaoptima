@@ -1,10 +1,13 @@
-import { useNavigate, useParams } from "react-router-dom";
-import LabelForm from "../../Elements/Label-Form";
-import { updateSalesItem } from "../../../services/Penjualan-Services";
-import Swal from "sweetalert2";
-import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-import { getProductItem } from "../../../services/Product-Services";
+import { useNavigate, useParams } from 'react-router-dom';
+import LabelForm from '../../Elements/Label-Form';
+import {
+  updateSalesItem,
+  getSalesByID,
+} from '../../../services/Penjualan-Services';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { getProductItem } from '../../../services/Product-Services';
 
 const PenjualanEdit = () => {
   const navigate = useNavigate();
@@ -13,14 +16,28 @@ const PenjualanEdit = () => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { isSubmitting },
   } = useForm();
 
   const [prodcuts, setProducts] = useState([]);
 
   const closePenjualanUpdateForm = () => {
-    navigate("/penjualan");
+    navigate('/penjualan');
   };
+
+  const handleAPI = async () => {
+    const data = await getSalesByID(id);
+    if (data.statusCode === 200) {
+      setValue('quantity', data.data.quantity);
+      setValue('sales_name', data.data.sales_name);
+      setValue('product_name', data.data.product_name);
+    }
+  };
+
+  useEffect(() => {
+    handleAPI();
+  }, []);
 
   const editSalesItem = async (form) => {
     try {
@@ -28,22 +45,22 @@ const PenjualanEdit = () => {
 
       // Menampilkan SweetAlert Suksess :D
       Swal.fire({
-        title: "Sukses!",
-        text: "Produk berhasil diupdate",
-        icon: "success",
-        confirmButtonText: "OK",
+        title: 'Sukses!',
+        text: 'Produk berhasil diupdate',
+        icon: 'success',
+        confirmButtonText: 'OK',
       });
 
-      navigate("/penjualan");
+      navigate('/penjualan');
     } catch (error) {
-      console.log("Error updating product:", error);
+      console.log('Error updating product:', error);
 
       // Menampilkan SweetAlert error :(
       Swal.fire({
-        title: "Error!",
-        text: "Terjadi kesalahan saat Mengupdate produk",
-        icon: "error",
-        confirmButtonText: "OK",
+        title: 'Error!',
+        text: 'Terjadi kesalahan saat Mengupdate produk',
+        icon: 'error',
+        confirmButtonText: 'OK',
       });
     }
   };
@@ -54,7 +71,7 @@ const PenjualanEdit = () => {
         const productsData = await getProductItem();
         setProducts(productsData);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       }
     };
 
@@ -62,7 +79,7 @@ const PenjualanEdit = () => {
   }, []);
 
   const handleEnterKey = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleSubmit(editSalesItem)();
     }
@@ -77,11 +94,21 @@ const PenjualanEdit = () => {
             onSubmit={handleSubmit(editSalesItem)}
             onKeyDown={handleEnterKey}
           >
+            <div className="form-group mb-3">
+              <LabelForm name="Nama Pembeli" />
+              <input
+                type="text"
+                className="form-control"
+                {...register('sales_name', { required: true })}
+                placeholder="Masukkan Nama Pembeli"
+              />
+            </div>
+
             <div>
               <LabelForm name="Nama Produk" />
               <select
                 className="form-control"
-                {...register("product_name", { required: true })}
+                {...register('product_name', { required: true })}
               >
                 <option value="">Pilih Nama Produk</option>
                 {prodcuts.map((product, index) => (
@@ -96,8 +123,9 @@ const PenjualanEdit = () => {
               <input
                 type="number"
                 className="form-control"
-                {...register("quantity", { required: true })}
+                {...register('quantity', { required: true })}
                 placeholder="Masukkan jumlah produk"
+                min={1}
               />
             </div>
             <button
@@ -114,7 +142,7 @@ const PenjualanEdit = () => {
               className="btn-form"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Updating..." : "Update"}
+              {isSubmitting ? 'Updating...' : 'Update'}
             </button>
           </form>
         </div>
