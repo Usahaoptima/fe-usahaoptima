@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import TableProduct from "../../Fragments/Product/Table-Product";
-import Loader from "../../Elements/Loader";
-import UserContent from "../../Fragments/User/User-Content";
-import { getUsers } from "../../../services/User-Services";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import TableProduct from '../../Fragments/Product/Table-Product';
+import Loader from '../../Elements/Loader';
+import UserContent from '../../Fragments/User/User-Content';
+import { getUsers } from '../../../services/User-Services';
+import { useNavigate } from 'react-router-dom';
 
 function SettingContent() {
   const [users, setUsers] = useState([]);
@@ -13,10 +13,10 @@ function SettingContent() {
   const itemsPerPage = 5;
 
   function getAuthTokenFromCookies() {
-    const cookies = document.cookie.split(";");
+    const cookies = document.cookie.split(';');
     for (const cookie of cookies) {
-      const [name, value] = cookie.trim().split("=");
-      if (name === "access_token") {
+      const [name, value] = cookie.trim().split('=');
+      if (name === 'access_token') {
         return value;
       }
     }
@@ -41,7 +41,7 @@ function SettingContent() {
   const endIndex = startIndex + itemsPerPage;
 
   const openAddUsers = () => {
-    navigate("/user-form");
+    navigate('/user-form');
   };
 
   return (
@@ -69,7 +69,7 @@ function SettingContent() {
 
           <Loader isShow={isLoading} />
           <ul className="pagination justify-content-end gap-3 m-3">
-            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
               <button
                 className="page-link"
                 onClick={() => setCurrentPage(currentPage - 1)}
@@ -79,7 +79,7 @@ function SettingContent() {
             </li>
             <li
               className={`page-item ${
-                endIndex >= users.length ? "disabled" : ""
+                endIndex >= users.length ? 'disabled' : ''
               }`}
             >
               <button

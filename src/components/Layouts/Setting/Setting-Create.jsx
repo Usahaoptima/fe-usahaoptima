@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { postUser } from "../../../services/User-Services";
-import LabelForm from "../../Elements/Label-Form";
-import { json, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { postUser } from '../../../services/User-Services';
+import LabelForm from '../../Elements/Label-Form';
+import { json, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function SettingCreate() {
   const navigate = useNavigate();
@@ -13,13 +13,13 @@ function SettingCreate() {
     setValue,
     formState: { isSubmitting, errors },
   } = useForm();
-  const [data, setData] = useState("");
+  const [data, setData] = useState('');
 
   function getAuthTokenFromCookies() {
-    const cookies = document.cookie.split(";");
+    const cookies = document.cookie.split(';');
     for (const cookie of cookies) {
-      const [name, value] = cookie.trim().split("=");
-      if (name === "access_token") {
+      const [name, value] = cookie.trim().split('=');
+      if (name === 'access_token') {
         return value;
       }
     }
@@ -34,52 +34,52 @@ function SettingCreate() {
 
       const resRegister = await postUser(data, authToken);
 
-      setValue("username", "");
-      setValue("email", "");
-      setValue("role", "");
-      setValue("password", "");
+      setValue('username', '');
+      setValue('email', '');
+      setValue('role', '');
+      setValue('password', '');
 
       if (resRegister.statusCode === 401) {
         Swal.fire({
-          icon: "error",
-          title: "Register gagal",
+          icon: 'error',
+          title: 'Register gagal',
           text: resRegister.message,
         });
       }
 
       if (resRegister.statusCode === 400) {
         Swal.fire({
-          icon: "error",
-          title: "Register gagal",
+          icon: 'error',
+          title: 'Register gagal',
           text: resRegister.message,
         });
       }
 
       if (resRegister.statusCode === 500) {
         Swal.fire({
-          icon: "error",
-          title: "Register gagal",
+          icon: 'error',
+          title: 'Register gagal',
           text: resRegister.message,
         });
       }
 
       Swal.fire({
-        title: "Sukses!",
-        text: "Produk berhasil ditambahkan",
-        icon: "success",
-        confirmButtonText: "OK",
+        title: 'Sukses!',
+        text: 'User berhasil ditambahkan',
+        icon: 'success',
+        confirmButtonText: 'OK',
       });
 
-      navigate("/user-role");
+      navigate('/user-role');
     } catch (error) {
-      console.error("Error creating product:", error);
+      console.error('Error creating product:', error);
 
       // Menampilkan SweetAlert error
       Swal.fire({
-        title: "Error!",
-        text: "Terjadi kesalahan saat menambahkan produk",
-        icon: "error",
-        confirmButtonText: "OK",
+        title: 'Error!',
+        text: 'Terjadi kesalahan saat menambahkan user',
+        icon: 'error',
+        confirmButtonText: 'OK',
       });
     }
   };
@@ -91,11 +91,11 @@ function SettingCreate() {
   };
 
   const closeForm = () => {
-    navigate("/user-role");
+    navigate('/user-role');
   };
 
   const handleEnterKey = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleSubmit(createProduct)();
     }
@@ -115,7 +115,7 @@ function SettingCreate() {
               <input
                 type="text"
                 className="form-control"
-                {...register("username", { required: true })}
+                {...register('username', { required: true })}
                 placeholder="Masukkan Username"
                 autoComplete="username"
               />
@@ -125,7 +125,7 @@ function SettingCreate() {
               <input
                 type="email"
                 className="form-control"
-                {...register("email", { required: true })}
+                {...register('email', { required: true })}
                 placeholder="Masukkan Email"
                 autoComplete="email"
               />
@@ -134,7 +134,7 @@ function SettingCreate() {
               <LabelForm name="role" />
               <select
                 className="form-control"
-                {...register("role", { required: true })}
+                {...register('role', { required: true })}
               >
                 <option value="">Pilih Jabatan</option>
                 <option value="admin">Admin</option>
@@ -148,12 +148,12 @@ function SettingCreate() {
               <input
                 type="password"
                 className="form-control"
-                {...register("password", {
+                {...register('password', {
                   required: true,
                   pattern: {
                     value: /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/,
                     message:
-                      "Password must contain at least 8 characters, one uppercase letter, one digit, and one special character",
+                      'Password must contain at least 8 characters, one uppercase letter, one digit, and one special character',
                   },
                 })}
                 placeholder="Masukkan Password"
@@ -162,7 +162,7 @@ function SettingCreate() {
                 maxLength={16}
               />
               {errors.password && (
-                <span style={{ color: "red" }}>{errors.password.message}</span>
+                <span style={{ color: 'red' }}>{errors.password.message}</span>
               )}
             </div>
 
@@ -180,7 +180,7 @@ function SettingCreate() {
               className="btn-form"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </form>
         </div>
