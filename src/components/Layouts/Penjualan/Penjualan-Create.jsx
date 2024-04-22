@@ -23,6 +23,8 @@ const PenjualanCreate = () => {
   const [products, setProducts] = useState([]);
   const [isMasive, setIsMasive] = useState(false);
   const [isCashless, setIsCashless] = useState(false);
+  const [hide, setHide] = useState(false);
+  const [submitText, setSubmitText] = useState('Submit');
 
   const CreateSaleData = async (data) => {
     let saveSales = await postCreateSales(data);
@@ -43,15 +45,40 @@ const PenjualanCreate = () => {
       });
     }
   };
-
+  const total = watch('total_price');
   const quantity = watch('quantity');
   const product_name = watch('product_name');
 
-  if (quantity && product_name) {
-    let filter = products.filter((item) => item.product_name === product_name);
-    let total_price = quantity * filter[0].price;
-    setValue('total_price', total_price);
-  }
+  useEffect(() => {
+    if (quantity && product_name) {
+      let filter = products.filter(
+        (item) => item.product_name === product_name
+      );
+      let total_price = quantity * filter[0].price;
+      setValue('total_price', total_price);
+    }
+  }, [product_name, quantity]);
+
+  useEffect(() => {
+    setSubmitText(isSubmitting ? 'Submitting...' : 'Submit');
+  }, [isSubmitting]);
+
+  useEffect(() => {
+    if (quantity && product_name) {
+      let filter = products.filter(
+        (item) => item.product_name === product_name
+      );
+      let total_price = quantity * filter[0].price;
+      if (total !== total_price) {
+        setIsCashless(false);
+        setHide(true);
+        console.log(isCashless);
+      } else {
+        setIsCashless(false);
+        setHide(false);
+      }
+    }
+  }, [total]);
 
   const CreateSales = async (data) => {
     try {
@@ -154,6 +181,7 @@ const PenjualanCreate = () => {
                 onClick={() => {
                   setIsCashless(!isCashless);
                   setIsMasive(!isMasive);
+                  setHide(!hide);
                   if (isMasive) {
                     setValue('sales_name', '');
                   } else {
@@ -184,6 +212,7 @@ const PenjualanCreate = () => {
                 className="form-control"
                 {...register('quantity', { required: true })}
                 placeholder="Masukkan jumlah produk"
+                min="0"
               />
             </div>
             <div className="form-group mb-3">
@@ -197,7 +226,7 @@ const PenjualanCreate = () => {
             </div>
             <div
               className={`flex-row form-group mb-3 gap-2 ${
-                isMasive ? 'd-none' : 'd-flex'
+                hide ? 'd-none' : 'd-flex'
               }`}
             >
               <input
@@ -221,7 +250,7 @@ const PenjualanCreate = () => {
               className="btn-form"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Submitting...' : 'Submit'}
+              {submitText}
             </button>
           </form>
         </div>
