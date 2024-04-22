@@ -28,14 +28,24 @@ const PenjualanEdit = () => {
 
   const handleAPI = async () => {
     const data = await getSalesByID(id);
+    console.log(data);
     if (data.statusCode === 200) {
       setValue('quantity', data.data.quantity);
       setValue('sales_name', data.data.sales_name);
       setValue('product_name', data.data.product_name);
     }
   };
+  const fetchProductsData = async () => {
+    try {
+      const productsData = await getProductItem();
+      setProducts(productsData);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
 
   useEffect(() => {
+    fetchProductsData();
     handleAPI();
   }, []);
 
@@ -64,19 +74,6 @@ const PenjualanEdit = () => {
       });
     }
   };
-
-  useEffect(() => {
-    const fetchProductsData = async () => {
-      try {
-        const productsData = await getProductItem();
-        setProducts(productsData);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-
-    fetchProductsData();
-  }, []);
 
   const handleEnterKey = (e) => {
     if (e.key === 'Enter') {
