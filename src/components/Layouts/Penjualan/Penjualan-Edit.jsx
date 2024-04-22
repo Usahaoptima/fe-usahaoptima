@@ -1,6 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import LabelForm from '../../Elements/Label-Form';
-import { updateSalesItem } from '../../../services/Penjualan-Services';
+import {
+  updateSalesItem,
+  getSalesByID,
+} from '../../../services/Penjualan-Services';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
@@ -13,6 +16,7 @@ const PenjualanEdit = () => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { isSubmitting },
   } = useForm();
 
@@ -21,6 +25,19 @@ const PenjualanEdit = () => {
   const closePenjualanUpdateForm = () => {
     navigate('/penjualan');
   };
+
+  const handleAPI = async () => {
+    const data = await getSalesByID(id);
+    if (data.statusCode === 200) {
+      setValue('quantity', data.data.quantity);
+      setValue('sales_name', data.data.sales_name);
+      setValue('product_name', data.data.product_name);
+    }
+  };
+
+  useEffect(() => {
+    handleAPI();
+  }, []);
 
   const editSalesItem = async (form) => {
     try {
@@ -77,6 +94,16 @@ const PenjualanEdit = () => {
             onSubmit={handleSubmit(editSalesItem)}
             onKeyDown={handleEnterKey}
           >
+            <div className="form-group mb-3">
+              <LabelForm name="Nama Pembeli" />
+              <input
+                type="text"
+                className="form-control"
+                {...register('sales_name', { required: true })}
+                placeholder="Masukkan Nama Pembeli"
+              />
+            </div>
+
             <div>
               <LabelForm name="Nama Produk" />
               <select
