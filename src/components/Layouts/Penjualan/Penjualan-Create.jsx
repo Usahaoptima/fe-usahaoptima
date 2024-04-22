@@ -212,7 +212,7 @@ const PenjualanCreate = () => {
                 className="form-control"
                 {...register('quantity', { required: true })}
                 placeholder="Masukkan jumlah produk"
-                min="0"
+                min="1"
               />
             </div>
             <div className="form-group mb-3">
